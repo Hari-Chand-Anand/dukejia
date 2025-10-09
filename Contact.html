@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Duke Jia</title>
+  <meta name="description" content="Talk to Duke Jia: product advice, demos, quotations and nationwide support." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== Design Tokens ===== */
+    :root{
+      --bg:#0b1224;
+      --text:#e6eaf2;
+      --muted:#c9d3e6;
+      --muted2:#a6b0c4;
+      --border:rgba(255,255,255,.12);
+      --primary:#5b7cfa;
+      --accent:#7c3aed;
+      --cta:#5b7cfa;
+      --cta2:#7c3aed;
+      --card:#0b1229;
+      --surface:#0e1630;
+      --ink:#0b1224;
+      --ink-inv:#ffffff;
+      --brand:#6d28d9;
+      --brand-2:#b794f4;
+      --bg-soft:#0e1735;
+      --panel:#0c1530;
+      --chip:#394362;
+      --bd-2:rgba(255,255,255,.12);
+      --ring:rgba(183,148,244,.45);
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --radius:20px;
+    }
+
+    /* ===== Base Styles ===== */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.55;
+      background-image:
+        radial-gradient(1200px 500px at 85% -10%, rgba(109,40,217,.35), transparent 40%),
+        radial-gradient(800px 400px at -10% 110%, rgba(183,148,244,.18), transparent 40%);
+      background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* ===== Container ===== */
+    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    @media (max-width: 1024px) {
+      .container{max-width:100%;padding:0 24px}
+    }
+    @media (max-width: 480px) {
+      .container{padding:0 16px}
+    }
+
+    /* ===== Header ===== */
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(9,13,26,.85);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+
+    .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .brand-mark{
+      display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:900;font-size:14px
+    }
+    .brand-name{
+      color:#6d28d9;
+      font-weight:900;font-size:18px;text-decoration:none
+    }
+
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .nav-center a{color:rgba(255,255,255,.75);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:#fff}
+
+    .btn-quote{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--cta),var(--cta2));
+      color:#0b1224;text-decoration:none;box-shadow:0 6px 20px rgba(91,124,250,.25)
+    }
+    .btn-quote i{opacity:.9}
+
+    /* Mobile Navigation */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .menu-toggle:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width:780px){
+      .nav-center {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(11, 18, 36, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .nav-center.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-center a {
+        padding: 16px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      
+      .nav-center a:last-child {
+        border-bottom: none;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .btn-quote {
+        background: none;
+        box-shadow: none;
+        color: #fff;
+        padding: 16px 0;
+        justify-content: flex-start;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;overflow:hidden;
+      isolation:isolate;
+      color:var(--ink-inv);background:#0b1224;
+      padding: 80px 0 60px;
+    }
+    
+    .hero-bg{
+      position:absolute;inset:0;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(183, 148, 244, .35), transparent 60%), 
+                  radial-gradient(1000px 500px at -10% 90%, rgba(109, 40, 217, .4), transparent 60%);
+      filter:saturate(1.05) contrast(1.05);transform:scale(1.02);
+      z-index:-2;
+    }
+
+    .hero-overlay{
+      position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(10, 13, 30, .65) 0%, rgba(10, 13, 30, .75) 40%, rgba(10, 13, 30, .92) 100%), 
+        radial-gradient(600px 300px at 25% 20%, rgba(255, 255, 255, .08), transparent 60%);
+      backdrop-filter: saturate(1.2) blur(.6px); z-index:-1;
+    }
+    .hero-inner{max-width: 1500px;  margin: 0 auto;}
+    
+    .trust-chip{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
+      background:rgba(28,35,60,.75);border:1px solid var(--border);backdrop-filter:blur(4px);
+      color:#e9edff;font-weight:800
+    }
+    .trust-chip i{color:#9aa6ff}
+    
+    .headline{
+      font-size:64px;line-height:1.08;margin:16px 0 8px;font-weight:900;letter-spacing:.2px;
+      margin:.9rem 0 1rem;line-height:1.05;font-size:clamp(2.6rem,5.2vw,5rem);letter-spacing:-.02em;
+    }
+    .headline .accent{
+      color:transparent;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;background-clip:text
+    }
+    
+    .sub{
+      font-size:20px;max-width:850px;color:#e7ecff;opacity:.9;
+      margin:0 0 1.75rem;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:var(--muted);max-width:100ch;
+    }
+    
+    .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--cta),var(--cta2));color:#0b1224;box-shadow:0 10px 30px rgba(91,124,250,.25);
+      display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:14px;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;font-weight:700;
+      box-shadow:0 10px 24px rgba(109,40,217,.3);transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);box-shadow:0 14px 32px rgba(109,40,217,.38);
+    }
+    .btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  
+
+    @media (max-width:1100px){ .headline{font-size:52px} }
+    @media (max-width:780px){
+      .hero { padding: 60px 0 40px; }
+      .headline{font-size:38px}
+      .sub{font-size:18px}
+      .btn-lg{width:100%;justify-content:center}
+    }
+    @media(max-width:480px){
+      .trust-chip{font-size:.85rem; padding: 8px 12px;}
+    }
+
+    /* ===== Section Spacing ===== */
+    section{padding:64px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    
+    @media (max-width: 768px) {
+      section{padding: 48px 0}
+    }
+  
+    .btn-orange {
+      display: inline-block;padding: 0.9rem 1.8rem;font-weight: 600;color: #fff;background: linear-gradient(90deg,#6d28d9,#b794f4);border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,.12);text-decoration: none;transition: all 0.3s ease;
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;background:linear-gradient(90deg, var(--cta), var(--cta2)); color:#0b1224; text-decoration:none; box-shadow:0 10px 28px rgba(91,124,250,.24)
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(18px, 2.2vw, 28px);
+      margin-top: 28px;
+    }
+    
+    @media (max-width: 980px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .card {
+      background: linear-gradient(180deg, rgba(19,28,60,.85), rgba(13,19,43,.85));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .card .head {
+      padding: 22px clamp(18px, 2.2vw, 26px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .card .body {
+      padding: clamp(18px, 2.2vw, 26px);
+    }
+    
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    
+    @media (max-width: 720px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    label {
+      font-size: .9rem;
+      color: #cfd6ea;
+      display: block;
+      margin-bottom: 6px;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #0c1430;
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+    
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: radial-gradient(120% 120% at 20% 0%, var(--brand), var(--brand-2));
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(109,40,217,.25);
+    }
+    
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: #e7e9f6;
+    }
+    
+    .help {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    
+    .list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: #dbe2ff;
+      font-size: .88rem;
+    }
+    
+    .success-message {
+      display: none;
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.12);
+      color: #dcfde6;
+      border-radius: 12px;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+    .footer-brand{
+      margin:0 0 10px;font-size:36px;font-weight:900;
+      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .footer-about p{margin:0 0 18px;color:#d9e1ff}
+    .footer-socials{display:flex; gap:12px}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0e1a33;color:#cfd7ff;border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .soc:hover{transform:translateY(-1px)}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links ul{list-style:none;padding:0;margin:0}
+    .footer-links li{margin:10px 0}
+    .footer-links a{color:#cfd7ff;text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
+    .frow .ico{color:#9bb7ff;width:28px;height:28px;display:grid;place-items:center;background:#0e1a33;border-radius:8px;border:1px solid rgba(255,255,255,.08)}
+    .frow .muted{color:#aab3d4}
+    .foot-divider{height:1px;background:rgba(255,255,255,.08);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#aab3d4;font-size:14px}
+    .legal a{color:#aab3d4;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#fff}
+    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Duke Jia Home">
+        <span><img src="images/dukejia.png" width="190" height="60"></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-center" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="embroidery.html">Embroidery</a>
+        <a href="contact.html" style="color: #fff;">Contact</a>
+        <a class="btn-quote"
+           href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
+           target="_blank" rel="noopener">
+          <i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="trust-chip">
+        <i class="fa-solid fa-comments" aria-hidden="true"></i>
+        Talk to Sales & Support
+      </div>
+
+      <h1 class="headline">
+        Need a 
+        <span class="accent">Personalized Consultation?</span>
+      </h1>
+
+      <p class="sub">
+        Share your material, throughput targets, budget and location — we'll suggest the right Duke Jia line, arrange demos, and connect you with the nearest service team.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-lg btn-primary" href="#contact-form">
+          Contact Us <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact Form Section ===== -->
+  <section id="contact-form" class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Form -->
+        <article class="card">
+          <div class="head">
+            <strong>Contact Form</strong>
+            <div class="help">All fields marked * are required.</div>
+          </div>
+          <div class="body">
+            <div id="success" class="success-message">
+              ✅ Thank you! Your message has been prepared in your email client. We'll get back to you soon.
+            </div>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div>
+                  <label for="name">Full Name *</label>
+                  <input id="name" name="name" autocomplete="name" required>
+                </div>
+                <div>
+                  <label for="company">Company *</label>
+                  <input id="company" name="company" autocomplete="organization" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="phone">Phone / WhatsApp *</label>
+                  <input id="phone" name="phone" inputmode="tel" autocomplete="tel" required>
+                </div>
+                <div>
+                  <label for="email">Work Email *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="city">City & State *</label>
+                  <input id="city" name="city" placeholder="Surat, Gujarat" required>
+                </div>
+                <div>
+                  <label for="interest">Interested In *</label>
+                  <select id="interest" name="interest" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option>Single Head Embroidery + Perforation</option>
+                    <option>Single Head Embroidery</option>
+                    <option>Multi-Head Embroidery</option>
+                    <option>Perforation Machine</option>
+                    <option>Quilting Machine</option>
+                    <option>Service / Spares</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="budget">Budget (₹)</label>
+                  <input id="budget" name="budget" inputmode="numeric" placeholder="e.g., 8,00,000">
+                </div>
+                <div>
+                  <label for="timeline">Purchase Timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="" selected>—</option>
+                    <option>Urgent (0–2 weeks)</option>
+                    <option>Soon (1–2 months)</option>
+                    <option>Planning (3+ months)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" placeholder="Tell us about your material, size, design complexity, target speed (pcs/day), any existing setup…" required></textarea>
+              </div>
+
+              <div class="actions" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:6px">
+                <button class="btn btn-primary" type="submit">Send via Email</button>
+                <a id="waBtn" class="btn btn-ghost" href="#" rel="noopener" target="_blank">Send on WhatsApp</a>
+                <span class="help">We'll respond within 1 business day.</span>
+              </div>
+            </form>
+
+            <p class="help" style="margin-top:10px">
+              Tip: If you're hosting statically and want direct form submissions without email, connect this form to a service like Formspree/Netlify Forms later.
+            </p>
+          </div>
+        </article>
+
+        <!-- Info -->
+        <aside class="card">
+          <div class="head"><strong>Direct Contacts</strong></div>
+          <div class="body">
+            <ul class="list">
+              <li><div>📞</div> <div><strong>Sales</strong><br><span class="help">+91-9350513789</span></div></li>
+              <li><div>✉️</div> <div><strong>Email</strong><br><span class="help"><a href="mailto:embroidery@grouphca.com">embroidery@grouphca.com</a></span></div></li>
+              <li><div>📍</div> <div><strong>Okhla New Delhi (Embroidery Hub)</strong><br><span class="help">Service & demos available</span></div></li>
+              <li><div>🕑</div> <div><strong>Business Hours</strong><br><span class="help">Mon – Sat, 9:30 – 6:30</span></div></li>
+            </ul>
+
+            <div style="height:14px"></div>
+
+            <div class="pill">Pan-India sales • R&D backed • Fast response SLAs</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-brand">Duke Jia</h3>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 15 years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook" class="soc">f</a>
+          <a href="#" aria-label="Instagram" class="soc">◎</a>
+          <a href="#" aria-label="LinkedIn" class="soc">in</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Products.html">Products</a></li>
+          <li><a href="embroidery.html">Embroidery</a></li>
+          <li><a href="products-on-demand.html">Products on Demand</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="frow"><span class="ico">📍</span><div>HQ:Okhla New Delhi<br><span class="muted">Pan-India Service Network</span></div></div>
+        <div class="frow"><span class="ico">📞</span><div>+91 9350513789</div></div>
+        <div class="frow"><span class="ico">✉️</span><div>embroidery@grouphca.com</div></div>
+      </div>
+    </div>
+
+    <div class="container foot-divider"></div>
+
+    <div class="container foot-bottom">
+      <div>© <span id="year"></span> Duke Jia – Part of Jia Group. All rights reserved.</div>
+      <nav class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const menuIcon = menuToggle.querySelector('i');
+    
+    menuToggle.addEventListener('click', () => {
+      navCenter.classList.toggle('open');
+      
+      // Toggle between hamburger and close icon
+      if (navCenter.classList.contains('open')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-center a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+
+    // Contact Form Functionality
+    const enc = s => encodeURIComponent(s ?? "");
+    const params = new URLSearchParams(location.search);
+    if (params.get("sent") === "1") document.getElementById("success").style.display = "block";
+
+    const form = document.getElementById("contactForm");
+    const waBtn = document.getElementById("waBtn");
+
+    function collect() {
+      const f = new FormData(form);
+      const d = Object.fromEntries(f.entries());
+      const summary =
+`Name: ${d.name}
+Company: ${d.company}
+Phone: ${d.phone}
+Email: ${d.email}
+City: ${d.city}
+Interest: ${d.interest}
+Budget: ${d.budget || "-"}
+Timeline: ${d.timeline || "-"}
+
+Message:
+${d.message}`;
+      return { d, summary };
+    }
+    function updateWA(){
+      const { summary } = collect();
+      const phone = "919350513789"; // Your WhatsApp number
+      waBtn.href = `https://wa.me/${phone}?text=${enc(summary)}`;
+    }
+    form.addEventListener("input", updateWA);
+    updateWA();
+
+    form.addEventListener("submit",(e)=>{
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const { d, summary } = collect();
+      const to = "embroidery@grouphca.com"; // Your sales email
+      const subject = `Enquiry — ${d.interest || "Duke Jia"}`;
+      window.location.href = `mailto:${to}?subject=${enc(subject)}&body=${enc(summary)}`;
+      document.getElementById("success").style.display = "block";
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  </script>
+</body>
+</html>

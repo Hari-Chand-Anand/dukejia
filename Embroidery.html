@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embroidery Machines - Dukejia</title>
+  <meta name="theme-color" content="#0b1224" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== Design Tokens ===== */
+    :root{
+      --bg:#0b1224;
+      --text:#e6eaf2;
+      --muted:#c9d3e6;
+      --muted2:#a6b0c4;
+      --border:rgba(255,255,255,.12);
+      --primary:#5b7cfa;
+      --accent:#7c3aed;
+      --cta:#5b7cfa;
+      --cta2:#7c3aed;
+      --card:#0b1229;
+      --surface:#0e1630;
+      --ink:#0b1224;
+      --ink-inv:#ffffff;
+      --brand:#6d28d9;
+      --brand-2:#b794f4;
+      --bg-soft:#0e1735;
+      --panel:#0c1530;
+      --chip:#394362;
+      --bd-2:rgba(255,255,255,.12);
+    }
+
+    /* ===== Base Styles ===== */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    /* ===== Container ===== */
+    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    @media (max-width: 1024px) {
+      .container{max-width:100%;padding:0 24px}
+    }
+    @media (max-width: 480px) {
+      .container{padding:0 16px}
+    }
+
+    /* ===== Header ===== */
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(9,13,26,.85);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+
+    .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .brand-mark{
+      display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:900;font-size:14px
+    }
+    .brand-name{
+      color:#6d28d9;
+      font-weight:900;font-size:18px;text-decoration:none
+    }
+
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .nav-center a{color:rgba(255,255,255,.75);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:#fff}
+
+    .btn-quote{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--cta),var(--cta2));
+      color:#0b1224;text-decoration:none;box-shadow:0 6px 20px rgba(91,124,250,.25)
+    }
+    .btn-quote i{opacity:.9}
+
+    /* Mobile Navigation */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .menu-toggle:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width:780px){
+      .nav-center {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(11, 18, 36, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .nav-center.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-center a {
+        padding: 16px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      
+      .nav-center a:last-child {
+        border-bottom: none;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .btn-quote {
+        background: none;
+        box-shadow: none;
+        color: #fff;
+        padding: 16px 0;
+        justify-content: flex-start;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;overflow:hidden;
+      isolation:isolate;
+      color:var(--ink-inv);background:#0b1224;
+      padding: 80px 0 60px;
+    }
+    
+    .hero-bg{
+      position:absolute;inset:0;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(183, 148, 244, .35), transparent 60%), 
+                  radial-gradient(1000px 500px at -10% 90%, rgba(109, 40, 217, .4), transparent 60%);
+      filter:saturate(1.05) contrast(1.05);transform:scale(1.02);
+      z-index:-2;
+    }
+
+    .hero-overlay{
+      position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(10, 13, 30, .65) 0%, rgba(10, 13, 30, .75) 40%, rgba(10, 13, 30, .92) 100%), 
+        radial-gradient(600px 300px at 25% 20%, rgba(255, 255, 255, .08), transparent 60%);
+      backdrop-filter: saturate(1.2) blur(.6px); z-index:-1;
+    }
+    .hero-inner{max-width: 1500px;  margin: 0 auto;}
+    
+    .trust-chip{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
+      background:rgba(28,35,60,.75);border:1px solid var(--border);backdrop-filter:blur(4px);
+      color:#e9edff;font-weight:800
+    }
+    .trust-chip i{color:#9aa6ff}
+    
+    .headline{
+      font-size:64px;line-height:1.08;margin:16px 0 8px;font-weight:900;letter-spacing:.2px;
+      margin:.9rem 0 1rem;line-height:1.05;font-size:clamp(2.6rem,5.2vw,5rem);letter-spacing:-.02em;
+    }
+    .headline .accent{
+      color:transparent;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;background-clip:text
+    }
+    
+    .sub{
+      font-size:20px;max-width:850px;color:#e7ecff;opacity:.9;
+      margin:0 0 1.75rem;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:var(--muted);max-width:100ch;
+    }
+    
+    .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--cta),var(--cta2));color:#0b1224;box-shadow:0 10px 30px rgba(91,124,250,.25);
+      display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:14px;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;font-weight:700;
+      box-shadow:0 10px 24px rgba(109,40,217,.3);transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);box-shadow:0 14px 32px rgba(109,40,217,.38);
+    }
+    .btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  
+
+    @media (max-width:1100px){ .headline{font-size:52px} }
+    @media (max-width:780px){
+      .hero { padding: 60px 0 40px; }
+      .headline{font-size:38px}
+      .sub{font-size:18px}
+      .btn-lg{width:100%;justify-content:center}
+    }
+    @media(max-width:480px){
+      .trust-chip{font-size:.85rem; padding: 8px 12px;}
+    }
+
+    /* ===== Section Spacing ===== */
+    section{padding:64px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    
+    @media (max-width: 768px) {
+      section{padding: 48px 0}
+    }
+  
+    .btn-orange {
+      display: inline-block;padding: 0.9rem 1.8rem;font-weight: 600;color: #fff;background: linear-gradient(90deg,#6d28d9,#b794f4);border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,.12);text-decoration: none;transition: all 0.3s ease;
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;background:linear-gradient(90deg, var(--cta), var(--cta2)); color:#0b1224; text-decoration:none; box-shadow:0 10px 28px rgba(91,124,250,.24)
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    }
+
+    /* ===== Product Bands ===== */
+    .product-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      margin-bottom: 80px;
+    }
+    
+    .product-band.reverse {
+      flex-direction: row-reverse;
+    }
+    
+    .product-image {
+      flex: 1;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .product-content {
+      flex: 1;
+    }
+    
+    .product-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      background: rgba(99,102,241,.18);
+      border: 1px solid rgba(99,102,241,.35);
+      color: #dbe1ff;
+      margin-bottom: 18px;
+    }
+    
+    .product-title {
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: .2px;
+      margin: 18px 0 8px;
+    }
+    
+    .product-description {
+      color: var(--muted2);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    .product-actions {
+      display: flex;
+      gap: 14px;
+      margin: 20px 0 10px;
+      flex-wrap: wrap;
+    }
+    
+    .btn-ghost {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      background: rgba(255,255,255,.08);
+      color: #e6eaf2;
+    }
+    
+    @media (max-width: 1100px) {
+      .product-title {
+        font-size: 44px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .product-band {
+        flex-direction: column;
+        gap: 32px;
+      }
+      
+      .product-band.reverse {
+        flex-direction: column;
+      }
+      
+      .product-title {
+        font-size: 36px;
+      }
+    }
+
+    /* ===== Footer ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+    .footer-brand{
+      margin:0 0 10px;font-size:36px;font-weight:900;
+      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .footer-about p{margin:0 0 18px;color:#d9e1ff}
+    .footer-socials{display:flex; gap:12px}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0e1a33;color:#cfd7ff;border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .soc:hover{transform:translateY(-1px)}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links ul{list-style:none;padding:0;margin:0}
+    .footer-links li{margin:10px 0}
+    .footer-links a{color:#cfd7ff;text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
+    .frow .ico{color:#9bb7ff;width:28px;height:28px;display:grid;place-items:center;background:#0e1a33;border-radius:8px;border:1px solid rgba(255,255,255,.08)}
+    .frow .muted{color:#aab3d4}
+    .foot-divider{height:1px;background:rgba(255,255,255,.08);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#aab3d4;font-size:14px}
+    .legal a{color:#aab3d4;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#fff}
+    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Duke Jia Home">
+        <span><img src="images/dukejia.png" width="190" height="60"></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-center" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="Embroidery.html" style="color: #fff;">Embroidery</a>
+        <a href="Contact.html">Contact</a>
+        <a class="btn-quote"
+           href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
+           target="_blank" rel="noopener">
+          <i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="trust-chip">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        Trusted by Textile Manufacturers Across India
+      </div>
+
+      <h1 class="headline">
+        Embroidery
+        <span class="accent">Machines</span>
+      </h1>
+
+      <p class="sub">
+        Precision single- and multi-head embroidery engineered for India's production hubs. Unified controls keep design, drive and tension in sync — reducing rework and boosting throughput.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-lg btn-primary" href="#single-head">
+          Single-Head <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+        <a class="btn-lg btn-secondary" href="#multi-head">
+          Multi-Head <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Single-Head Section ===== -->
+  <!-- First product: Image on LEFT, Text on RIGHT -->
+  <section id="single-head" class="section">
+    <div class="container product-band">
+      <div class="product-image">
+        <img src="images/Embroidery.png" alt="Duke Jia Single-Head Embroidery Machine">
+      </div>
+      
+      <div class="product-content">
+        <span class="product-badge">High Precision</span>
+        <h2 class="product-title">Single-Head Embroidery Machine</h2>
+        <p class="product-description">
+          High-precision machine for caps, patches and short runs. Unified controls + synced thread feed minimize thread-breaks and improve edge sharpness.
+        </p>
+        <div class="product-actions">
+          <a href="single-head.html" class="btn-orange">Explore Models</a>
+          <a href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I'm%20interested%20in%20Single-Head%20Embroidery%20Machines.%20Please%20share%20pricing%20%26%20availability."
+             class="btn-ghost" target="_blank" rel="noopener">Get Quote</a>
+        </div>
+        <p class="tiny" style="color:#9fb2e6; opacity:.9; font-size:14px; margin-top:6px">Unified controls • Synced thread feed • Minimal thread-breaks</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Multi-Head Section ===== -->
+  <!-- Second product: Image on RIGHT, Text on LEFT -->
+  <section id="multi-head" class="section">
+    <div class="container product-band reverse">
+      <div class="product-content">
+        <span class="product-badge">Production Line</span>
+        <h2 class="product-title">Multi-Head Embroidery Machine</h2>
+        <p class="product-description">
+          Built for production lines. Stable stitch quality across heads, simplified maintenance with spares commonality, and fast job changeovers.
+        </p>
+        <div class="product-actions">
+          <a href="multi-head.html" class="btn-orange">Explore Models</a>
+          <a href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I'm%20interested%20in%20Multi-Head%20Embroidery%20Machines.%20Please%20share%20pricing%20%26%20availability."
+             class="btn-ghost" target="_blank" rel="noopener">Get Quote</a>
+        </div>
+        <p class="tiny" style="color:#9fb2e6; opacity:.9; font-size:14px; margin-top:6px">Stable stitch quality • Simplified maintenance • Fast changeovers</p>
+      </div>
+      
+      <div class="product-image">
+        <img src="images/Multi-Head.jpg" alt="Duke Jia Multi-Head Embroidery Machine">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-brand">Duke Jia</h3>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 15 years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook" class="soc">f</a>
+          <a href="#" aria-label="Instagram" class="soc">◎</a>
+          <a href="#" aria-label="LinkedIn" class="soc">in</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Products.html">Products</a></li>
+          <li><a href="embroidery.html">Embroidery</a></li>
+          <li><a href="Products.html">Products on Demand</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="frow"><span class="ico">📍</span><div>HQ:Okhla New Delhi<br><span class="muted">Pan-India Service Network</span></div></div>
+        <div class="frow"><span class="ico">📞</span><div>+91 9350513789</div></div>
+        <div class="frow"><span class="ico">✉️</span><div>embroidery@grouphca.com</div></div>
+      </div>
+    </div>
+
+    <div class="container foot-divider"></div>
+
+    <div class="container foot-bottom">
+      <div>© <span id="year"></span> Duke Jia – Part of Jia Group. All rights reserved.</div>
+      <nav class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const menuIcon = menuToggle.querySelector('i');
+    
+    menuToggle.addEventListener('click', () => {
+      navCenter.classList.toggle('open');
+      
+      // Toggle between hamburger and close icon
+      if (navCenter.classList.contains('open')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-center a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+  </script>
+</body>
+</html>
