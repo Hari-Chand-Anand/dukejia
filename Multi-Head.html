@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dukejia — Multi-Head Embroidery</title>
+<meta name="theme-color" content="#0b1224" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+/* Shared design tokens & base */
+:root{
+  --bg:#0b1224; --bg-elev:#0e1735; --panel:#0c1530;
+  --ink:#e8ecf6; --muted:#a5b0c7;
+  --brand:#6d28d9; --brand-2:#b794f4;
+  --bd:rgba(255,255,255,.10); --bd-2:rgba(255,255,255,.18);
+  --chip:#3a4465; --success:#22c55e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:56px 0}
+.h1{font-size:44px;line-height:1.1;margin:0 0 10px}
+.lead{color:var(--muted);font-size:18px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--bd);border-radius:18px}
+.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(109,40,217,.18);border:1px solid rgba(109,40,217,.35);color:#ddd4ff;font-weight:700;border-radius:999px;padding:6px 10px}
+
+/* Header + nav */
+.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,18,36,.98),rgba(11,18,36,.86));backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:8px 10px;border-radius:10px;font-weight:800}
+.brand-name{font-weight:800}
+.nav a{font-weight:600;opacity:.95;padding:8px 12px;border-radius:10px}
+.nav a:hover{background:rgba(255,255,255,.06)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
+.btn.ghost{background:transparent;border:1px solid var(--bd-2)}
+.btn.chip{background:rgba(255,255,255,.05);border:1px solid var(--bd);font-weight:700}
+
+/* Hero */
+.hero{padding:80px 0;background:
+  radial-gradient(800px 400px at 70% -20%, rgba(109,40,217,.35), transparent 60%),
+  radial-gradient(800px 400px at 10% -20%, rgba(183,148,244,.25), transparent 60%)}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+
+/* Filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.filters .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--bd);background:rgba(255,255,255,.05);font-weight:700}
+.filters .chip.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent}
+
+/* Models grid */
+.models{display:grid;grid-template-columns:1fr;gap:22px;margin-top:26px}
+@media(min-width:760px){.models{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.models{grid-template-columns:repeat(3,1fr)}}
+.model-card .shot{border-radius:16px;overflow:hidden;border:1px solid var(--bd);background:var(--panel)}
+.model-card .shot img{width:100%;height:200px;object-fit:cover}
+.model-card .body{padding:14px 16px}
+.model-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.model-title h3{margin:0;font-size:18px}
+.tag{font-size:12px;background:rgba(255,255,255,.06);border:1px solid var(--bd);padding:4px 8px;border-radius:999px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 6px}
+.spec{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+small.tiny{display:block;color:var(--muted);margin-top:6px}
+
+.footer{border-top:1px solid var(--bd);padding:28px 0;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Back to Home">
+      <span class="brand-mark">DJ</span><span class="brand-name">Dukejia</span>
+    </a>
+    <nav class="nav">
+      <a href="single-head.html">Single-Head</a>
+      <a href="multi-head.html" aria-current="page">Multi-Head</a>
+      <a href="perforation.html">Perforation</a>
+      <a href="quilting.html">Quilting</a>
+      <a class="btn ghost" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Embroidery</span>
+    <h1 class="h1">Multi-Head Embroidery</h1>
+    <p class="lead">Stable, repeatable stitch quality across heads with fast changeovers and shared spares—built for Indian production floors.</p>
+    <div class="actions">
+      <a class="btn" href="single-head.html">View Single-Head</a>
+      <a class="btn ghost" href="index.html#contact">Enquire</a>
+    </div>
+    <div class="filters" aria-label="Quick filters">
+      <span class="chip active">All</span>
+      <span class="chip">9 Heads</span>
+      <span class="chip">12 Heads</span>
+      <span class="chip">15 Heads</span>
+      <span class="chip">Flat + Cap</span>
+    </div>
+  </div>
+</section>
+
+<main class="section">
+  <div class="container">
+    <div class="models">
+      <!-- Model A -->
+      <article class="card model-card">
+        <div class="shot">
+          <img src="images/multi/DJ-E912.jpg" alt="Dukejia DJ-E912 12-head embroidery machine">
+        </div>
+        <div class="body">
+          <div class="model-title">
+            <h3>DJ-E912</h3>
+            <span class="tag">12-Head</span>
+          </div>
+          <p class="spec">Flat + Cap compatible</p>
+          <div class="specs">
+            <div class="spec">Area/Head: 400 × 500 mm</div>
+            <div class="spec">Speed: up to 1000 SPM</div>
+            <div class="spec">Gauge: 400 mm</div>
+            <div class="spec">Drive: Servo</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="catalogs/multi/DJ-E912_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
+            <a class="btn chip" href="index.html#contact">Get Pricing</a>
+          </div>
+          <small class="tiny">Balanced throughput for mid-to-large orders.</small>
+        </div>
+      </article>
+
+      <!-- Model B -->
+      <article class="card model-card">
+        <div class="shot">
+          <img src="images/multi/DJ-E915.jpg" alt="Dukejia DJ-E915 15-head embroidery machine">
+        </div>
+        <div class="body">
+          <div class="model-title">
+            <h3>DJ-E915</h3>
+            <span class="tag">15-Head</span>
+          </div>
+          <p class="spec">High-density production</p>
+          <div class="specs">
+            <div class="spec">Area/Head: 400 × 500 mm</div>
+            <div class="spec">Speed: up to 1000 SPM</div>
+            <div class="spec">Auto-trim</div>
+            <div class="spec">LAN / USB</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="catalogs/multi/DJ-E915_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
+            <a class="btn chip" href="index.html#contact">Request Demo</a>
+          </div>
+          <small class="tiny">Popular in Surat & Tirupur hubs.</small>
+        </div>
+      </article>
+
+      <!-- Model C -->
+      <article class="card model-card">
+        <div class="shot">
+          <img src="images/multi/DJ-E920.jpg" alt="Dukejia DJ-E920 20-head embroidery machine">
+        </div>
+        <div class="body">
+          <div class="model-title">
+            <h3>DJ-E920</h3>
+            <span class="tag">20-Head</span>
+          </div>
+          <p class="spec">Max throughput</p>
+          <div class="specs">
+            <div class="spec">Area/Head: 400 × 450 mm</div>
+            <div class="spec">Speed: up to 950 SPM</div>
+            <div class="spec">Gauge: 400 mm</div>
+            <div class="spec">Shared spares</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="catalogs/multi/DJ-E920_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
+            <a class="btn chip" href="index.html#contact">Talk to Sales</a>
+          </div>
+          <small class="tiny">For continuous multi-style lines.</small>
+        </div>
+      </article>
+
+      <!-- Model D -->
+      <article class="card model-card">
+        <div class="shot">
+          <img src="images/multi/DJ-E909C.jpg" alt="Dukejia DJ-E909C 9-head compact embroidery machine">
+        </div>
+        <div class="body">
+          <div class="model-title">
+            <h3>DJ-E909C</h3>
+            <span class="tag">9-Head</span>
+          </div>
+          <p class="spec">Compact line</p>
+          <div class="specs">
+            <div class="spec">Area/Head: 360 × 450 mm</div>
+            <div class="spec">Speed: up to 1000 SPM</div>
+            <div class="spec">Energy-efficient</div>
+            <div class="spec">Quiet Drive</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="catalogs/multi/DJ-E909C_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
+            <a class="btn chip" href="index.html#contact">Enquire</a>
+          </div>
+          <small class="tiny">Ideal for growing job-work units.</small>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">© Dukejia • Multi-Head Embroidery</div>
+</footer>
+
+</body>
+</html>

@@ -411,6 +411,112 @@
       margin: 40px 0;
     }
 
+    /* ===== Branches Section Styles ===== */
+    .branches-section {
+      margin-top: none;
+      padding: 0px 0px 30px 0px;
+    }
+
+    .branches-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    .branch-tab {
+      padding: 12px 24px;
+      background: rgba(255,255,255,.05);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .branch-tab:hover {
+      background: rgba(109,40,217,.2);
+      color: var(--text);
+    }
+
+    .branch-tab.active {
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .branch-content {
+      display: none;
+    }
+
+    .branch-content.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .branch-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(19,28,60,.85), rgba(13,19,43,.85));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .branch-card h4 {
+      margin-top: 0;
+      color: var(--text);
+      font-size: 1.3rem;
+    }
+
+    .branch-info {
+      margin-bottom: 15px;
+    }
+
+    .branch-info p {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+    }
+
+    .branch-card-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .branch-info {
+      flex: 1 1 0;
+    }
+
+    .branch-map {
+      width: 240px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .branch-card-flex {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .branch-map {
+        width: 100%;
+      }
+    }
+
     /* ===== Footer ===== */
     .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
     .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
@@ -453,7 +559,7 @@
 
       <nav class="nav-center" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="Products.html">Products</a>        <a href="About.html" style="color: #fff;">About</a>
+        <a href="Products.html">Products</a>
         <a href="Contact.html">Contact</a>
         <a class="btn-quote"
            href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
@@ -476,7 +582,7 @@
 
       <h1 class="headline">
         Our History, Leadership
-        <span class="accent">& Machines</span>
+        <span class="accent"> & Branches</span>
       </h1>
 
       <p class="sub">
@@ -576,23 +682,114 @@
           <div class="avatar"></div>
           <div>
             <h3>Mr. Prem Prakash Deewan</h3>
-            <p class="role">Senior Manager — Embroidery</p>
+            <p class="role">Service Manager — Embroidery</p>
             <p class="muted">Leads service, installations, and training programs ensuring 24/7 technical support and fast response SLAs.</p>
           </div>
         </div>
-
-        <!-- Template for more managers -->
-        <!--
-        <div class="person" style="margin-bottom:24px">
-          <div class="avatar"></div>
-          <div>
-            <h3>[Full Name]</h3>
-            <p class="role">[Designation]</p>
-            <p class="muted">[Short description of responsibilities.]</p>
-          </div>
-        </div>
-        -->
       </article>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ===== Our Branches Section ===== -->
+  <section id="branches" class="section branches-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="dot"></span>
+        <h2>Our Branches</h2>
+      </div>
+      
+      <div class="branches-tabs">
+        <div class="branch-tab active" data-branch="delhi">Delhi (Head Office)</div>
+        <div class="branch-tab" data-branch="tirupur">Tirupur</div>
+        <div class="branch-tab" data-branch="bangalore">Bangalore</div>
+        <div class="branch-tab" data-branch="chennai">Chennai</div>
+        <div class="branch-tab" data-branch="ludhiana">Ludhiana</div>
+        <div class="branch-tab" data-branch="kolkata">Kolkata</div>
+      </div>
+      
+      <div class="branch-content active" id="delhi-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Delhi (Head Office)</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 A-94/1, Okhla Industrial Area, Phase-II, New Delhi-110020 (India)</p>
+            <p>📞 Ph: 011-4656111 Fax: 011-4612614</p>
+            <p>📱 Mob: +91 9313308708</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/delhi-map.png" alt="Duke Jia Delhi Branch Map" class="branch-map">
+        </div>
+      </div>
+      
+      <div class="branch-content" id="tirupur-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Tirupur</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 No 9, Valipalayam 2nd Street, Tirupur - 641601</p>
+            <p>📞 Ph: 0421-4331580</p>
+            <p>📱 Mob: +91 93450666853</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/tripur-map.png" alt="Duke Jia Tirupur Branch Map" class="branch-map">
+        </div>
+      </div>
+      
+      <div class="branch-content" id="bangalore-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Bangalore</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 61/A, 1st Main Road, Industrial Suburb, 2nd Stage, Yeshwanthpur, Bangalore-560022</p>
+            <p>📞 Ph: 080-4741220</p>
+            <p>📱 Mob: +91 9343854523</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/banglore-map.png" alt="Duke Jia Bangalore Branch Map" class="branch-map">
+        </div>
+      </div>
+      
+      <div class="branch-content" id="chennai-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Chennai</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 No. 10/7, 3rd Main Road, South Phase, Ambattur Industrial Estate, Ambattur, Chennai - 600058</p>
+            <p>📞 Ph: 044-26252022</p>
+            <p>📱 Mob: +91 9344223180</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/chennai-map.png" alt="Duke Jia Chennai Branch Map" class="branch-map">
+        </div>
+      </div>
+      
+      <div class="branch-content" id="ludhiana-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Ludhiana</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 247-A, Industrial Area, Near Cheema Chowk, Ludhiana-141003 Punjab</p>
+            <p>📞 Ph: 0161-4625632</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/ludhiana-map.png" alt="Duke Jia Ludhiana Branch Map" class="branch-map">
+        </div>
+      </div>
+
+      <div class="branch-content" id="kolkata-branch">
+        <div class="branch-card branch-card-flex">
+          <div class="branch-info">
+            <h4>Kolkata</h4>
+            <p><strong>Duke Jia — Part of Jia Group</strong></p>
+            <p>📍 sdf C Building, Paridhan Garment Park, BI-c103; gr-fr19 Canal South Road, Ip-61/10, Kolkata - 700015</p>
+            <p>📞 Ph: 085-84068564 / 093-30035920</p>
+            <p>📧 Email: embroidery@grouphca.com</p>
+          </div>
+          <img src="images/kolkata-map.png" alt="Duke Jia Kolkata Branch Map" class="branch-map">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -679,6 +876,27 @@
         navCenter.classList.remove('open');
         menuIcon.classList.remove('fa-times');
         menuIcon.classList.add('fa-bars');
+      });
+    });
+
+    // Branch tabs functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.branch-tab');
+      const contents = document.querySelectorAll('.branch-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active class from all tabs and contents
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          tab.classList.add('active');
+          
+          // Show corresponding content
+          const branchId = tab.getAttribute('data-branch');
+          document.getElementById(`${branchId}-branch`).classList.add('active');
+        });
       });
     });
   </script>
