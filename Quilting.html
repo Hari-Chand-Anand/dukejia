@@ -1,241 +1,613 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dukejia — Quilting</title>
-<meta name="theme-color" content="#0b1224" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dukejia - Quilting</title>
 
-<style>
-/* ===============================
-   DESIGN TOKENS
-   =============================== */
-:root{
-  --bg:#0b1224;
-  --bg-elev:#0e1735;
-  --panel:#0c1530;
-  --ink:#e8ecf6;
-  --muted:#a5b0c7;
-  --brand:#6d28d9;
-  --brand-2:#b794f4;
-  --bd:rgba(255,255,255,.10);
-  --bd-2:rgba(255,255,255,.18);
-  --chip:#3a4465;
-  --success:#22c55e;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-/* ===============================
-   GLOBAL LAYOUT
-   =============================== */
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.section{padding:56px 0}
-.h1{font-size:44px;line-height:1.1;margin:0 0 10px}
-.h2{font-size:28px;margin:0 0 12px}
-.lead{color:var(--muted);font-size:18px}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--bd);border-radius:18px}
-.card--pad{padding:18px}
-.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(109,40,217,.18);border:1px solid rgba(109,40,217,.35);color:#ddd4ff;font-weight:700;border-radius:999px;padding:6px 10px}
+  <style>
+    /* ===== Design Tokens ===== */
+    :root{
+      --bg:#0b1224;
+      --text:#e6eaf2;
+      --muted:#c9d3e6;
+      --muted2:#a6b0c4;
+      --border:rgba(255,255,255,.12);
+      --primary:#5b7cfa;
+      --accent:#7c3aed;
+      --cta:#5b7cfa;
+      --cta2:#7c3aed;
+      --card:#0b1229;
+      --surface:#0e1630;
+      --ink:#0b1224;
+      --ink-inv:#ffffff;
+      --brand:#6d28d9;
+      --brand-2:#b794f4;
+      --hero-img:url('assets/duke-emb-perf-hero.jpg');
+      --bg-soft:#0e1735;
+      --panel:#0c1530;
+      --chip:#394362;
+      --bd-2:rgba(255,255,255,.12);
+    }
 
-/* ===============================
-   HEADER + PRIMARY NAV
-   =============================== */
-.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,18,36,.98),rgba(11,18,36,.86));backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-mark{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:8px 10px;border-radius:10px;font-weight:800}
-.brand-name{font-weight:800}
-.nav a{font-weight:600;opacity:.95;padding:8px 12px;border-radius:10px}
-.nav a:hover{background:rgba(255,255,255,.06)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
-.btn.ghost{background:transparent;border:1px solid var(--bd-2)}
+    /* ===== Base Styles ===== */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
 
-/* Make whole band link feel clickable */
-.link-band{transition:transform .12s ease, box-shadow .12s ease}
-.link-band:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:22px}
-.link-band:hover{transform:translateY(-2px)}
+    /* ===== Container ===== */
+    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    @media (max-width: 1024px) {
+      .container{max-width:100%;padding:0 24px}
+    }
+    @media (max-width: 480px) {
+      .container{padding:0 16px}
+    }
 
-/* ===============================
-   HERO
-   =============================== */
-.hero{padding:80px 0;background:
-  radial-gradient(800px 400px at 70% -20%, rgba(109,40,217,.35), transparent 60%),
-  radial-gradient(800px 400px at 10% -20%, rgba(183,148,244,.25), transparent 60%)}
-.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    /* ===== Header ===== */
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(9,13,26,.85);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
 
-/* ===============================
-   PRODUCT BANDS (PHOTO + CATALOG)
-   =============================== */
-.band{display:grid;gap:24px;align-items:center}
-@media(min-width:1100px){.band{grid-template-columns:1.05fr .95fr}.band.flip{grid-template-columns:.95fr 1.05fr}}
-.shot{border-radius:22px;overflow:hidden;border:1px solid var(--bd);box-shadow:0 10px 40px rgba(0,0,0,.35);background:var(--panel)}
-.shot img{width:100%;height:auto;object-fit:cover;aspect-ratio:9/10}
-.figcap{color:var(--muted);font-size:13px;padding:10px 14px;border-top:1px solid var(--bd);background:rgba(255,255,255,.03)}
-.copy h3{font-size:26px;margin:0 0 8px}
-.copy p{color:var(--muted);margin:0 0 14px;line-height:1.65}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
-.pill{background:rgba(255,255,255,.06);border:1px solid var(--bd);padding:6px 10px;border-radius:999px;color:#e2ecff;font-weight:600}
-.copy .actions{display:flex;gap:12px;flex-wrap:wrap}
-.tiny{font-size:12px;color:var(--muted);margin-top:6px}
+    .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .brand-mark{
+      display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:900;font-size:14px
+    }
+    .brand-name{
+      color:#6d28d9;
+      font-weight:900;font-size:18px;text-decoration:none
+    }
 
-/* ===============================
-   WHY + SPECS (not used here but kept for consistency)
-   =============================== */
-.card h4{margin:0 0 6px}
-.card p{color:var(--muted);margin:0}
-.table{width:100%;border-collapse:collapse;border:1px solid var(--bd);border-radius:14px;overflow:hidden}
-.table th,.table td{padding:12px 14px;border-bottom:1px solid var(--bd);text-align:left}
-.table th{background:rgba(255,255,255,.05);font-weight:700}
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .nav-center a{color:rgba(255,255,255,.75);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:#fff}
 
-/* ===============================
-   FOOTER
-   =============================== */
-.footer{border-top:1px solid var(--bd);padding:28px 0;color:var(--muted)}
-</style>
+    .btn-quote{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--cta),var(--cta2));
+      color:#0b1224;text-decoration:none;box-shadow:0 6px 20px rgba(91,124,250,.25)
+    }
+    .btn-quote i{opacity:.9}
+
+    /* Mobile Navigation */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .menu-toggle:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width:780px){
+      .nav-center {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(11, 18, 36, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .nav-center.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-center a {
+        padding: 16px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      
+      .nav-center a:last-child {
+        border-bottom: none;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .btn-quote {
+        background: none;
+        box-shadow: none;
+        color: #fff;
+        padding: 16px 0;
+        justify-content: flex-start;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;overflow:hidden;
+      isolation:isolate;
+      color:var(--ink-inv);background:#0b1224;
+    }
+    
+    .hero-bg{
+      position:absolute;inset:0;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(183, 148, 244, .35), transparent 60%), radial-gradient(1000px 500px at -10% 90%, rgba(109, 40, 217, .4), transparent 60%), var(--hero-img) center / cover no-repeat;
+      filter:saturate(1.05) contrast(1.05);transform:scale(1.02);
+      z-index:-2;
+    }
+
+    .hero-overlay{
+      position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(10, 13, 30, .65) 0%, rgba(10, 13, 30, .75) 40%, rgba(10, 13, 30, .92) 100%), radial-gradient(600px 300px at 25% 20%, rgba(255, 255, 255, .08), transparent 60%);
+      backdrop-filter: saturate(1.2) blur(.6px); z-index:-1;
+    }
+    .hero-inner{max-width: 1500px;  margin: 0 auto;}
+    
+    .trust-chip{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
+      background:rgba(28,35,60,.75);border:1px solid var(--border);backdrop-filter:blur(4px);
+      color:#e9edff;font-weight:800
+    }
+    .trust-chip i{color:#9aa6ff}
+    
+    .headline{
+      font-size:64px;line-height:1.08;margin:16px 0 8px;font-weight:900;letter-spacing:.2px;
+      margin:.9rem 0 1rem;line-height:1.05;font-size:clamp(2.6rem,5.2vw,5rem);letter-spacing:-.02em;
+    }
+    .headline .accent{
+      color:transparent;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;background-clip:text
+    }
+    
+    .sub{
+      font-size:20px;max-width:850px;color:#e7ecff;opacity:.9;
+      margin:0 0 1.75rem;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:var(--muted);max-width:100ch;
+    }
+    
+    .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--cta),var(--cta2));color:#0b1224;box-shadow:0 10px 30px rgba(91,124,250,.25);
+      display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:14px;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;font-weight:700;
+      box-shadow:0 10px 24px rgba(109,40,217,.3);transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);box-shadow:0 14px 32px rgba(109,40,217,.38);
+    }
+    .btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  
+
+    @media (max-width:1100px){ .headline{font-size:52px} }
+    @media (max-width:780px){
+      /* .hero-inner{padding: 60px 0 40px;} */
+      .headline{font-size:38px}
+      .sub{font-size:18px}
+      .btn-lg{width:100%;justify-content:center}
+    }
+    @media(max-width:480px){
+      .trust-chip{font-size:.85rem; padding: 8px 12px;}
+    }
+
+    /* ===== Section Spacing ===== */
+    section{padding:107px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    
+    @media (max-width: 768px) {
+      section{padding: 48px 0}
+    }
+  
+    .btn-orange {
+      display: inline-block;padding: 0.9rem 1.8rem;font-weight: 600;color: #fff;background: linear-gradient(90deg,#6d28d9,#b794f4);border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,.12);text-decoration: none;transition: all 0.3s ease;
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;background:linear-gradient(90deg, var(--cta), var(--cta2)); color:#0b1224; text-decoration:none; box-shadow:0 10px 28px rgba(91,124,250,.24)
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    }
+
+    /* ===== Products Section ===== */
+    Products.html h2{
+      font-size:48px;margin:0 0 8px;text-align:center;font-weight:900;letter-spacing:.2px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    Products.html .sub{
+      text-align:center;color:var(--muted);margin:0 auto 28px;max-width:880px;font-size:20px;
+    }
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap: 22px; margin-top: 45px;}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .thumb{height:160px;background:#0b1532;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(255,255,255,.06)}
+    .card-body{padding:14px}
+    .card-body strong{display:block;margin-bottom:6px}
+    .meta{display:flex;gap:10px;color:#c9d3e6;font-size:13px;margin-top:6px;flex-wrap:wrap}
+
+    /* Our Machines Section */
+    .machines-showcase {
+      margin-top: 10px;
+    }
+    /* Secondary Machines Grid */
+    .secondary-machines {
+      display: grid;
+      grid-template-columns: repeat(2, 0fr);
+      gap: 10px;
+    }
+
+    .machine-card {
+      background: var(--surface);
+      /* border: 1px solid var(--border);
+      border-radius: 20px; */
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .machine-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      border-color: rgba(91, 124, 250, 0.4);
+    }
+
+    .machine-image {
+      position: relative;
+      width: 800px;
+      height:400px;
+      overflow: hidden;
+    }
+
+    .machine-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .machine-card:hover .machine-image img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(11, 18, 36, 0.9));
+      padding: 25px;
+      color: white;
+      transform: translateY(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .machine-card:hover .image-overlay {
+      transform: translateY(0);
+    }
+
+    .image-overlay h4 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 0 8px;
+      color: white;
+    }
+
+    .image-overlay p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .machine-info {
+      padding: 20px;
+      background: var(--surface);
+    }
+
+    .btn-machine {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-machine:hover {
+      color: var(--accent);
+      gap: 12px;
+    }
+
+
+    @media (max-width: 768px) {
+      .secondary-machines {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .machine-image {
+        height: 220px;
+      }
+    }
+    
+    /* Section Styles */
+    .section{padding:48px 24px}
+    .center{text-align:center}
+    h1{font-size:44px;line-height:1.1;margin:0 0 10px}
+    .lead{color:var(--muted);font-size:18px;max-width:840px;margin:0 auto;padding:10px;}
+
+    /* ===== Footer ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+    .footer-brand{
+      margin:0 0 10px;font-size:36px;font-weight:900;
+      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .footer-about p{margin:0 0 18px;color:#d9e1ff}
+    .footer-socials{display:flex; gap:12px}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0e1a33;color:#cfd7ff;border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .soc:hover{transform:translateY(-1px)}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links ul{list-style:none;padding:0;margin:0}
+    .footer-links li{margin:10px 0}
+    .footer-links a{color:#cfd7ff;text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
+    .frow .ico{color:#9bb7ff;width:28px;height:28px;display:grid;place-items:center;background:#0e1a33;border-radius:8px;border:1px solid rgba(255,255,255,.08)}
+    .frow .muted{color:#aab3d4}
+    .foot-divider{height:1px;background:rgba(255,255,255,.08);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#aab3d4;font-size:14px}
+    .legal a{color:#aab3d4;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#fff}
+    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+
+    /* ===== Additional Header Styles ===== */
+    .header{position:sticky;top:0;z-index:40;
+      background:linear-gradient(180deg,rgba(11,18,36,.95),rgba(11,18,36,.75));
+      backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+    /* .nav a{font-weight:600;opacity:.9;padding:8px 12px;border-radius:10px} */
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
+    .btn.outline{background:transparent;border:1px solid var(--bd-2)}
+  </style>
 </head>
 <body>
 
-<!-- =================== HEADER =================== -->
-<header class="header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html"><span class="brand-mark">DJ</span><span class="brand-name">Dukejia</span></a>
-    <nav class="nav">
-      <a href="single-head.html">Single-Head</a>
-      <a href="multi-head.html">Multi-Head</a>
-      <a href="perforation.html">Perforation</a>
-      <a href="quilting.html">Quilting</a>
-      <a class="btn ghost" href="index.html#contact">Contact</a>
-    </nav>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Duke Jia Home">
+        <span><img src="images/dukejia.png" width="190" height="60"></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-center" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Products.html">Products</a>
+        <a href="Contact.html">Contact</a>
+        <a class="btn-quote"
+           href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
+           target="_blank" rel="noopener">
+          <i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="trust-chip">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        Trusted by Textile Manufacturers Across India
+      </div>
+
+      <h1 class="headline">
+        Quilting
+        <br />
+        <span class="accent">Machines</span>
+      </h1>
+
+      <p class="sub">
+        Precision single-head embroidery engineered for India's production hubs. Unified controls keep design, drive and tension in sync and reducing rework and boosting throughput.</p>
+
+      <div class="cta-row">
+        <a class="btn-lg btn-primary" href="#models">
+          View Models <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== Updated Our Machines Section ===== -->
+  <main id="models">
+    <section id="Our Machines" class="section container" aria-labelledby="our-machines-title">
+      <div class="center">
+        <h1 id="our-machines-title">Our Models</h1>
+        <p class="lead">Advanced textile solutions for every production need</p>
+      </div>
+
+      <div class="machines-showcase">
+  <div class="secondary-machines">
+    <!-- Single Needle -->
+    <a href="Single-Head.html" class="machine-card" style="width: 960px; height: 450px;" aria-label="Single Needle embroidery machines">
+      <div class="machine-image" style="width: 960px; height: 450px;">
+        <img src="images/Embroidery.png" alt="Single Head Needle Embroidery Machine">
+        <div class="image-overlay">
+          <h4>DY-1201H</h4>
+          <p>Precision embroidery for sampling & short runs</p>
+        </div>
+      </div>
+    </a>
+    <!-- Multi Needle -->
+    <a href="Multi-Head.html" class="machine-card" style="width: 340px; height: 450px;" aria-label="Multi Needle embroidery machines">
+      <div class="machine-image" style="width: 340px; height: 450px;">
+        <img src="images/Multi-head.jpg" alt="Multi Head Needle Embroidery">
+        <div class="image-overlay">
+          <h4>Attachments</h4>
+          <p>High-throughput production embroidery</p>
+        </div>
+      </div>
+    </a>
   </div>
-</header>
-
-<!-- =================== HERO =================== -->
-<section class="hero">
-  <div class="container">
-    <span class="badge">Embroidery</span>
-    <h1 class="h1">Quilting Machines</h1>
-    <p class="lead">Precision single- and multi-head embroidery engineered for India’s production hubs. Unified controls keep design, drive and tension in sync — reducing rework and boosting throughput.</p>
-
-</section>
-
-<main>
-
-  <!-- ========== PRODUCT BAND: SINGLE (clickable) ========== -->
-  <section id="single" class="section">
-    <div class="container band">
-      <!-- Make the whole visual cluster a link -->
-      <a class="link-band" href="single-head.html" aria-label="Open Single-Head models">
-        <figure class="shot">
-          <img src="images/Duke-Hola.jpg" alt="Duke Jia Single-Head Embroidery Machine">
-    
-        </figure>
-      </a>
-      <div class="copy">
-        <a href="single-head.html" style="display:inline-block"><h3>Duke Halo Embroidery Machine</h3></a>
-        <p>High-precision machine for caps, patches and short runs. Unified controls + synced thread feed minimize thread-breaks and improve edge sharpness.</p>
-        <div class="actions">
-          <!-- “Explore” now also opens the page -->
-          <a class="btn" href="single-head.html">Explore</a>
-          <!-- Keep catalog link if you want -->
+</div>
+    <div class="machines-showcase">
+  <div class="secondary-machines">
+    <!-- Single Needle -->
+    <a href="Single-Head.html" class="machine-card" style="width: 750px; height: 450px;" aria-label="Single Needle embroidery machines">
+      <div class="machine-image" style="width: 750px; height: 450px;">
+        <img src="images/Embroidery.png" alt="Single Head Needle Embroidery Machine">
+        <div class="image-overlay">
+          <h4>DY-1202H</h4>
+          <p>Precision embroidery for sampling & short runs</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ========== PRODUCT BAND: MULTI (clickable) ========== -->
-  <section id="multi" class="section" style="padding-top:20px">
-    <div class="container band flip">
-      <div class="copy">
-        <a href="multi-head.html" style="display:inline-block"><h3>DY-1201S Embroidery Machine</h3></a>
-        <p>Built for production lines. Stable stitch quality across heads, simplified maintenance with spares commonality, and fast job changeovers.</p>
-        <div class="actions">
-          <a class="btn" href="multi-head.html">Explore</a>
+    </a>
+    <!-- Multi Needle -->
+    <a href="Multi-Head.html" class="machine-card" style="width: 550px; height: 450px;" aria-label="Multi Needle embroidery machines">
+      <div class="machine-image" style="width: 550px; height: 450px;">
+        <img src="images/Multi-head.jpg" alt="Multi Head Needle Embroidery">
+        <div class="image-overlay">
+          <h4>DY-1203H</h4>
+          <p>High-throughput production embroidery</p>
         </div>
       </div>
-      <a class="link-band" href="multi-head.html" aria-label="Open Multi-Head models">
-        <figure class="shot">
-          <img src="images/Multi-Head.jpg" alt="Duke Jia Multi-Head Embroidery Machine">
-    
-        </figure>
-      </a>
-    </div>
-  </section>
-
-   <!-- ========== PRODUCT BAND: SINGLE (clickable) ========== -->
-  <section id="single" class="section">
-    <div class="container band">
-      <!-- Make the whole visual cluster a link -->
-      <a class="link-band" href="single-head.html" aria-label="Open Single-Head models">
-        <figure class="shot">
-          <img src="images/Duke.jpg" alt="Duke Jia Single-Head Embroidery Machine">
-    
-        </figure>
-      </a>
-      <div class="copy">
-        <a href="single-head.html" style="display:inline-block"><h3>DY-1201L Embroidery Machine</h3></a>
-        <p>High-precision machine for caps, patches and short runs. Unified controls + synced thread feed minimize thread-breaks and improve edge sharpness.</p>
-        <div class="actions">
-          <!-- “Explore” now also opens the page -->
-          <a class="btn" href="single-head.html">Explore</a>
-          <!-- Keep catalog link if you want -->
+    </a>
+  </div>
+</div>
+<div class="machines-showcase">
+  <div class="secondary-machines">
+    <!-- Perforation -->
+    <a href="Perforation.html" class="machine-card" style="width: 550px; height: 450px;" aria-label="Quilting machines">
+      <div class="machine-image" style="width: 550px; height: 450px;">
+        <img src="images/Perforation.png" alt="Perforation System">
+        <div class="image-overlay">
+          <h4>ES-1300 Computerized Embroidery Machine</h4>
+          <p>Clean, consistent perforation technology</p>
         </div>
       </div>
-    </div>
-  </section>
-
-   <!-- ========== PRODUCT BAND: MULTI (clickable) ========== -->
-  <section id="multi" class="section" style="padding-top:20px">
-    <div class="container band flip">
-      <div class="copy">
-        <a href="multi-head.html" style="display:inline-block"><h3>DY-1201SL Embroidery Machine</h3></a>
-        <p>Built for production lines. Stable stitch quality across heads, simplified maintenance with spares commonality, and fast job changeovers.</p>
-        <div class="actions">
-          <a class="btn" href="multi-head.html">Explore</a>
-
+    </a>
+    <!-- Quilting -->
+    <a href="Quilting.html" class="machine-card" style="width: 750px; height: 450px;" aria-label="Quilting machines">
+      <div class="machine-image" style="width: 750px; height: 450px;">
+        <img src="images/Quilting.png" alt="Quilting Machine">
+        <div class="image-overlay">
+          <h4>Halo-100</h4>
+          <p>Large-format with perfect stitch consistency</p>
         </div>
       </div>
-      <a class="link-band" href="multi-head.html" aria-label="Open Multi-Head models">
-        <figure class="shot">
-          <img src="images/Multi.jpg" alt="Duke Jia Multi-Head Embroidery Machine">
-    
-        </figure>
-      </a>
-    </div>
-  </section>
+    </a>
+  </div>
+</div>
+    </section>
+  </main>
 
-  <!-- ========== PRODUCT BAND: SINGLE (clickable) ========== -->
-  <section id="single" class="section">
-    <div class="container band">
-      <!-- Make the whole visual cluster a link -->
-      <a class="link-band" href="single-head.html" aria-label="Open Single-Head models">
-        <figure class="shot">
-          <img src="images/.jpg" alt="Duke Jia Single-Head Embroidery Machine">
-    
-        </figure>
-      </a>
-      <div class="copy">
-        <a href="single-head.html" style="display:inline-block"><h3>DY-1201XL Embroidery Machine</h3></a>
-        <p>High-precision machine for caps, patches and short runs. Unified controls + synced thread feed minimize thread-breaks and improve edge sharpness.</p>
-        <div class="actions">
-          <!-- “Explore” now also opens the page -->
-          <a class="btn" href="single-head.html">Explore</a>
-          <!-- Keep catalog link if you want -->
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-brand">Duke Jia</h3>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 15 years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook" class="soc">f</a>
+          <a href="#" aria-label="Instagram" class="soc">◎</a>
+          <a href="#" aria-label="LinkedIn" class="soc">in</a>
         </div>
       </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Products.html">Products</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="frow"><span class="ico">📍</span><div><span class="muted">PAN-India Service Network</span></div></div>
+        <div class="frow"><span class="ico">📞</span><div>+91 9350513789</div></div>
+        <div class="frow"><span class="ico">✉️</span><div>embroidery@grouphca.com</div></div>
+      </div>
     </div>
-  </section>
 
+    <div class="container foot-divider"></div>
 
-</main>
+    <div class="container foot-bottom">
+      <div>© <span id="year"></span> Duke Jia – Part of Jia Group. All rights reserved.</div>
+      <nav class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+  </footer>
 
-<footer class="footer">
-  <div class="container">© Dukejia • Embroidery</div>
-</footer>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('enquiry')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      alert('Thanks ' + (data.name || '') + '! We\'ll contact you shortly.');
+      this.reset();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+    
+    // Mobile Navigation Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const menuIcon = menuToggle.querySelector('i');
+    
+    menuToggle.addEventListener('click', () => {
+      navCenter.classList.toggle('open');
+      
+      // Toggle between hamburger and close icon
+      if (navCenter.classList.contains('open')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-center a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+  </script>
 </body>
 </html>
