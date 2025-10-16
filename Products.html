@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Products on Demand - Dukejia</title>
+  <title>Products on Demand - Duke Jia</title>
+  <meta name="theme-color" content="#FAF9F6" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,753 +12,315 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
-    /* ===== Design Tokens ===== */
+    /* ===== Design Tokens (LIGHT) ===== */
     :root{
-      --bg:#0b1224;
-      --text:#e6eaf2;
-      --muted:#c9d3e6;
-      --muted2:#a6b0c4;
-      --border:rgba(255,255,255,.12);
-      --primary:#5b7cfa;
-      --accent:#7c3aed;
-      --cta:#5b7cfa;
-      --cta2:#7c3aed;
-      --card:#0b1229;
-      --surface:#0e1630;
-      --ink:#0b1224;
-      --ink-inv:#ffffff;
-      --brand:#6d28d9;
-      --brand-2:#b794f4;
-      --hero-img:url('assets/duke-emb-perf-hero.jpg');
-      --bg-soft:#0e1735;
-      --panel:#0c1530;
-      --chip:#394362;
-      --bd-2:rgba(255,255,255,.12);
+      --pur:#045285;              /* brand primary */
+      --pur2:#833ade;             /* brand secondary */
+      --primary:var(--pur);
+      --accent:var(--pur2);
+      --brand:var(--pur2);
+      --brand-2:#a88bff;
+
+      --bg:#FAF9F6;
+      --bg-soft:#FDFCFB;
+      --surface:#ffffff;
+      --card:#ffffff;
+      --panel:#ffffff;
+
+      --text:#2D3436;
+      --muted:#5f6970;
+      --muted2:#6f7a82;
+
+      --lgray:#E8EDF2;
+      --bd:rgba(1,40,107,.10);
+      --bd-2:rgba(1,40,107,.14);
+
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
     }
 
     /* ===== Base Styles ===== */
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+    }
     a{color:inherit;text-decoration:none}
 
     /* ===== Container ===== */
     .container{max-width:1400px;margin:0 auto;padding:0 40px}
-    @media (max-width: 1024px) {
-      .container{max-width:100%;padding:0 24px}
-    }
-    @media (max-width: 480px) {
-      .container{padding:0 16px}
-    }
+    @media (max-width:1024px){.container{max-width:100%;padding:0 24px}}
+    @media (max-width:480px){.container{padding:0 16px}}
 
     /* ===== Header ===== */
     .site-header{
       position:sticky;top:0;z-index:50;
-      background:rgba(9,13,26,.85);backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.08)
+      background:rgba(250,249,246,.85);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--lgray)
     }
     .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
 
     .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
-    .brand-mark{
-      display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:900;font-size:14px
-    }
-    .brand-name{
-      color:#6d28d9;
-      font-weight:900;font-size:18px;text-decoration:none
-    }
+    .brand-name{color:var(--pur);font-weight:900;font-size:18px;text-decoration:none}
 
     .nav-center{display:flex;gap:28px;align-items:center}
-    .nav-center a{color:rgba(255,255,255,.75);font-weight:600;text-decoration:none}
-    .nav-center a:hover{color:#fff}
+    .nav-center a{color:var(--text);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:var(--accent)}
 
     .btn-quote{
       display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
-      font-weight:700;background:linear-gradient(90deg,var(--cta),var(--cta2));
-      color:#0b1224;text-decoration:none;box-shadow:0 6px 20px rgba(91,124,250,.25)
+      font-weight:700;background:linear-gradient(90deg,var(--accent),var(--brand-2));
+      color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(131,58,222,.25)
     }
     .btn-quote i{opacity:.9}
 
     /* Mobile Navigation */
     .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 6px;
-      transition: background-color 0.3s;
+      display:none;background:none;border:none;color:var(--pur);
+      font-size:1.5rem;cursor:pointer;padding:8px;border-radius:6px;transition:background-color .3s;
     }
-    .menu-toggle:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
+    .menu-toggle:hover { background-color: rgba(1,40,107,.08); }
 
     @media (max-width:780px){
       .nav-center {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: rgba(11, 18, 36, 0.98);
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: rgba(250,249,246,.98);
         backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 20px 24px;
-        gap: 0;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        flex-direction: column; padding: 20px 24px; gap: 0;
+        transform: translateY(-100%); opacity: 0; visibility: hidden;
+        transition: all .3s ease;
+        border-bottom: 1px solid var(--lgray);
       }
-      
-      .nav-center.open {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
+      .nav-center.open { transform: translateY(0); opacity: 1; visibility: visible; }
       .nav-center a {
-        padding: 16px 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+        padding:16px 0; width:100%; border-bottom:1px solid #eee;
+        display:flex; align-items:center; justify-content:flex-start;
       }
-      
-      .nav-center a:last-child {
-        border-bottom: none;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      .btn-quote {
-        background: none;
-        box-shadow: none;
-        color: #fff;
-        padding: 16px 0;
-        justify-content: flex-start;
-      }
+      .nav-center a:last-child { border-bottom:none; }
+      .menu-toggle { display:block; }
+      .btn-quote { width:100%; justify-content:center; }
     }
 
-    /* ===== Hero ===== */
+    /* ===== Hero (light) ===== */
     .hero{
-      position:relative;overflow:hidden;
-      isolation:isolate;
-      color:var(--ink-inv);background:#0b1224;
-      /*padding: 80px 0 60px;*/
+      position:relative;overflow:hidden;isolation:isolate;
+      color:var(--text);background:var(--bg);
+      background-image:
+        radial-gradient(1100px 520px at 80% -10%, rgba(168,139,255,.18), transparent 60%),
+        radial-gradient(900px 450px at -10% 90%, rgba(4,82,133,.12), transparent 60%);
+      background-attachment:fixed;
     }
-    
-    .hero-bg{
-      position:absolute;inset:0;
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(183, 148, 244, .35), transparent 60%), radial-gradient(1000px 500px at -10% 90%, rgba(109, 40, 217, .4), transparent 60%), var(--hero-img) center / cover no-repeat;
-      filter:saturate(1.05) contrast(1.05);transform:scale(1.02);
-      z-index:-2;
-    }
-
-    .hero-overlay{
-      position:absolute;inset:0;background:
-        linear-gradient(180deg, rgba(10, 13, 30, .65) 0%, rgba(10, 13, 30, .75) 40%, rgba(10, 13, 30, .92) 100%), radial-gradient(600px 300px at 25% 20%, rgba(255, 255, 255, .08), transparent 60%);
-      backdrop-filter: saturate(1.2) blur(.6px); z-index:-1;
-    }
-    .hero-inner{max-width: 1500px;  margin: 0 auto;}
-    
+    .hero-inner{max-width:1500px;margin:0 auto;}
     .trust-chip{
-      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
-      background:rgba(28,35,60,.75);border:1px solid var(--border);backdrop-filter:blur(4px);
-      color:#e9edff;font-weight:800
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;margin-top:14px;
+      background:#fff;border:1px solid var(--lgray);
+      color:var(--pur);font-weight:800
     }
-    .trust-chip i{color:#9aa6ff}
-    
+    .trust-chip i{color:var(--accent)}
+
     .headline{
-      font-size:64px;line-height:1.08;margin:16px 0 8px;font-weight:900;letter-spacing:.2px;
-      margin:.9rem 0 1rem;line-height:1.05;font-size:clamp(2.6rem,5.2vw,5rem);letter-spacing:-.02em;
+      font-size:clamp(2.6rem,5.2vw,5rem);line-height:1.05;margin:.9rem 0 1rem;
+      font-weight:900;letter-spacing:-.02em;color:var(--pur);
     }
     .headline .accent{
       color:transparent;
       background:linear-gradient(90deg,var(--primary),var(--accent));
       -webkit-background-clip:text;background-clip:text
     }
-    
     .sub{
-      font-size:20px;max-width:850px;color:#e7ecff;opacity:.9;
-      margin:0 0 1.75rem;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:var(--muted);max-width:100ch;
+      font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;
+      color:#4a5258; max-width:100ch; margin:0 0 1.75rem;
     }
-    
     .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
-    
     .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
     .btn-primary{
-      background:linear-gradient(90deg,var(--cta),var(--cta2));color:#0b1224;box-shadow:0 10px 30px rgba(91,124,250,.25);
-      display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:14px;
-      background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;font-weight:700;
-      box-shadow:0 10px 24px rgba(109,40,217,.3);transition:transform .25s ease, box-shadow .25s ease;
+      background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;
+      box-shadow:0 10px 24px rgba(1,40,107,.18); transition:transform .25s ease, box-shadow .25s ease;
     }
-    .btn-primary:hover{
-      transform:translateY(-2px);box-shadow:0 14px 32px rgba(109,40,217,.38);
-    }
-    .btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.25)}
-  
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(2,115,191,.24); }
+    .btn-secondary{background:#fff;color:var(--pur);border:1px solid var(--lgray)}
 
-    @media (max-width:1100px){ .headline{font-size:52px} }
     @media (max-width:780px){
-      .hero { padding: 60px 0 40px; }
+      .hero{padding:60px 0 40px}
       .headline{font-size:38px}
       .sub{font-size:18px}
       .btn-lg{width:100%;justify-content:center}
     }
-    @media(max-width:480px){
-      .trust-chip{font-size:.85rem; padding: 8px 12px;}
-    }
 
     /* ===== Section Spacing ===== */
-    section{padding:107px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    
-    @media (max-width: 768px) {
-      section{padding: 48px 0}
+    section{padding:107px 0;border-bottom:1px solid var(--lgray)}
+    @media (max-width:768px){ section{padding:48px 0} }
+
+    .btn-orange{
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;
+      background:linear-gradient(90deg,var(--accent),var(--brand-2));
+      color:#fff; text-decoration:none; box-shadow:0 10px 28px rgba(131,58,222,.20);
+      transition:transform .25s;
     }
-  
-    .btn-orange {
-      display: inline-block;padding: 0.9rem 1.8rem;font-weight: 600;color: #fff;background: linear-gradient(90deg,#6d28d9,#b794f4);border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,.12);text-decoration: none;transition: all 0.3s ease;
-      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;background:linear-gradient(90deg, var(--cta), var(--cta2)); color:#0b1224; text-decoration:none; box-shadow:0 10px 28px rgba(91,124,250,.24)
-    }
-    .btn-orange:hover {
-      transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,.18);
-    }
+    .btn-orange:hover{ transform:translateY(-2px); }
 
     /* ===== Products on Demand Section ===== */
-    Products.html-on-demand {
-      padding: 4rem 0;
+    /* (fixed) this used to be an invalid selector "Products.html-on-demand" */
+    #products-on-demand{ padding:4rem 0 }
+
+    .section-header{ text-align:center; margin-bottom:3rem; }
+    .section-title{
+      font-size:48px;margin:0 0 8px;font-weight:900;letter-spacing:.2px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
+    .section-subtitle{ text-align:center;color:var(--muted);margin:0 auto 28px;max-width:880px;font-size:20px; }
+
+    /* Controls */
+    .video-controls{ display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem; }
+    .search-box{ position:relative; flex:1; max-width:400px; }
+    .search-box input{
+      width:100%; padding:12px 16px 12px 44px; border-radius:12px; border:1px solid var(--lgray);
+      background:#fff; color:var(--text); font-size:16px; transition:.3s;
     }
-    
-    .section-title {
-      font-size: 48px;
-      margin: 0 0 8px;
-      font-weight: 900;
-      letter-spacing: .2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .search-box input:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 2px rgba(4,82,133,.15); }
+    .search-box i{ position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--muted); }
+
+    .filter-controls{ display:flex; gap:.75rem; flex-wrap:wrap; }
+    .filter-btn{
+      padding:10px 18px; border-radius:10px; border:1px solid var(--lgray);
+      background:#fff; color:var(--muted); font-weight:600; cursor:pointer; transition:.3s;
     }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--muted);
-      margin: 0 auto 28px;
-      max-width: 880px;
-      font-size: 20px;
+    .filter-btn:hover, .filter-btn.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+
+    .view-controls{ display:flex; gap:.5rem; }
+    .view-btn{
+      width:40px; height:40px; border-radius:8px; border:1px solid var(--lgray);
+      background:#fff; color:var(--muted); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.2s;
     }
-    
-    /* Video Controls */
-    .video-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .view-btn:hover, .view-btn.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+
+    /* Grid */
+    .videos-container{ transition:.4s; }
+    .videos-grid{
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+      gap:2rem; margin-top:2rem;
     }
-    
-    .search-box {
-      position: relative;
-      flex: 1;
-      max-width: 400px;
+    .videos-grid.compact{ grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem; }
+    .videos-grid.list{ grid-template-columns:1fr; gap:1rem; }
+
+    .video-card{
+      background:#fff; border:1px solid var(--lgray);
+      border-radius:16px; overflow:hidden; transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position:relative; display:flex; flex-direction:column; height:100%;
+      box-shadow:0 8px 24px rgba(0,0,0,.06); opacity:0; transform:translateY(20px);
+      animation:fadeInUp .6s forwards;
     }
-    
-    .search-box input {
-      width: 100%;
-      padding: 12px 16px 12px 44px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      font-size: 16px;
-      transition: all 0.3s ease;
+    @keyframes fadeInUp{ to{opacity:1; transform:translateY(0);} }
+    .video-card:hover{ transform:translateY(-6px) scale(1.01); box-shadow:0 20px 40px rgba(4,82,133,.12); border-color:rgba(4,82,133,.25); }
+    .video-card.list-layout{ flex-direction:row; height:auto; }
+    .video-card.list-layout .video-thumbnail{ width:240px; height:160px; flex-shrink:0; }
+    .video-card.list-layout .video-info{ padding:1.25rem 1.5rem; flex-grow:1; }
+
+    .video-thumbnail{ position:relative; height:200px; overflow:hidden; flex-shrink:0; background:#f3f6fb; }
+    .video-thumbnail img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+    .video-card:hover .video-thumbnail img{ transform:scale(1.05); }
+
+    .video-play-btn{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:64px; height:64px; background:rgba(131,58,222,.95); border-radius:50%;
+      display:flex; align-items:center; justify-content:center; color:#fff; font-size:26px;
+      opacity:0; transition:.3s; box-shadow:0 8px 24px rgba(131,58,222,.25);
     }
-    
-    .search-box input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(91,124,250,.2);
-    }
-    
-    .search-box i {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-    }
-    
-    .filter-controls {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    
-    .filter-btn {
-      padding: 10px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--primary);
-      color: var(--ink);
-      border-color: var(--primary);
-    }
-    
-    .view-controls {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    .view-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .view-btn:hover, .view-btn.active {
-      background: var(--primary);
-      color: var(--ink);
-      border-color: var(--primary);
-    }
-    
-    /* Video Grid */
-    .videos-container {
-      transition: all 0.4s ease;
-    }
-    
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .videos-grid.compact {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .videos-grid.list {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    .video-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s forwards;
-    }
-    
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .video-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(91,124,250,.2);
-      border-color: rgba(91,124,250,0.3);
-    }
-    
-    .video-card.list-layout {
-      flex-direction: row;
-      height: auto;
-    }
-    
-    .video-card.list-layout .video-thumbnail {
-      width: 240px;
-      height: 160px;
-      flex-shrink: 0;
-    }
-    
-    .video-card.list-layout .video-info {
-      padding: 1.5rem;
-      flex-grow: 1;
-    }
-    
-    .video-card.compact {
-      transform: scale(0.95);
-    }
-    
-    .video-thumbnail {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    
-    .video-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .video-card:hover .video-thumbnail img {
-      transform: scale(1.08);
-    }
-    
-    .video-play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70px;
-      height: 70px;
-      background: rgba(91,124,250,.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 28px;
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-    
-    .video-card:hover .video-play-btn {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    
-    .video-info {
-      padding: 1.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .video-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    
-    .video-description {
-      color: var(--muted2);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-    
-    .video-stats {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted2);
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-    
-    .video-views {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-    }
-    
-    .video-actions {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    .video-action-btn {
-      background: rgba(255,255,255,.08);
-      border: none;
-      border-radius: 8px;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    
-    .video-action-btn:hover {
-      background: rgba(91,124,250,.25);
-      color: var(--primary);
-      transform: scale(1.1);
-    }
-    
-    /* Popularity Indicator */
-    .popularity-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(91,124,250,.9);
-      color: white;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      backdrop-filter: blur(4px);
-    }
-    
-    /* Video Modal */
-    .video-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,.92);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .video-modal.active {
-      display: flex;
-      opacity: 1;
-    }
-    
-    .modal-content {
-      background: var(--surface);
-      border-radius: 20px;
-      max-width: 1000px;
-      width: 100%;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,.7);
-      border: 1px solid rgba(255,255,255,.1);
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-    
-    .video-modal.active .modal-content {
-      transform: scale(1);
-    }
-    
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(11,18,36,0.8);
-    }
-    
-    .modal-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin: 0;
-      color: var(--text);
-    }
-    
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.8rem;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-    }
-    
-    .modal-close:hover {
-      color: var(--text);
-      background: rgba(255,255,255,.08);
-    }
-    
-    .modal-body {
-      padding: 0;
-    }
-    
-    .modal-video-container {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-    }
-    
-    .modal-video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    .modal-footer {
-      padding: 1.5rem 2rem;
-      border-top: 1px solid var(--border);
-      background: rgba(11,18,36,0.8);
-    }
-    
-    .modal-description {
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    
-    .modal-stats {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .modal-actions {
-      display: flex;
-      gap: 0.75rem;
-    }
-    
-    /* Empty State */
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: var(--muted);
-    }
-    
-    .empty-state i {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      opacity: 0.5;
-    }
-    
-    .empty-state h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-    
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .videos-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
-      
-      .video-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .search-box {
-        max-width: 100%;
-      }
-      
-      .filter-controls {
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .videos-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .section-title {
-        font-size: 36px;
-      }
-      
-      .section-subtitle {
-        font-size: 18px;
-      }
-      
-      .video-modal {
-        padding: 1rem;
-      }
-      
-      .modal-content {
-        border-radius: 16px;
-      }
-      
-      .modal-header,
-      .modal-footer {
-        padding: 1.25rem;
-      }
-      
-      .video-card.list-layout {
-        flex-direction: column;
-      }
-      
-      .video-card.list-layout .video-thumbnail {
-        width: 100%;
-        height: 200px;
-      }
+    .video-card:hover .video-play-btn{ opacity:1; transform:translate(-50%,-50%) scale(1.06); }
+
+    .popularity-badge{
+      position:absolute; top:12px; right:12px;
+      background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff;
+      padding:6px 10px; border-radius:20px; font-size:.8rem; font-weight:700; display:flex; gap:6px; align-items:center;
+      box-shadow:0 4px 14px rgba(0,0,0,.08);
     }
 
-    /* ===== Footer ===== */
-    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
+    .video-info{ padding:1.25rem 1.25rem 1.5rem; flex-grow:1; display:flex; flex-direction:column; }
+    .video-title{ font-size:1.12rem; font-weight:800; margin-bottom:.6rem; color:var(--text); line-height:1.3; }
+    .video-description{ color:var(--muted2); font-size:.96rem; margin-bottom:1rem; line-height:1.5; flex-grow:1; }
+
+    .video-stats{ display:flex; justify-content:space-between; align-items:center; color:var(--muted2); font-size:.92rem; margin-top:auto; }
+    .video-views{ display:flex; align-items:center; gap:.5rem; font-weight:600; }
+    .video-actions{ display:flex; gap:.5rem; }
+    .video-action-btn{
+      background:#fff; border:1px solid var(--lgray); border-radius:8px; width:36px; height:36px;
+      display:flex; align-items:center; justify-content:center; color:var(--muted); cursor:pointer; transition:.2s;
+    }
+    .video-action-btn:hover{ background:#eef4ff; color:var(--primary); transform:scale(1.06); }
+
+    /* Modal */
+    .video-modal{
+      display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:1000;
+      align-items:center; justify-content:center; padding:2rem; opacity:0; transition:opacity .25s ease;
+    }
+    .video-modal.active{ display:flex; opacity:1; }
+    .modal-content{
+      background:#fff; border-radius:20px; max-width:1000px; width:100%; overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.25); border:1px solid var(--lgray); transform:scale(.98); transition:transform .25s ease;
+    }
+    .video-modal.active .modal-content{ transform:scale(1); }
+    .modal-header{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid var(--lgray); background:#fff; }
+    .modal-title{ font-size:1.25rem; font-weight:800; margin:0; color:var(--text); }
+    .modal-close{
+      background:none; border:none; color:var(--muted); font-size:1.3rem; cursor:pointer; width:40px; height:40px;
+      display:flex; align-items:center; justify-content:center; border-radius:8px;
+    }
+    .modal-close:hover{ color:#111827; background:#f4f7fb; }
+    .modal-body{ padding:0; }
+    .modal-video-container{ position:relative; padding-bottom:56.25%; height:0; }
+    .modal-video-container iframe{ position:absolute; inset:0; width:100%; height:100%; border:none; }
+    .modal-footer{ padding:1rem 1.25rem; border-top:1px solid var(--lgray); background:#fff; }
+    .modal-description{ color:var(--muted); margin-bottom:1rem; line-height:1.6; }
+    .modal-stats{ display:flex; justify-content:space-between; align-items:center; }
+    .modal-actions{ display:flex; gap:.75rem; }
+
+    /* Empty */
+    .empty-state{ text-align:center; padding:4rem 2rem; color:var(--muted); }
+    .empty-state i{ font-size:4rem; margin-bottom:1.5rem; opacity:.5; }
+    .empty-state h3{ font-size:1.5rem; margin-bottom:1rem; color:var(--text); }
+
+    @media (max-width:1024px){
+      .videos-grid{ grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); }
+      .video-controls{ flex-direction:column; align-items:stretch; }
+      .search-box{ max-width:100%; }
+      .filter-controls{ justify-content:center; }
+    }
+    @media (max-width:768px){
+      .videos-grid{ grid-template-columns:1fr; }
+      .section-title{ font-size:36px; }
+      .section-subtitle{ font-size:18px; }
+      .video-modal{ padding:1rem; }
+      .modal-content{ border-radius:16px; }
+      .modal-header,.modal-footer{ padding:1rem; }
+      .video-card.list-layout{ flex-direction:column; }
+      .video-card.list-layout .video-thumbnail{ width:100%; height:200px; }
+    }
+
+    /* ===== Footer (light) ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted);background:#fff}
     .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
     .footer-brand{
       margin:0 0 10px;font-size:36px;font-weight:900;
       background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .footer-about p{margin:0 0 18px;color:#d9e1ff}
+    .footer-about p{margin:0 0 18px;color:#4a5258}
     .footer-socials{display:flex; gap:12px}
-    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0e1a33;color:#cfd7ff;border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#f1f5fb;color:#3b4b66;border:1px solid var(--lgray);box-shadow:0 6px 16px rgba(0,0,0,.05)}
     .soc:hover{transform:translateY(-1px)}
-    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#1f2937;font-size:22px}
     .footer-links ul{list-style:none;padding:0;margin:0}
     .footer-links li{margin:10px 0}
-    .footer-links a{color:#cfd7ff;text-decoration:none}
-    .footer-links a:hover{color:#fff}
+    .footer-links a{color:#3b4b66;text-decoration:none}
+    .footer-links a:hover{color:#111827}
     .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
-    .frow .ico{color:#9bb7ff;width:28px;height:28px;display:grid;place-items:center;background:#0e1a33;border-radius:8px;border:1px solid rgba(255,255,255,.08)}
-    .frow .muted{color:#aab3d4}
-    .foot-divider{height:1px;background:rgba(255,255,255,.08);margin:28px 0 14px}
-    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#aab3d4;font-size:14px}
-    .legal a{color:#aab3d4;text-decoration:none;margin-left:16px}
-    .legal a:hover{color:#fff}
-    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width: 640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+    .frow .ico{color:#425f85;width:28px;height:28px;display:grid;place-items:center;background:#eef4ff;border-radius:8px;border:1px solid var(--lgray)}
+    .frow .muted{color:#607086}
+    .foot-divider{height:1px;background:var(--lgray);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#607086;font-size:14px}
+    .legal a{color:#607086;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#111827}
+    @media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
   </style>
 </head>
 <body>
@@ -766,7 +329,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Duke Jia Home">
-        <span><img src="images/dukejia.png" width="190" height="55"></span>
+        <span><img src="images/dukejia.png" width="190" height="55" alt="DUKEJIA"></span>
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation">
@@ -775,7 +338,7 @@
 
       <nav class="nav-center" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="Products.html" style="color: #fff;">Products</a>
+        <a href="Products.html" style="color: var(--accent); font-weight:700;">Products</a>
         <a href="Contact.html">Contact</a>
         <a class="btn-quote"
            href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
@@ -787,9 +350,6 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-
     <div class="container hero-inner">
       <div class="trust-chip">
         <i class="fa-solid fa-play-circle" aria-hidden="true"></i>
@@ -797,16 +357,15 @@
       </div>
 
       <h1 class="headline">
-        Products in 
-        <span class="accent">Demand</span>
+        Products in <span class="accent">Demand</span>
       </h1>
 
       <p class="sub">
-        Watch our product videos to see Duke Jia machines in action. The more views a video gets, the larger it appears - helping you discover our most popular products.
+        Watch our product videos to see Duke Jia machines in action. The more views a video gets, the larger it appears—helping you discover our most popular products.
       </p>
 
       <div class="cta-row">
-        <a class="btn-lg btn-primary" href="#video-gallery">
+        <a class="btn-lg btn-primary" href="#products-on-demand">
           Explore Videos <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
         </a>
       </div>
@@ -818,9 +377,7 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Product Videos</h2>
-        <p class="section-subtitle">
-          Watch our machines in action. Videos with more views appear larger to help you discover our most popular products.
-        </p>
+        <p class="section-subtitle">Watch our machines in action. Videos with more views appear larger to help you discover our most popular products.</p>
       </div>
 
       <!-- Video Controls -->
@@ -829,63 +386,49 @@
           <i class="fas fa-search"></i>
           <input type="text" id="videoSearch" placeholder="Search videos...">
         </div>
-        
+
         <div class="filter-controls">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="flagship">Flagship</button>
           <button class="filter-btn" data-filter="embroidery">Embroidery</button>
           <button class="filter-btn" data-filter="perforation">Perforation</button>
           <button class="filter-btn" data-filter="quilting">Quilting</button>
-          
         </div>
-        
+
         <div class="view-controls">
-          <button class="view-btn active" data-view="grid">
-            <i class="fas fa-th"></i>
-          </button>
-          <button class="view-btn" data-view="compact">
-            <i class="fas fa-th-large"></i>
-          </button>
-          <button class="view-btn" data-view="list">
-            <i class="fas fa-list"></i>
-          </button>
+          <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+          <button class="view-btn" data-view="compact"><i class="fas fa-th-large"></i></button>
+          <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
         </div>
       </div>
 
       <div class="videos-container">
-        <div class="videos-grid" id="video-gallery">
-          <!-- Videos will be dynamically inserted here -->
-        </div>
+        <div class="videos-grid" id="video-gallery"></div>
       </div>
     </div>
   </section>
 
   <!-- Video Modal -->
-  <div class="video-modal" id="videoModal">
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalVideoTitle">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="modalVideoTitle">Video Title</h3>
-        <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button> <!-- (fixed) FA6 close icon -->
       </div>
       <div class="modal-body">
         <div class="modal-video-container">
-          <iframe id="modalVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="modalVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Product video"></iframe>
         </div>
       </div>
       <div class="modal-footer">
         <p class="modal-description" id="modalDescription">Video description will appear here.</p>
         <div class="modal-stats">
           <div class="video-views">
-            <i class="fa-solid fa-eye"></i>
-            <span id="modalViews">0</span> views
+            <i class="fa-solid fa-eye"></i> <span id="modalViews">0</span> views
           </div>
           <div class="modal-actions">
-            <button class="video-action-btn" id="modalLikeBtn">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </button>
-            <button class="video-action-btn" id="modalShareBtn">
-              <i class="fa-solid fa-share"></i>
-            </button>
+            <button class="video-action-btn" id="modalLikeBtn" title="Like"><i class="fa-solid fa-thumbs-up"></i></button>
+            <button class="video-action-btn" id="modalShareBtn" title="Copy link"><i class="fa-solid fa-share"></i></button>
           </div>
         </div>
       </div>
@@ -932,138 +475,45 @@
   </footer>
 
   <script>
-    // Set current year in footer
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navCenter = document.querySelector('.nav-center');
     const menuIcon = menuToggle.querySelector('i');
-    
+
     menuToggle.addEventListener('click', () => {
       navCenter.classList.toggle('open');
-      
-      // Toggle between hamburger and close icon
       if (navCenter.classList.contains('open')) {
         menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-times');
+        menuIcon.classList.add('fa-xmark'); // (fixed) modern close icon
       } else {
-        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.remove('fa-xmark');
         menuIcon.classList.add('fa-bars');
       }
     });
-    
-    // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-center a');
-    navLinks.forEach(link => {
+
+    document.querySelectorAll('.nav-center a').forEach(link => {
       link.addEventListener('click', () => {
         navCenter.classList.remove('open');
-        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.remove('fa-xmark');
         menuIcon.classList.add('fa-bars');
       });
     });
 
-    // Sample video data
+    // ------- Video Gallery Logic (light + bug fixes) -------
     const videos = [
-      {
-        id: 1,
-        title: "Single Head Embroidery Machine",
-        description: "Watch our high-precision Single Head embroidery machine in action, perfect for detailed work and small batch production.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 150,
-        likes: 12,
-        category: "embroidery",
-        thumbnail: "images/Embroidery.png",
-        duration: "2:45",
-        popularity: "high"
-      },
-      {
-        id: 2,
-        title: "Multi-Head Embroidery System",
-        description: "Our multi-head embroidery system increases production capacity while maintaining exceptional quality.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 89,
-        likes: 8,
-        category: "embroidery",
-        thumbnail: "images/Multi-Head.jpg",
-        duration: "4:20",
-        popularity: "medium"
-      },
-      {
-        id: 3,
-        title: "Perforation Machine Demo",
-        description: "See how our perforation machine creates precise patterns on various materials with speed and accuracy.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 42,
-        likes: 5,
-        category: "perforation",
-        thumbnail: "images/perforation.png",
-        duration: "3:15",
-        popularity: "medium"
-      },
-      {
-        id: 4,
-        title: "Quilting Machine Overview",
-        description: "Discover the capabilities of our advanced quilting machine for large-format textile production.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 67,
-        likes: 7,
-        category: "quilting",
-        thumbnail: "images/Quilting.png",
-        duration: "5:10",
-        popularity: "medium"
-      },
-      {
-        id: 5,
-        title: "Embroidery + Perforation Flagship",
-        description: "Our flagship machine combining embroidery and perforation technologies in one powerful unit.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 210,
-        likes: 18,
-        category: "flagship",
-        thumbnail: "images/Emb+Perf.png",
-        duration: "6:30",
-        popularity: "high"
-      },
-      {
-        id: 6,
-        title: "Textile Software Integration",
-        description: "Learn how our machines integrate with advanced textile design software for seamless workflow.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 35,
-        likes: 3,
-        category: "embroidery",
-        thumbnail: "images/software-demo.jpg",
-        duration: "3:45",
-        popularity: "low"
-      },
-      {
-        id: 7,
-        title: "High-Speed Embroidery Production",
-        description: "See our machines in full production mode, delivering consistent quality at maximum speed.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 120,
-        likes: 10,
-        category: "embroidery",
-        thumbnail: "images/high-speed.jpg",
-        duration: "2:20",
-        popularity: "high"
-      },
-      {
-        id: 8,
-        title: "Advanced Perforation Techniques",
-        description: "Explore advanced perforation patterns and techniques for unique textile designs.",
-        youtubeId: "dQw4w9WgXcQ",
-        views: 55,
-        likes: 6,
-        category: "perforation",
-        thumbnail: "images/advanced-perf.jpg",
-        duration: "4:50",
-        popularity: "medium"
-      }
+      { id:1, title:"Single Head Embroidery Machine", description:"Watch our high-precision Single Head embroidery machine in action, perfect for detailed work and small batch production.", youtubeId:"dQw4w9WgXcQ", views:150, likes:12, category:"embroidery", thumbnail:"images/Embroidery.png", duration:"2:45", popularity:"high" },
+      { id:2, title:"Multi-Head Embroidery System", description:"Our multi-head embroidery system increases production capacity while maintaining exceptional quality.", youtubeId:"dQw4w9WgXcQ", views:89, likes:8, category:"embroidery", thumbnail:"images/Multi-Head.jpg", duration:"4:20", popularity:"medium" },
+      { id:3, title:"Perforation Machine Demo", description:"See how our perforation machine creates precise patterns on various materials with speed and accuracy.", youtubeId:"dQw4w9WgXcQ", views:42, likes:5, category:"perforation", thumbnail:"images/perforation.png", duration:"3:15", popularity:"medium" },
+      { id:4, title:"Quilting Machine Overview", description:"Discover the capabilities of our advanced quilting machine for large-format textile production.", youtubeId:"dQw4w9WgXcQ", views:67, likes:7, category:"quilting", thumbnail:"images/Quilting.png", duration:"5:10", popularity:"medium" },
+      { id:5, title:"Embroidery + Perforation Flagship", description:"Our flagship machine combining embroidery and perforation technologies in one powerful unit.", youtubeId:"dQw4w9WgXcQ", views:210, likes:18, category:"flagship", thumbnail:"images/Emb+Perf.png", duration:"6:30", popularity:"high" },
+      { id:6, title:"Textile Software Integration", description:"Learn how our machines integrate with advanced textile design software for seamless workflow.", youtubeId:"dQw4w9WgXcQ", views:35, likes:3, category:"embroidery", thumbnail:"images/software-demo.jpg", duration:"3:45", popularity:"low" },
+      { id:7, title:"High-Speed Embroidery Production", description:"See our machines in full production mode, delivering consistent quality at maximum speed.", youtubeId:"dQw4w9WgXcQ", views:120, likes:10, category:"embroidery", thumbnail:"images/high-speed.jpg", duration:"2:20", popularity:"high" },
+      { id:8, title:"Advanced Perforation Techniques", description:"Explore advanced perforation patterns and techniques for unique textile designs.", youtubeId:"dQw4w9WgXcQ", views:55, likes:6, category:"perforation", thumbnail:"images/advanced-perf.jpg", duration:"4:50", popularity:"medium" }
     ];
 
-    // DOM elements
     const videosGrid = document.getElementById('video-gallery');
     const videoModal = document.getElementById('videoModal');
     const modalClose = document.getElementById('modalClose');
@@ -1076,255 +526,158 @@
     const filterBtns = document.querySelectorAll('.filter-btn');
     const viewBtns = document.querySelectorAll('.view-btn');
 
-    // Current video being viewed
     let currentVideo = null;
     let currentFilter = 'all';
     let currentView = 'grid';
     let currentSearch = '';
 
-    // Function to render videos
     function renderVideos() {
       videosGrid.innerHTML = '';
-      
-      // Filter videos based on current filter and search
-      let filteredVideos = [...videos];
-      
-      if (currentFilter !== 'all') {
-        filteredVideos = filteredVideos.filter(video => video.category === currentFilter);
-      }
-      
+      let filtered = videos.slice();
+
+      if (currentFilter !== 'all') filtered = filtered.filter(v => v.category === currentFilter);
       if (currentSearch) {
-        const searchLower = currentSearch.toLowerCase();
-        filteredVideos = filteredVideos.filter(video => 
-          video.title.toLowerCase().includes(searchLower) || 
-          video.description.toLowerCase().includes(searchLower)
-        );
+        const q = currentSearch.toLowerCase();
+        filtered = filtered.filter(v => v.title.toLowerCase().includes(q) || v.description.toLowerCase().includes(q));
       }
-      
-      // Sort videos by views (descending)
-      const sortedVideos = filteredVideos.sort((a, b) => b.views - a.views);
-      
-      if (sortedVideos.length === 0) {
+
+      const sorted = filtered.sort((a,b) => b.views - a.views);
+
+      if (!sorted.length) {
         videosGrid.innerHTML = `
           <div class="empty-state">
             <i class="fas fa-film"></i>
             <h3>No videos found</h3>
             <p>Try adjusting your search or filter criteria</p>
-          </div>
-        `;
+          </div>`;
         return;
       }
-      
-      sortedVideos.forEach((video, index) => {
-        const videoCard = document.createElement('div');
-        videoCard.className = `video-card ${currentView === 'list' ? 'list-layout' : ''} ${currentView === 'compact' ? 'compact' : ''}`;
-        
-        // Calculate size factor based on views
-        const maxViews = Math.max(...videos.map(v => v.views));
-        const sizeFactor = 0.85 + (video.views / maxViews) * 0.3;
-        
-        // Apply size scaling with CSS transform for grid view
+
+      const maxViews = Math.max(...videos.map(v => v.views));
+
+      sorted.forEach((video, i) => {
+        const card = document.createElement('div');
+        card.className = `video-card ${currentView === 'list' ? 'list-layout' : ''} ${currentView === 'compact' ? 'compact' : ''}`;
+
+        // Scale cards in grid view based on views
         if (currentView === 'grid') {
-          videoCard.style.transform = `scale(${sizeFactor})`;
+          const factor = 0.92 + (video.views / maxViews) * 0.20; // gentle scaling
+          card.style.transform = `scale(${factor})`;
         }
-        
-        // Popularity badge
-        let popularityBadge = '';
-        if (video.popularity === 'high') {
-          popularityBadge = '<div class="popularity-badge"><i class="fas fa-fire"></i> Popular</div>';
-        } else if (video.popularity === 'medium') {
-          popularityBadge = '<div class="popularity-badge"><i class="fas fa-star"></i> Trending</div>';
-        }
-        
-        videoCard.innerHTML = `
+
+        const badge =
+          video.popularity === 'high' ? '<div class="popularity-badge"><i class="fas fa-fire"></i> Popular</div>' :
+          video.popularity === 'medium' ? '<div class="popularity-badge"><i class="fas fa-star"></i> Trending</div>' : '';
+
+        card.innerHTML = `
           <div class="video-thumbnail">
             <img src="${video.thumbnail}" alt="${video.title}">
-            <div class="video-play-btn">
-              <i class="fa-solid fa-play"></i>
-            </div>
-            ${popularityBadge}
+            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+            ${badge}
           </div>
           <div class="video-info">
             <h3 class="video-title">${video.title}</h3>
             <p class="video-description">${video.description}</p>
             <div class="video-stats">
-              <div class="video-views">
-                <i class="fa-solid fa-eye"></i>
-                ${video.views} views
-              </div>
+              <div class="video-views"><i class="fa-solid fa-eye"></i> ${video.views} views</div>
               <div class="video-actions">
-                <button class="video-action-btn like-btn" data-id="${video.id}">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </button>
+                <button class="video-action-btn like-btn" data-id="${video.id}" title="Like"><i class="fa-solid fa-thumbs-up"></i></button>
+                <button class="video-action-btn share-btn" data-id="${video.id}" title="Copy link"><i class="fa-solid fa-share"></i></button>
               </div>
             </div>
           </div>
         `;
-        
-        videosGrid.appendChild(videoCard);
-        
-        // Add click event to play button
-        const playBtn = videoCard.querySelector('.video-thumbnail');
-        playBtn.addEventListener('click', () => openVideoModal(video.id));
-        
-        // Add click event to like button
-        const likeBtn = videoCard.querySelector('.like-btn');
-        likeBtn.addEventListener('click', (e) => {
+
+        videosGrid.appendChild(card);
+
+        // Play open
+        card.querySelector('.video-thumbnail').addEventListener('click', () => openVideoModal(video.id));
+
+        // Like
+        card.querySelector('.like-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           likeVideo(video.id);
         });
-        
-        // Stagger animation
-        videoCard.style.animationDelay = `${index * 0.1}s`;
+
+        // Share (fixed: previously referenced undefined element outside render loop)
+        card.querySelector('.share-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          const shareUrl = `${window.location.origin}${window.location.pathname}?video=${video.id}`;
+          navigator.clipboard.writeText(shareUrl).then(() => alert('Video link copied to clipboard!'));
+        });
+
+        // Staggered animation
+        card.style.animationDelay = `${i * 0.06}s`;
       });
     }
 
-    // Function to open video modal
-    function openVideoModal(videoId) {
-      const video = videos.find(v => v.id === videoId);
-      if (!video) return;
-      
-      currentVideo = video;
-      modalVideoTitle.textContent = video.title;
-      modalVideo.src = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`;
-      modalDescription.textContent = video.description;
-      modalViews.textContent = video.views;
-      
-      // Update like button state
-      updateLikeButton();
-      
+    function openVideoModal(id){
+      const v = videos.find(x => x.id === id);
+      if(!v) return;
+      currentVideo = v;
+      modalVideoTitle.textContent = v.title;
+      modalVideo.src = `https://www.youtube.com/embed/${v.youtubeId}?autoplay=1`;
+      modalDescription.textContent = v.description;
+      modalViews.textContent = v.views;
+
+      // Count a view on open
+      v.views += 1;
+      modalViews.textContent = v.views;
+
       videoModal.classList.add('active');
       document.body.style.overflow = 'hidden';
-      
-      // Increment view count
-      video.views++;
       renderVideos();
     }
-
-    // Function to close video modal
-    function closeVideoModal() {
+    function closeVideoModal(){
       videoModal.classList.remove('active');
       modalVideo.src = '';
       currentVideo = null;
       document.body.style.overflow = 'auto';
     }
-
-    // Function to like a video
-    function likeVideo(videoId) {
-      const video = videos.find(v => v.id === videoId);
-      if (!video) return;
-      
-      video.likes += 1;
-      
-      if (currentVideo && currentVideo.id === videoId) {
-        updateLikeButton();
+    function likeVideo(id){
+      const v = videos.find(x => x.id === id);
+      if(!v) return;
+      v.likes += 1;
+      if(currentVideo && currentVideo.id === id){
+        // Could reflect likes visually later
       }
-      
       renderVideos();
     }
 
-    // Function to update like button in modal
-    function updateLikeButton() {
-      if (!currentVideo) return;
-      
-      modalLikeBtn.innerHTML = currentVideo.likes > 0 
-        ? `<i class="fa-solid fa-thumbs-up"></i>`
-        : `<i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-    }
-
-    // Function to change view layout
-    function changeViewLayout(viewType) {
-      currentView = viewType;
-      const videosContainer = document.querySelector('.videos-container');
-      const videosGrid = document.getElementById('video-gallery');
-      
-      // Remove existing classes
-      videosGrid.classList.remove('grid', 'compact', 'list');
-      
-      // Add new class
-      videosGrid.classList.add(viewType);
-      
-      // Update active button
-      viewBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.view === viewType) {
-          btn.classList.add('active');
-        }
-      });
-      
-      // Re-render videos with new layout
-      renderVideos();
-    }
-
-    // Event listeners
+    // Close handlers
     modalClose.addEventListener('click', closeVideoModal);
-    
-    // Close modal when clicking outside content
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) {
-        closeVideoModal();
-      }
-    });
-    
-    // Like button in modal
-    modalLikeBtn.addEventListener('click', () => {
-      if (currentVideo) {
-        likeVideo(currentVideo.id);
-      }
-    });
+    videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideoModal(); });
 
-    // Share button in modal
-    document.getElementById('modalShareBtn').addEventListener('click', () => {
-      if (currentVideo) {
-        const shareUrl = `${window.location.origin}${window.location.pathname}?video=${currentVideo.id}`;
-        navigator.clipboard.writeText(shareUrl).then(() => {
-          alert('Video link copied to clipboard!');
-        });
-      }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeVideoModal();
-      }
-    });
-
-    // Search functionality
-    videoSearch.addEventListener('input', (e) => {
-      currentSearch = e.target.value;
+    // Search / Filter / View
+    videoSearch.addEventListener('input', (e) => { currentSearch = e.target.value; renderVideos(); });
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
       renderVideos();
-    });
+    }));
+    function changeViewLayout(viewType){
+      currentView = viewType;
+      // (fixed) only toggle modifiers that actually exist
+      videosGrid.classList.remove('compact','list');
+      if(viewType !== 'grid') videosGrid.classList.add(viewType);
 
-    // Filter functionality
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderVideos();
+      viewBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.view === viewType);
       });
-    });
+      renderVideos();
+    }
+    viewBtns.forEach(btn => btn.addEventListener('click', () => changeViewLayout(btn.dataset.view)));
 
-    // View layout functionality
-    viewBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        changeViewLayout(btn.dataset.view);
-      });
-    });
-
-    // Initial render
+    // Deep-link open modal (?video=ID)
+    const params = new URLSearchParams(location.search);
+    const deepId = Number(params.get('video'));
     renderVideos();
-    // Add click event to share button - MODIFIED CODE
-const shareBtn = videoCard.querySelector('.share-btn'); // Use a specific class for the share button
-shareBtn.addEventListener('click', function(e) {
-    e.stopPropagation(); // This stops the event from triggering the video card's click
-    // Your existing share code here, for example:
-    const shareUrl = `${window.location.origin}${window.location.pathname}?video=${video.id}`;
-    navigator.clipboard.writeText(shareUrl).then(() => {
-        alert('Video link copied to clipboard!');
-    });
-});
+    if (deepId) {
+      const exists = videos.some(v => v.id === deepId);
+      if (exists) openVideoModal(deepId);
+    }
   </script>
 </body>
 </html>

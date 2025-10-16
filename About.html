@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Duke Jia — History, Leadership & Machines</title>
   <meta name="description" content="Duke Jia: history, leadership team, and our embroidery & perforation machine portfolio serving India's textile hubs." />
-  <meta name="theme-color" content="#0b1224" />
+  <meta name="theme-color" content="#FAF9F6" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,208 +13,157 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
-    /* ===== Design Tokens ===== */
+    /* ===== Design Tokens (LIGHT) ===== */
     :root{
-      --bg:#0b1224;
-      --text:#e6eaf2;
-      --muted:#c9d3e6;
-      --muted2:#a6b0c4;
-      --border:rgba(255,255,255,.12);
-      --primary:#5b7cfa;
-      --accent:#7c3aed;
-      --cta:#5b7cfa;
-      --cta2:#7c3aed;
-      --card:#0b1229;
-      --surface:#0e1630;
-      --ink:#0b1224;
-      --ink-inv:#ffffff;
-      --brand:#6d28d9;
-      --brand-2:#b794f4;
-      --bg-soft:#0e1735;
-      --panel:#0c1530;
-      --chip:#394362;
-      --bd-2:rgba(255,255,255,.12);
-      --ring:rgba(183,148,244,.45);
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      /* Core brand */
+      --pur:#045285;
+      --pur2:#833ade;
+
+      /* Accents / Warm */
+      --primary:#045285;
+      --accent:#833ade;
+      --brand:#833ade;
+      --brand-2:#a88bff;
+
+      /* Neutrals */
+      --bg:#FAF9F6;
+      --bg-soft:#FDFCFB;
+      --surface:#ffffff;
+      --card:#ffffff;
+      --panel:#ffffff;
+      --text:#2D3436;
+      --muted:#5f6970;
+      --muted2:#6f7a82;
+      --lgray:#E8EDF2;
+      --bd:rgba(1,40,107,.10);
+      --bd-2:rgba(1,40,107,.14);
+      --ring:rgba(131,58,222,.28);
+      --shadow:0 10px 30px rgba(0,0,0,.08);
       --radius:20px;
+
+      --ink:#2D3436;
+      --ink-inv:#ffffff;
     }
 
-    /* ===== Base Styles ===== */
+    /* ===== Base ===== */
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    html,body{
+      margin:0;padding:0;
+      background:var(--bg);color:var(--text);
       font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-
       background-image:
-        radial-gradient(1200px 500px at 85% -10%, rgba(109,40,217,.35), transparent 40%),
-        radial-gradient(800px 400px at -10% 110%, rgba(183,148,244,.18), transparent 40%);
+        radial-gradient(1200px 500px at 85% -10%, rgba(131,58,222,.08), transparent 40%),
+        radial-gradient(800px 400px at -10% 110%, rgba(2,115,191,.08), transparent 40%);
       background-attachment:fixed;
     }
     a{color:inherit;text-decoration:none}
 
     /* ===== Container ===== */
     .container{max-width:1400px;margin:0 auto;padding:0 40px}
-    @media (max-width: 1024px) {
-      .container{max-width:100%;padding:0 24px}
-    }
-    @media (max-width: 480px) {
-      .container{padding:0 16px}
-    }
+    @media (max-width:1024px){.container{max-width:100%;padding:0 24px}}
+    @media (max-width:480px){.container{padding:0 16px}}
 
-    /* ===== Header ===== */
+    /* ===== Header (light/blur) ===== */
     .site-header{
       position:sticky;top:0;z-index:50;
-      background:rgba(9,13,26,.85);backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.08)
+      background:rgba(250,249,246,.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--lgray);
     }
     .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
 
     .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
-    .brand-mark{
-      display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:900;font-size:14px
-    }
-    .brand-name{
-      color:#6d28d9;
-      font-weight:900;font-size:18px;text-decoration:none
-    }
+    .brand-name{color:var(--pur);font-weight:900;font-size:18px;text-decoration:none}
 
     .nav-center{display:flex;gap:28px;align-items:center}
-    .nav-center a{color:rgba(255,255,255,.75);font-weight:600;text-decoration:none}
-    .nav-center a:hover{color:#fff}
+    .nav-center a{color:var(--text);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:var(--pur2)}
 
     .btn-quote{
       display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
-      font-weight:700;background:linear-gradient(90deg,var(--cta),var(--cta2));
-      color:#0b1224;text-decoration:none;box-shadow:0 6px 20px rgba(91,124,250,.25)
+      font-weight:700;background:linear-gradient(90deg,var(--accent),var(--brand-2));
+      color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(131,58,222,.25);
     }
     .btn-quote i{opacity:.9}
 
     /* Mobile Navigation */
     .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 6px;
-      transition: background-color 0.3s;
+      display:none;background:none;border:none;color:var(--pur);
+      font-size:1.5rem;cursor:pointer;padding:8px;border-radius:6px;transition:background-color .3s;
     }
-    .menu-toggle:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
+    .menu-toggle:hover { background-color: rgba(1,40,107,.08); }
 
     @media (max-width:780px){
       .nav-center {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: rgba(11, 18, 36, 0.98);
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: rgba(250,249,246,.98);
         backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 20px 24px;
-        gap: 0;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        flex-direction: column; padding: 20px 24px; gap: 0;
+        transform: translateY(-100%); opacity: 0; visibility: hidden;
+        transition: all .3s ease;
+        border-bottom: 1px solid var(--lgray);
       }
-      
-      .nav-center.open {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
+      .nav-center.open { transform: translateY(0); opacity: 1; visibility: visible; }
       .nav-center a {
-        padding: 16px 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+        padding:16px 0; width:100%; border-bottom:1px solid #eee;
+        display:flex; align-items:center; justify-content:flex-start;
       }
-      
-      .nav-center a:last-child {
-        border-bottom: none;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      .btn-quote {
-        background: none;
-        box-shadow: none;
-        color: #fff;
-        padding: 16px 0;
-        justify-content: flex-start;
-      }
+      .nav-center a:last-child { border-bottom:none; }
+      .menu-toggle { display:block; }
+      .btn-quote { width:100%; justify-content:center; }
     }
 
-    /* ===== Hero ===== */
-    .hero{
-      position:relative;overflow:hidden;
-      isolation:isolate;
-      color:var(--ink-inv);background:#0b1224;
-      /*padding: 80px 0 60px;*/
-    }
-    
+    /* ===== Hero (light) ===== */
+    .hero{ position:relative; overflow:hidden; isolation:isolate; color:var(--ink); background:var(--bg); }
     .hero-bg{
-      position:absolute;inset:0;
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(183, 148, 244, .35), transparent 60%), 
-                  radial-gradient(1000px 500px at -10% 90%, rgba(109, 40, 217, .4), transparent 60%);
-      filter:saturate(1.05) contrast(1.05);transform:scale(1.02);
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1100px 520px at 80% -10%, rgba(168,139,255,.18), transparent 60%),
+        radial-gradient(900px 450px at -10% 90%, rgba(4,82,133,.12), transparent 60%);
+      filter:saturate(1.02) contrast(1.02);
       z-index:-2;
     }
-
     .hero-overlay{
-      position:absolute;inset:0;background:
-        linear-gradient(180deg, rgba(10, 13, 30, .65) 0%, rgba(10, 13, 30, .75) 40%, rgba(10, 13, 30, .92) 100%), 
-        radial-gradient(600px 300px at 25% 20%, rgba(255, 255, 255, .08), transparent 60%);
-      backdrop-filter: saturate(1.2) blur(.6px); z-index:-1;
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.65) 0%, rgba(255,255,255,.8) 40%, rgba(255,255,255,.95) 100%),
+        radial-gradient(600px 300px at 25% 20%, rgba(1,40,107,.06), transparent 60%);
+      backdrop-filter:saturate(1.05) blur(.6px);
+      z-index:-1;
     }
-    .hero-inner{max-width: 1500px;  margin: 0 auto;}
-    
+    .hero-inner{max-width:1500px;margin:0 auto;}
+
     .trust-chip{
       display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
-      background:rgba(28,35,60,.75);border:1px solid var(--border);backdrop-filter:blur(4px);
-      color:#e9edff;font-weight:800
+      background:#fff;border:1px solid var(--lgray);backdrop-filter:blur(2px);
+      color:var(--pur);font-weight:800
     }
-    .trust-chip i{color:#9aa6ff}
-    
+    .trust-chip i{color:var(--pur2)}
+
     .headline{
-      font-size:64px;line-height:1.08;margin:16px 0 8px;font-weight:900;letter-spacing:.2px;
-      margin:.9rem 0 1rem;line-height:1.05;font-size:clamp(2.6rem,5.2vw,5rem);letter-spacing:-.02em;
+      font-size:clamp(2.6rem,5.2vw,5rem);line-height:1.05;margin:.9rem 0 1rem;
+      font-weight:900;letter-spacing:-.02em;color:var(--pur);
     }
     .headline .accent{
       color:transparent;
       background:linear-gradient(90deg,var(--primary),var(--accent));
-      -webkit-background-clip:text;background-clip:text
+      -webkit-background-clip:text;background-clip:text;
     }
-    
+
     .sub{
-      font-size:20px;max-width:850px;color:#e7ecff;opacity:.9;
-      margin:0 0 1.75rem;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:var(--muted);max-width:100ch;
+      font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;
+      color:#4a5258; max-width:100ch; margin:0 0 1.75rem;
     }
-    
+
     .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
-    
+
     .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
     .btn-primary{
-      background:linear-gradient(90deg,var(--cta),var(--cta2));color:#0b1224;box-shadow:0 10px 30px rgba(91,124,250,.25);
-      display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:14px;
-      background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;font-weight:700;
-      box-shadow:0 10px 24px rgba(109,40,217,.3);transition:transform .25s ease, box-shadow .25s ease;
+      background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;
+      box-shadow:0 10px 24px rgba(1,40,107,.18); transition:transform .25s ease, box-shadow .25s ease;
     }
-    .btn-primary:hover{
-      transform:translateY(-2px);box-shadow:0 14px 32px rgba(109,40,217,.38);
-    }
-    .btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.25)}
-  
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(2,115,191,.24); }
+    .btn-secondary{background:#fff;color:var(--pur);border:1px solid var(--lgray)}
 
     @media (max-width:1100px){ .headline{font-size:52px} }
     @media (max-width:780px){
@@ -223,299 +172,132 @@
       .sub{font-size:18px}
       .btn-lg{width:100%;justify-content:center}
     }
-    @media(max-width:480px){
-      .trust-chip{font-size:.85rem; padding: 8px 12px;}
-    }
+    @media(max-width:480px){ .trust-chip{font-size:.85rem; padding:8px 12px;} }
 
-    /* ===== Section Spacing ===== */
-    section{padding:107px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    
-    @media (max-width: 768px) {
-      section{padding: 48px 0}
-    }
-  
-    .btn-orange {
-      display: inline-block;padding: 0.9rem 1.8rem;font-weight: 600;color: #fff;background: linear-gradient(90deg,#6d28d9,#b794f4);border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,.12);text-decoration: none;transition: all 0.3s ease;
-      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;background:linear-gradient(90deg, var(--cta), var(--cta2)); color:#0b1224; text-decoration:none; box-shadow:0 10px 28px rgba(91,124,250,.24)
-    }
-    .btn-orange:hover {
-      transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,.18);
-    }
+    /* ===== Section spacing ===== */
+    section{padding:107px 0;border-bottom:1px solid var(--lgray)}
+    @media (max-width:768px){ section{padding:48px 0} }
 
-    /* ===== About Content Styles ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 28px;
+    /* ===== Generic CTA button ===== */
+    .btn-orange{
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;
+      background:linear-gradient(90deg,var(--accent),var(--brand-2));
+      color:#fff; text-decoration:none; box-shadow:0 10px 28px rgba(131,58,222,.20);
+      transition:transform .25s;
     }
-    
-    @media (max-width: 980px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+    .btn-orange:hover{ transform:translateY(-2px); }
+
+    /* ===== About Content ===== */
+    .card{
+      background:var(--card);
+      border:1px solid var(--lgray);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
     }
-    
-    .card {
-      background: linear-gradient(180deg, rgba(19,28,60,.85), rgba(13,19,43,.85));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
-    
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    
-    .section-title .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--brand);
-      box-shadow: 0 0 24px var(--brand);
-    }
-    
-    .section-title h2 {
-      margin: 0;
-      font-size: 28px;
-    }
-    
-    .muted {
-      color: var(--muted);
-    }
-    
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .section-title .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 14px var(--brand)}
+    .section-title h2{margin:0;font-size:28px}
+    .muted{color:var(--muted)}
+
     /* Timeline */
-    .timeline {
-      position: relative;
-      padding-left: 22px;
-    }
-    
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 2px;
-      bottom: 2px;
-      width: 2px;
+    .timeline{position:relative;padding-left:22px}
+    .timeline::before{
+      content:"";position:absolute;left:8px;top:2px;bottom:2px;width:2px;
       background: linear-gradient(var(--brand), transparent);
     }
-    
-    .t-item {
-      position: relative;
-      margin: 0 0 24px;
+    .t-item{position:relative;margin:0 0 24px}
+    .t-item::before{
+      content:"";position:absolute;left:-14px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--brand);
     }
-    
-    .t-item::before {
-      content: "";
-      position: absolute;
-      left: -14px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--brand);
-    }
-    
-    .t-item h3 {
-      margin: 0 0 6px;
-      font-size: 18px;
-    }
-    
+    .t-item h3{margin:0 0 6px;font-size:18px}
+
     /* Team */
-    .team-grid {
-      display: grid;
-      gap: 24px;
+    .team-grid{display:grid;gap:24px}
+    .person{display:flex;gap:18px;align-items:flex-start;margin-bottom:24px}
+    .avatar{
+      width:100px;height:100px;border-radius:16px;object-fit:cover;background:#eef2fb;border:1px solid var(--lgray);
+      flex:0 0 100px; box-shadow:0 0 0 4px rgba(131,58,222,.10);
+      overflow:hidden;
     }
-    
-    .person {
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 24px;
+    .person h3{margin:0 0 4px;font-size:20px}
+    .role{color:var(--muted);font-weight:600;margin:0 0 8px;font-size:16px}
+
+    /* CTA band */
+    .cta-band{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      background:linear-gradient(90deg, rgba(131,58,222,.08), rgba(2,115,191,.08));
+      border:1px solid var(--lgray);
+      border-radius:var(--radius);
+      padding:28px;
     }
-    
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 16px;
-      object-fit: cover;
-      background: #222b55;
-      border: 1px solid var(--border);
-      flex: 0 0 100px;
-      box-shadow: 0 0 0 4px rgba(109,40,217,.15);
+    .cta-band h2{margin:0 0 8px;font-size:28px}
+
+    .sep{height:1px;background:linear-gradient(90deg, transparent, var(--lgray), transparent);margin:40px 0}
+
+    /* ===== Branches ===== */
+    .branches-section{padding:0 0 30px 0}
+
+    .branches-tabs{
+      display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px;justify-content:center;
     }
-    
-    .person h3 {
-      margin: 0 0 4px;
-      font-size: 20px;
+    .branch-tab{
+      padding:12px 24px;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;transition:all .3s;
+      color:var(--muted); border:1px solid var(--lgray);
     }
-    
-    .role {
-      color: var(--muted);
-      font-weight: 600;
-      margin: 0 0 8px;
-      font-size: 16px;
-    }
-    
-    /* CTA */
-    .cta-band {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      background: linear-gradient(90deg, rgba(109,40,217,.18), rgba(183,148,244,.14));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    
-    .cta-band h2 {
-      margin: 0 0 8px;
-      font-size: 28px;
-    }
-    
-    .sep {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      margin: 40px 0;
+    .branch-tab:hover{ background:#f4f7fd; color:var(--text); }
+    .branch-tab.active{
+      background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; border-color:transparent;
+      box-shadow:0 10px 22px rgba(4,82,133,.12);
     }
 
-    /* ===== Branches Section Styles ===== */
-    .branches-section {
-      margin-top: none;
-      padding: 0px 0px 30px 0px;
+    .branch-content{display:none}
+    .branch-content.active{display:block;animation:fadeIn .5s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    .branch-card{
+      padding:25px;border:1px solid var(--lgray);border-radius:12px;background:var(--card);
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    }
+    .branch-card h4{margin-top:0;color:var(--text);font-size:1.3rem}
+    .branch-info{margin-bottom:15px}
+    .branch-info p{margin:8px 0;display:flex;align-items:center;color:var(--muted)}
+    .branch-card-flex{display:flex;align-items:flex-start;gap:28px}
+    .branch-map{
+      width:240px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      object-fit:cover;border:1px solid var(--lgray);
+    }
+    @media (max-width:768px){
+      .branch-card-flex{flex-direction:column;gap:16px}
+      .branch-map{width:100%}
     }
 
-    .branches-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-      justify-content: center;
-    }
-
-    .branch-tab {
-      padding: 12px 24px;
-      background: rgba(255,255,255,.05);
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    .branch-tab:hover {
-      background: rgba(109,40,217,.2);
-      color: var(--text);
-    }
-
-    .branch-tab.active {
-      background: linear-gradient(90deg, var(--brand), var(--brand-2));
-      color: white;
-      border-color: var(--brand);
-    }
-
-    .branch-content {
-      display: none;
-    }
-
-    .branch-content.active {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .branch-card {
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(19,28,60,.85), rgba(13,19,43,.85));
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .branch-card h4 {
-      margin-top: 0;
-      color: var(--text);
-      font-size: 1.3rem;
-    }
-
-    .branch-info {
-      margin-bottom: 15px;
-    }
-
-    .branch-info p {
-      margin: 8px 0;
-      display: flex;
-      align-items: center;
-      color: var(--muted);
-    }
-
-    .branch-card-flex {
-      display: flex;
-      align-items: flex-start;
-      gap: 28px;
-    }
-
-    .branch-info {
-      flex: 1 1 0;
-    }
-
-    .branch-map {
-      width: 240px;
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      object-fit: cover;
-      border: 1px solid var(--border);
-    }
-
-    @media (max-width: 768px) {
-      .branch-card-flex {
-        flex-direction: column;
-        gap: 16px;
-      }
-      
-      .branch-map {
-        width: 100%;
-      }
-    }
-
-    /* ===== Footer ===== */
-    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted)}
+    /* ===== Footer (light) ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--bd);color:var(--muted);background:#fff}
     .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
     .footer-brand{
       margin:0 0 10px;font-size:36px;font-weight:900;
-      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .footer-about p{margin:0 0 18px;color:#d9e1ff}
+    .footer-about p{margin:0 0 18px;color:#4a5258}
     .footer-socials{display:flex; gap:12px}
-    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0e1a33;color:#cfd7ff;border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#f1f5fb;color:#3b4b66;border:1px solid var(--lgray);box-shadow:0 6px 16px rgba(0,0,0,.05)}
     .soc:hover{transform:translateY(-1px)}
-    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#1f2937;font-size:22px}
     .footer-links ul{list-style:none;padding:0;margin:0}
     .footer-links li{margin:10px 0}
-    .footer-links a{color:#cfd7ff;text-decoration:none}
-    .footer-links a:hover{color:#fff}
+    .footer-links a{color:#3b4b66;text-decoration:none}
+    .footer-links a:hover{color:#111827}
     .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
-    .frow .ico{color:#9bb7ff;width:28px;height:28px;display:grid;place-items:center;background:#0e1a33;border-radius:8px;border:1px solid rgba(255,255,255,.08)}
-    .frow .muted{color:#aab3d4}
-    .foot-divider{height:1px;background:rgba(255,255,255,.08);margin:28px 0 14px}
-    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#aab3d4;font-size:14px}
-    .legal a{color:#aab3d4;text-decoration:none;margin-left:16px}
-    .legal a:hover{color:#fff}
-    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width: 640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+    .frow .ico{color:#425f85;width:28px;height:28px;display:grid;place-items:center;background:#eef4ff;border-radius:8px;border:1px solid var(--lgray)}
+    .frow .muted{color:#607086}
+    .foot-divider{height:1px;background:var(--lgray);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#607086;font-size:14px}
+    .legal a{color:#607086;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#111827}
+    @media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
   </style>
 </head>
 <body>
@@ -524,7 +306,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Duke Jia Home">
-        <span><img src="images/dukejia.png" width="190" height="55"></span>
+        <span><img src="images/dukejia.png" width="190" height="55" alt="DUKEJIA"></span>
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation">
@@ -557,7 +339,7 @@
       <h1 class="headline">
         Our History, Leadership
         <br />
-        <span class="accent"> & Branches</span>
+        <span class="accent">&amp; Branches</span>
       </h1>
 
       <p class="sub">
@@ -578,29 +360,26 @@
   <!-- ===== History + Machines ===== -->
   <section id="history-machines" class="section">
     <div class="container">
-      <div class="about">
-        <!-- History -->
-        <article class="card" aria-labelledby="hist-title">
-          <div class="section-title">
-            <span class="dot"></span>
-            <h2 id="hist-title">Company History</h2>
+      <article class="card" aria-labelledby="hist-title">
+        <div class="section-title">
+          <span class="dot"></span>
+          <h2 id="hist-title">Company History</h2>
+        </div>
+        <div class="timeline">
+          <div class="t-item">
+            <h3>1980s–2000s — Foundations</h3>
+            <p class="muted">Jia Group establishes industrial sewing leadership and nationwide service culture.</p>
           </div>
-          <div class="timeline">
-            <div class="t-item">
-              <h3>1980s–2000s — Foundations</h3>
-              <p class="muted">Jia Group establishes industrial sewing leadership and nationwide service culture.</p>
-            </div>
-            <div class="t-item">
-              <h3>2000s–2015 — Expansion</h3>
-              <p class="muted">Growth across garment hubs; training, spares, and after-sales infrastructure strengthened.</p>
-            </div>
-            <div class="t-item">
-              <h3>2015–Today — Duke Jia Era</h3>
-              <p class="muted">Embroidery + perforation portfolio, ISO-certified manufacturing, and Pan-India network.</p>
-            </div>
+          <div class="t-item">
+            <h3>2000s–2015 — Expansion</h3>
+            <p class="muted">Growth across garment hubs; training, spares, and after-sales infrastructure strengthened.</p>
           </div>
-        </article>
-      </div>
+          <div class="t-item">
+            <h3>2015–Today — Duke Jia Era</h3>
+            <p class="muted">Embroidery + perforation portfolio, ISO-certified manufacturing, and Pan-India network.</p>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -614,7 +393,7 @@
         <h2>Leadership</h2>
       </div>
 
-      <!-- Director (top) -->
+      <!-- Director -->
       <article class="card" aria-labelledby="director-title" style="margin-bottom:24px">
         <h3 id="director-title" style="margin:0 0 20px">Director</h3>
         <div class="person">
@@ -627,11 +406,9 @@
         </div>
       </article>
 
-      <!-- Managers (below) -->
+      <!-- Managers -->
       <article class="card" aria-labelledby="managers-title" style="margin-bottom:24px">
         <h3 id="managers-title" style="margin:0 0 20px">Managers</h3>
-
-        <!-- Manager 1 -->
         <div class="person" style="margin-bottom:24px">
           <div class="avatar"></div>
           <div>
@@ -642,13 +419,13 @@
         </div>
       </article>
 
-            <!-- Salesman (below) -->
-      <article class="card" aria-labelledby="managers-title">
-        <h3 id="managers-title" style="margin:0 0 20px">Salesman</h3>
-
-        <!-- salesman 1 -->
+      <!-- Salesman -->
+      <article class="card" aria-labelledby="sales-title">
+        <h3 id="sales-title" style="margin:0 0 20px">Salesman</h3>
         <div class="person" style="margin-bottom:24px">
-          <div class="avatar"><img src="images/Suhail.png" alt="Profile photo of Mr. Suhail Khan" loading="lazy" style="width:100%; height:100%;"></div>
+          <div class="avatar">
+            <img src="images/Suhail.png" alt="Profile photo of Mr. Suhail Khan" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+          </div>
           <div>
             <h3>Mr. Suhail Khan</h3>
             <p class="role">Salesman - Embroidery</p>
@@ -661,14 +438,14 @@
 
   <div class="sep"></div>
 
-  <!-- ===== Our Branches Section ===== -->
+  <!-- ===== Branches ===== -->
   <section id="branches" class="section branches-section">
     <div class="container">
       <div class="section-title">
         <span class="dot"></span>
         <h2>Our Branches</h2>
       </div>
-      
+
       <div class="branches-tabs">
         <div class="branch-tab active" data-branch="delhi">Delhi (Head Office)</div>
         <div class="branch-tab" data-branch="tirupur">Tirupur</div>
@@ -677,7 +454,7 @@
         <div class="branch-tab" data-branch="ludhiana">Ludhiana</div>
         <div class="branch-tab" data-branch="kolkata">Kolkata</div>
       </div>
-      
+
       <div class="branch-content active" id="delhi-branch">
         <div class="branch-card branch-card-flex">
           <div class="branch-info">
@@ -691,7 +468,7 @@
           <img src="images/delhi-map.png" alt="Duke Jia Delhi Branch Map" class="branch-map">
         </div>
       </div>
-      
+
       <div class="branch-content" id="tirupur-branch">
         <div class="branch-card branch-card-flex">
           <div class="branch-info">
@@ -705,7 +482,7 @@
           <img src="images/tripur-map.png" alt="Duke Jia Tirupur Branch Map" class="branch-map">
         </div>
       </div>
-      
+
       <div class="branch-content" id="bangalore-branch">
         <div class="branch-card branch-card-flex">
           <div class="branch-info">
@@ -719,7 +496,7 @@
           <img src="images/banglore-map.png" alt="Duke Jia Bangalore Branch Map" class="branch-map">
         </div>
       </div>
-      
+
       <div class="branch-content" id="chennai-branch">
         <div class="branch-card branch-card-flex">
           <div class="branch-info">
@@ -733,7 +510,7 @@
           <img src="images/chennai-map.png" alt="Duke Jia Chennai Branch Map" class="branch-map">
         </div>
       </div>
-      
+
       <div class="branch-content" id="ludhiana-branch">
         <div class="branch-card branch-card-flex">
           <div class="branch-info">
@@ -824,26 +601,23 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navCenter = document.querySelector('.nav-center');
     const menuIcon = menuToggle.querySelector('i');
-    
+
     menuToggle.addEventListener('click', () => {
       navCenter.classList.toggle('open');
-      
-      // Toggle between hamburger and close icon
       if (navCenter.classList.contains('open')) {
         menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-times');
+        menuIcon.classList.add('fa-xmark'); // FA6 close icon
       } else {
-        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.remove('fa-xmark');
         menuIcon.classList.add('fa-bars');
       }
     });
-    
+
     // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-center a');
-    navLinks.forEach(link => {
+    document.querySelectorAll('.nav-center a').forEach(link => {
       link.addEventListener('click', () => {
         navCenter.classList.remove('open');
-        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.remove('fa-xmark');
         menuIcon.classList.add('fa-bars');
       });
     });
@@ -852,17 +626,12 @@
     document.addEventListener('DOMContentLoaded', function() {
       const tabs = document.querySelectorAll('.branch-tab');
       const contents = document.querySelectorAll('.branch-content');
-      
+
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          // Remove active class from all tabs and contents
           tabs.forEach(t => t.classList.remove('active'));
           contents.forEach(c => c.classList.remove('active'));
-          
-          // Add active class to clicked tab
           tab.classList.add('active');
-          
-          // Show corresponding content
           const branchId = tab.getAttribute('data-branch');
           document.getElementById(`${branchId}-branch`).classList.add('active');
         });
