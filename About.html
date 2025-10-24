@@ -259,17 +259,33 @@
       padding:25px;border:1px solid var(--lgray);border-radius:12px;background:var(--card);
       box-shadow:0 4px 14px rgba(0,0,0,0.06);
     }
+
+    /* Flex row that holds info (left) and map (right) */
+    .branch-card-flex{
+      display:flex;align-items:flex-start;gap:28px;
+      /* keeps items at start; map will push itself right via margin-left:auto */
+      justify-content:flex-start; /* ← added */
+    }
+
     .branch-card h4{margin-top:0;color:var(--text);font-size:1.3rem}
     .branch-info{margin-bottom:15px}
     .branch-info p{margin:8px 0;display:flex;align-items:center;color:var(--muted)}
-    .branch-card-flex{display:flex;align-items:flex-start;gap:28px}
+
     .branch-map{
       width:240px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);
       object-fit:cover;border:1px solid var(--lgray);
+
+      /* >>> NEW: push map to far right on desktop */
+      margin-left:auto;
     }
+
     @media (max-width:768px){
       .branch-card-flex{flex-direction:column;gap:16px}
-      .branch-map{width:100%}
+      .branch-map{
+        width:100%;
+        /* >>> NEW: reset so it doesn’t add awkward spacing on mobile */
+        margin-left:0;
+      }
     }
 
     /* ===== Footer (light) ===== */
@@ -348,10 +364,10 @@
 
       <div class="cta-row">
         <a class="btn-lg btn-primary" href="#history-machines">
-          Our Story <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
+          Our Story <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
         </a>
         <a class="btn-lg btn-secondary" href="#leadership">
-          Meet Our Team <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
+          Meet Our Team <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
         </a>
       </div>
     </div>
