@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HCA — Contact</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css"><style>
+:root {
+  --primary: #766c6c;
+  --primary-dark: #494343;
+  --bg:#141414;
+  --ink: #0b0b0c;
+  --muted: #6b7280;
+  --btn: #0f172a;
+  --white: #ffffff;
+  --gray-200: #edf2f7;
+  --dark-bg: #2c3e50;
+  --border: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+
+
+/* Hero Section */
+.hero {
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--dark-bg) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+  background-size: cover;
+}
+
+.display {
+  font-weight: 900;
+  line-height: 1.05;
+  font-size: 3.5rem;
+  margin: 0 0 16px;
+  color: var(--white);
+  position: relative;
+}
+
+.sub {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  color: var(--gray-200);
+  max-width: 700px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+
+/* Card Styles */
+.card {
+  border-radius: 16px;
+  background: #2b2828;
+  padding: 30px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+      color: snow;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Form Elements */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  /* border: 1px solid var(--border); */
+  border-radius: 12px;
+  font: inherit;
+  background-color: #4c4745;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--primary-dark);
+  color: #fff;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* WhatsApp Buttons */
+.wa-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--btn);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  transition: all 0.3s ease;
+}
+
+.wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.22);
+}
+
+.wa-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+/* Map Styles */
+.map-container {
+  max-width: 100%;
+  height: 250px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+}
+
+/* Branches Section Styles */
+.branches-section {
+  margin-top: none;
+  padding: 0px 0px 30px 0px;
+}
+
+.branches-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.branch-tab {
+  padding: 12px 24px;
+  background: #f8fafc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.branch-tab:hover {
+  background: var(--primary);
+}
+
+.branch-tab.active {
+  background: var(--primary-dark);
+  color: white;
+}
+
+.branch-content {
+  display: none;
+}
+
+.branch-content.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.branch-card {
+  padding: 25px;
+  /* border: 1px solid var(--border); */
+  border-radius: 12px;
+  background: #c9c8c8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.branch-card h4 {
+  margin-top: 0;
+  color: var(--primary-dark);
+  font-size: 1.3rem;
+}
+
+.branch-info {
+  margin-bottom: 15px;
+}
+
+.branch-info p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.branch-info p svg {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+}
+
+.branch-card-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.branch-info {
+  flex: 1 1 0;
+}
+
+.branch-map {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .display {
+    font-size: 2rem;
+  }
+  
+  
+  .branch-card-flex {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .branch-map {
+    width: 100%;
+  }
+  
+  .wa-group {
+    flex-direction: column;
+  }
+  
+  .wa-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- New Header -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="HCA_Homepage.html" class="logo">
+      <img src="hca_logo.png" alt="HCA Monogram Logo">
+    </a>
+    
+    <div class="nav-container" id="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="HCA_Homepage.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="HCA_Garments_Hub.html" class="nav-link">Garments</a>
+        </li>
+        <li class="nav-item">
+          <a href="HCA_Leather_Hub.html" class="nav-link">Leather</a>
+        </li>
+        <li class="nav-item">
+          <a href="HCA_Mattress_Hub.html" class="nav-link">Mattresses</a>
+        </li> 
+      </ul>
+      
+      <div class="header-actions">
+        <a href="HCA_Contact.html" class="contact-btn">
+          Contact Us
+        </a>
+      </div>
+    </div>
+    
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="display">Contact Us</h1>
+      <p class="sub">"Over time, the efficient organization of sewing machines and materials significantly improves both productivity and quality of the manufacturing process. This streamlined approach fosters a smooth workflow, ensuring optimal performance and precision in garment production."</p>
+    </div>
+  </section>
+
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Head Office</h3>
+        <p class="meta">Efficiency is achieved not only through the precise alignment of machinery and equipment but also through the powerful performance of the sewing machine, driving productivity in garment production.</p>
+        <div class="contact-info">
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 A-94/1, Okhla Industrial Area, Phase-l, New Delhi-110020 (India)</p>
+          <p>📞 +91 88600 86712</p>
+          <p>📧 enquiry@grouphca.com</p>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34995.146957163506!2d77.19410009286027!3d28.539007843822062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d02197d855555%3A0x987cd64d1942c45e!2sHari%20Chand%20Anand%20%26%20Co.!5e0!3m2!1sen!2sin!4v1693871000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            title="Hari Chand Anand & Co. Location">
+          </iframe>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Send Us a Message</h3>
+        <p class="meta">We are here to assist you with all your needs! Whether you have questions, specific requirements, or need more information about our products and services, feel free to reach out. Our team is dedicated to providing you with the best support and tailored solutions.</p>
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="E-mail" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Contact No.">
+          </div>
+          <div class="form-group">
+            <textarea rows="4" placeholder="Message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Branches Section -->
+<div class="branches-section">
+  <div class="container">
+    <h2 class="section-title">Our Branches</h2>
+    
+    <div class="branches-tabs">
+      <div class="branch-tab active" data-branch="delhi">Delhi (Head Office)</div>
+      <div class="branch-tab" data-branch="tirupur">Tirupur</div>
+      <div class="branch-tab" data-branch="bangalore">Bangalore</div>
+      <div class="branch-tab" data-branch="chennai">Chennai</div>
+      <div class="branch-tab" data-branch="ludhiana">Ludhiana</div>
+      <div class="branch-tab" data-branch="kolkata">Kolkata</div>
+    </div>
+    
+    <div class="branch-content active" id="delhi-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Delhi (Head Office)</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 A-94/1, Okhla Industrial Area, Phase-II, New Delhi-110020 (India)</p>
+          <p>📞 Ph: 011-4656111 Fax: 011-4612614</p>
+          <p>📱 Mob: +91 9313308708</p>
+          <p>📧 Email: enquiry@grouphca.com</p>
+        </div>
+        <img src="delhi-map.png" alt="HCA Delhi Branch Map" class="branch-map" />
+      </div>
+    </div>
+    
+    <div class="branch-content" id="tirupur-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Tirupur</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 No 9, Valipalayam 2nd Street, Tirupur - 641601</p>
+          <p>📞 Ph: 0421-4331580</p>
+          <p>📱 Mob: +91 93450666853</p>
+          <p>📧 Email: hcabri@grouphca.com</p>
+        </div>
+        <img src="tripur-map.png" alt="HCA Tirupur Branch Map" class="branch-map" />
+      </div>
+    </div>
+    
+    <div class="branch-content" id="bangalore-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Bangalore</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 61/A, 1st Main Road, Industrial Suburb, 2nd Stage, Yeshwanthpur, Bangalore-560022</p>
+          <p>📞 Ph: 080-4741220</p>
+          <p>📱 Mob: +91 9343854523</p>
+          <p>📧 Email: hcabri@grouphca.com</p>
+        </div>
+        <img src="banglore-map.png" alt="HCA Bangalore Branch Map" class="branch-map" />
+      </div>
+    </div>
+    
+    <div class="branch-content" id="chennai-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Chennai</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 No. 10/7, 3rd Main Road, South Phase, Ambattur Industrial Estate, Ambattur, Chennai - 600058</p>
+          <p>📞 Ph: 044-26252022</p>
+          <p>📱 Mob: +91 9344223180</p>
+          <p>📧 Email: hcache@grouphca.com</p>
+        </div>
+        <img src="chennai-map.png" alt="HCA Chennai Branch Map" class="branch-map" />
+      </div>
+    </div>
+    
+    <div class="branch-content" id="ludhiana-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Ludhiana</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 247-A, Industrial Area, Near Cheema Chowk, Ludhiana-141003 Punjab</p>
+          <p>📞 Ph: 0161-4625632</p>
+          <p>📧 Email: hcaldh@grouphca.com</p>
+        </div>
+        <img src="ludhiana-map.png" alt="HCA Ludhiana Branch Map" class="branch-map" />
+      </div>
+    </div>
+
+    <div class="branch-content" id="kolkata-branch">
+      <div class="branch-card branch-card-flex">
+        <div class="branch-info">
+          <h4>Kolkata</h4>
+          <p><strong>Hari Chand Anand & Co.</strong></p>
+          <p>📍 sdf C Building, Paridhan Garment Park, BI-c103; gr-fr19 Canal South Road, Ip-61/10, Kolkata - 700015</p>
+          <p>📞 Ph: 085-84068564 / 093-30035920</p>
+          <p>📧 Email: hcakolkata@grouphca.com</p>
+        </div>
+        <img src="kolkata-map.png" alt="HCA Kolkata Branch Map" class="branch-map" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-heading">Legal</div>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookies Policy</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Products</div>
+      <a href="HCA_Garments_Hub.html">Garments</a>
+      <a href="HCA_Leather_Hub.html">Leather &amp; Heavy-Duty</a>
+      <a href="HCA_Mattress_Hub.html">Mattresses</a>
+      <a href="HCA_Pattern_Swing.html">Pattern Sewing Machines</a>
+      <a href="HCA_Embroidery_mc.html">Embroidery Machines</a>
+      <a href="HCA_Cutting_mc.html">Cutting Machines</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Social Media</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/grouphca/" style="color: #b3a0a0;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/hcaindia" style="color: #b3a0a0;"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/hca.co/" style="color: #b3a0a0;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCZQc6oBcEEQ_SFdJqPNamJQ" style="color: #b3a0a0;"><i class="fab fa-youtube"></i></a>
+        <a href="https://in.linkedin.com/company/hcaco" style="color: #b3a0a0;"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-col">
+      <div class="footer-heading"><a href="HCA_Contact.html">Contact Us</a></div>
+      <div>Mobile: <a href="tel:+918860086712">+91 8860086712</a></div>
+      <div>Landline: 011 4656 1111</div>
+      <div><a href="mailto:enquiry@grouphca.com">enquiry@grouphca.com</a></div>
+      <div><a href="mailto:sales1@grouphca.com">sales1@grouphca.com</a></div> 
+    </div>
+    
+    
+  </div>
+  <div class="footer-bottom">©1910 - 2024 HARI CHAND ANAND &amp; CO. ALL RIGHTS RESERVED.</div>
+</footer>
+<script>
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobile-toggle');
+const navContainer = document.getElementById('nav-container');
+    
+mobileToggle.addEventListener('click', () => {
+  mobileToggle.classList.toggle('active');
+  navContainer.classList.toggle('active');
+});
+    
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Branch tabs functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.branch-tab');
+  const contents = document.querySelectorAll('.branch-content');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and contents
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      tab.classList.add('active');
+      
+      // Show corresponding content
+      const branchId = tab.getAttribute('data-branch');
+      document.getElementById(`${branchId}-branch`).classList.add('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
