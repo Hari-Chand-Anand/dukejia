@@ -309,6 +309,27 @@
     .center{text-align:center}
     h1{font-size:44px;line-height:1.1;margin:0 0 10px;color:var(--primary)}
     .lead{color:var(--muted);font-size:18px;max-width:840px;margin:0 auto;padding:10px;}
+    /* Explore more button under Models */
+.explore-row{
+  display:flex;
+  justify-content:center;
+  margin-top:28px;
+}
+.btn-explore{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 20px; border-radius:14px; font-weight:800;
+  background:#fff; color:var(--primary);
+  border:1px solid var(--lgray);
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-explore:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(2,115,191,.18);
+  background:linear-gradient(90deg,var(--brand),var(--brand-2));
+  color:#fff; border-color:transparent;
+}
+
 
     /* ===== Footer ===== */
     .site-footer{padding:28px 24px;border-top:1px solid var(--border);color:var(--muted);background:#fff}
@@ -482,6 +503,11 @@
       </div>
     </a>
   </div>
+</div>
+<div class="explore-row">
+  <a class="btn-explore" href="Products-Details.html">
+    Explore <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+  </a>
 </div>
     </section>
   </main>
