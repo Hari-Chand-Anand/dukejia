@@ -14,7 +14,7 @@
     /* ===== DUKEJIA Design Tokens (brand palette) ===== */
     :root{
       /* Core Brand */
-      --pur:#045285; 
+      --pur:#045285;
       --pur2:#833ade;
 
       /* Warm Secondaries */
@@ -34,12 +34,12 @@
       --border:rgba(1,40,107,.12);
       --bd-2:rgba(1,40,107,.14);
 
-      --primary:var(---pur2);
+      --primary:var(--pur2);
       --accent:var(--lavender);
 
       /* Buttons & Gradients */
-      --brand:var(--pur); --brand-2:var(---pur2);
-      --cta:var(---pur2); --cta2:var(--pur);
+      --brand:var(--pur); --brand-2:var(--pur2);
+      --cta:var(--pur2); --cta2:var(--pur);
 
       /* Surfaces */
       --card:#ffffff; --surface:#ffffff; --panel:#ffffff; --bg-soft:#FDFCFB; --chip:#dfe8f4;
@@ -58,7 +58,7 @@
     a{color:inherit;text-decoration:none}
 
     /* ===== Container ===== */
-    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    .container{margin:0 auto;padding:0 40px}
     @media (max-width:1024px){.container{max-width:100%;padding:0 24px}}
     @media (max-width:480px){.container{padding:0 16px}}
 
@@ -75,11 +75,11 @@
 
     .nav-center{display:flex;gap:28px;align-items:center}
     .nav-center a{color:var(--charcoal);font-weight:600;text-decoration:none}
-    .nav-center a:hover{color:var(---pur2)}
+    .nav-center a:hover{color:var(--pur2)}
 
     .btn-quote{
       display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
-      font-weight:700;background:linear-gradient(90deg,var(--lavender),var(---pur2));
+      font-weight:700;background:linear-gradient(90deg,var(--lavender),var(--pur2));
       color:#3a2b00;text-decoration:none;box-shadow:#bcb8ee;
     }
     .btn-quote i{opacity:.9}
@@ -133,7 +133,6 @@
     }
     .hero-inner{max-width:1500px;margin:0 auto;}
 
-    /* subtle textile micro-dot */
     .hero::before{
       content:""; position:absolute; inset:0; pointer-events:none;
       background-image:
@@ -147,7 +146,7 @@
       background:#fff;border:1px solid var(--lgray);backdrop-filter:blur(2px);
       color:var(--pur);font-weight:800
     }
-    .trust-chip i{color:var(---pur2)}
+    .trust-chip i{color:var(--pur2)}
 
     .headline{
       font-size:clamp(2.6rem,5.2vw,5rem);line-height:1.05;margin:.9rem 0 1rem;
@@ -155,7 +154,7 @@
     }
     .headline .accent{
       color:transparent;
-      background:linear-gradient(90deg,var(--pur),var(---pur2));
+      background:linear-gradient(90deg,var(--pur),var(--pur2));
       -webkit-background-clip:text;background-clip:text
     }
 
@@ -167,7 +166,7 @@
     .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
     .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
     .btn-primary{
-      background:linear-gradient(90deg,var(--pur),var(---pur2));color:#fff;
+      background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;
       box-shadow:0 10px 24px rgba(1,40,107,.25); transition:transform .25s ease, box-shadow .25s ease;
     }
     .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(2,115,191,.28); }
@@ -188,7 +187,7 @@
     /* ===== Warm CTA button ===== */
     .btn-orange{
       display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;
-      background:linear-gradient(90deg,var(--lavender),var(---pur2));
+      background:linear-gradient(90deg,var(--lavender),var(--pur2));
       color:var(--card); text-decoration:none; box-shadow:0 10px 28px rgba(244,132,95,.24);
       transition:transform .25s; }
     .btn-orange:hover{ transform:translateY(-2px); }
@@ -218,43 +217,67 @@
     @media (max-width:900px){ .flagship-wrap{flex-direction:column; align-items:flex-start;} .flagship-card{width:100%;} .flagship-image-box img{height:clamp(260px, 42vh, 500px);} }
     @media (max-width:560px){ .flagship-title{font-size:36px} .btn-orange, .btn-ghost{width:100%; text-align:center} }
 
-    /* ===== Products Section ===== */
-    Products-Details.html h2{
-      font-size:48px;margin:0 0 8px;text-align:center;font-weight:900;letter-spacing:.2px;
-      background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    Products-Details.html .sub{
-      text-align:center;color:var(--muted);margin:0 auto 28px;max-width:880px;font-size:20px;
-    }
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px; margin-top:45px;}
-    .card{background:#fff;border:1px solid var(--lgray);border-radius:16px;overflow:hidden}
-    .thumb{height:160px;background:linear-gradient(90deg, rgba(1,40,107,.08), rgba(2,115,191,.10));display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--lgray)}
-    .card-body{padding:14px}
-    .card-body strong{display:block;margin-bottom:6px}
-    .meta{display:flex;gap:10px;color:#5f6970;font-size:13px;margin-top:6px;flex-wrap:wrap}
+    /* ===== Our Machines – 2 rows, asymmetric columns ===== */
+    .section-machines { padding: 64px 0; }
+    .section-machines .center { text-align: center; }
+    .section-machines h1 { font-size: 44px; margin: 0 0 8px; color: var(--pur); }
+    .section-machines .lead { color: var(--muted); font-size: 18px; max-width: 840px; margin: 0 auto; }
 
-    /* Our Machines Section */
-    .machines-showcase { margin-top:10px; }
-    .secondary-machines { display:grid; grid-template-columns: repeat(2, 0fr); gap:10px; }
-    .machine-card { background:#fff; overflow:hidden; transition:all .3s ease; box-shadow:0 8px 30px rgba(0,0,0,.06); }
-    .machine-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,.12); border-color:rgba(2,115,191,.3); }
-    .machine-image { position:relative; width:800px; height:400px; overflow:hidden; }
-    .machine-image img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
-    .machine-card:hover .machine-image img { transform:scale(1.05); }
-    .image-overlay { position:absolute; bottom:0; left:0; right:0; background: linear-gradient(transparent, #03002a); padding:25px; color:#fff; transform: translateY(5px); transition: transform .3s ease; }
-    .machine-card:hover .image-overlay { transform: translateY(0); }
-    .image-overlay h4 { font-size:1.4rem; font-weight:800; margin:0 0 8px; color:#fff; }
-    .image-overlay p { margin:0; opacity:.9; font-size:.95rem; }
-    .machine-info { padding:20px; background:#fff; }
-    .btn-machine { display:inline-flex; align-items:center; gap:8px; color:var(---pur2); font-weight:700; text-decoration:none; transition:all .3s ease; }
-    .btn-machine:hover { color:var(--pur); gap:12px; }
-    @media (max-width:768px){ .secondary-machines{grid-template-columns:1fr; gap:20px} .machine-image{height:220px} }
+    /* each row is its own grid */
+    .machines-row {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
-    /* Section Styles */
-    .section{padding:48px 24px}
-    .center{text-align:center}
-    h1{font-size:44px;line-height:1.1;margin:0 0 10px;color : var(--pur)}
-    .lead{color:var(--muted);font-size:18px;max-width:840px;margin:0 auto;padding:10px;}
+    /* Row 1: [small | wide]  •  Row 2: [wide | small] */
+    .machines-row.row-1 { grid-template-columns: 0.9fr 1.6fr; }
+    .machines-row.row-2 { grid-template-columns: 1.6fr 0.9fr; }
+
+    /* cards */
+    .tile {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--lgray);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.06);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,.12); border-color: rgba(2,115,191,.28); }
+
+    /* image sizing */
+    .img-wrap { position: relative; width: 100%; height: -webkit-fill-available; overflow: hidden; background: linear-gradient(90deg, rgba(1,40,107,.08), rgba(2,115,191,.10)); }
+    .img-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+    .tile:hover .img-wrap img { transform: scale(1.05); }
+
+    /* aspect ratios for small vs wide tiles */
+    .tile.small .img-wrap { aspect-ratio: 4 / 3; }   /* small */
+    .tile.wide  .img-wrap { aspect-ratio: 21 / 9; }  /* wide banner */
+
+    /* overlay */
+    .overlay {
+      position:absolute; left:0; right:0; bottom:0;
+      background:linear-gradient(transparent, #03002a);
+      padding:18px; color:#fff; transform:translateY(4px); transition:transform .25s ease;
+    }
+    .tile:hover .overlay { transform:translateY(0); }
+    .overlay h4 { margin:0 0 6px; font-size:1.1rem; font-weight:800; color:#fff; }
+    .overlay p  { margin:0; opacity:.9; font-size:.95rem; }
+
+    /* Tablet: balance to 2 equal columns */
+    @media (max-width: 1024px) {
+      .machines-row.row-1,
+      .machines-row.row-2 { grid-template-columns: 1fr 1fr; }
+      .tile.wide .img-wrap { aspect-ratio: 16 / 9; }
+    }
+
+    /* Mobile: single column stack */
+    @media (max-width: 720px) {
+      .machines-row.row-1,
+      .machines-row.row-2 { grid-template-columns: 1fr; }
+      .tile.wide .img-wrap,
+      .tile.small .img-wrap { aspect-ratio: 4 / 3; }
+    }
 
     /* ===== Footer ===== */
     .site-footer{padding:28px 24px;border-top:1px solid var(--lgray);color:#e7f1ff;background:var(--pur)}
@@ -343,14 +366,12 @@
           Explore Products <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
         </a>
       </div>
-
     </div>
   </section>
 
   <!-- ===== Flagship highlight ===== -->
   <section id="flagship-cta" class="flagship">
     <div class="container flagship-wrap">
-      <!-- Left Copy -->
       <div class="flagship-copy">
         <span class="flagship-badge">Flagship Model</span>
         <h2 class="flagship-title">Embroidery + Perforation<br>Unified Flagship</h2>
@@ -360,11 +381,9 @@
         <div class="flagship-cta">
           <a href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20please%20share%20pricing%20for%20the%20Embroidery%20%2B%20Perforation%20Unified%20Flagship."
              class="btn-orange" target="_blank" rel="noopener">Get a Quote</a>
-          <!-- <a href="lineup.html" class="btn-ghost" target="_blank" rel="noopener">See Lineup</a> -->
         </div>
       </div>
 
-      <!-- Right Card -->
       <div class="flagship-card">
         <div class="flagship-image-box">
           <img src="images/EmbPerf.png" alt="Flagship Model Machine">
@@ -373,62 +392,62 @@
     </div>
   </section>
 
-  <!-- ===== Updated Our Machines Section ===== -->
+  <!-- ===== Our Machines (two rows: small|wide then wide|small) ===== -->
   <main>
-    <section id="Our Machines" class="section container" aria-labelledby="our-machines-title">
+    <section id="Our Machines" class="section-machines container" aria-labelledby="our-machines-title">
       <div class="center">
         <h1 id="our-machines-title">Our Machines</h1>
         <p class="lead">Advanced textile solutions for every production need</p>
       </div>
 
-      <div class="machines-showcase">
-        <div class="secondary-machines">
-          <!-- Single Needle -->
-          <a href="Single-Head.html" class="machine-card" style="width: 450px; height: 450px;" aria-label="Single Needle embroidery machines">
-            <div class="machine-image" style="width: 470px; height: 450px;">
-              <img src="images/single.png" alt="Single Head Needle Embroidery Machine">
-              <div class="image-overlay">
-                <h4>Single Head</h4>
-                <p>Precision embroidery for sampling & short runs</p>
-              </div>
+      <!-- ROW 1: col-1 small, col-2 wide -->
+      <div class="machines-row row-1">
+        <!-- Grid 1.1 — SMALL -->
+        <a href="Single-Head.html" class="tile small" aria-label="Single Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/single.png" alt="Single Head Needle Embroidery Machine">
+            <div class="overlay">
+              <h4>Single Head</h4>
+              <p>Precision embroidery for sampling & short runs</p>
             </div>
-          </a>
-          <!-- Multi Needle -->
-          <a href="Multi-Head.html" class="machine-card" style="width: 850px; height: 450px;" aria-label="Multi Needle embroidery machines">
-            <div class="machine-image" style="width: 860px; height: 450px;">
-              <img src="images/multi.jpeg" alt="Multi Head Needle Embroidery">
-              <div class="image-overlay">
-                <h4>Multi Head</h4>
-                <p>High-throughput production embroidery</p>
-              </div>
+          </div>
+        </a>
+
+        <!-- Grid 1.2 — WIDE -->
+        <a href="Multi-Head.html" class="tile wide" aria-label="Multi Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/multi.jpeg" alt="Multi Head Needle Embroidery">
+            <div class="overlay">
+              <h4>Multi Head</h4>
+              <p>High-throughput production embroidery</p>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
 
-      <div class="machines-showcase">
-        <div class="secondary-machines">
-          <!-- Perforation -->
-          <a href="Perforation.html" class="machine-card" style="width: 700px; height: 450px;" aria-label="Quilting machines">
-            <div class="machine-image" style="width: 700px; height: 450px;">
-              <img src="images/perforation.jpeg" alt="Perforation System">
-              <div class="image-overlay">
-                <h4>Perforation</h4>
-                <p>Clean, consistent perforation technology</p>
-              </div>
+      <!-- ROW 2: col-1 wide, col-2 small (reversed) -->
+      <div class="machines-row row-2">
+        <!-- Grid 2.1 — WIDE -->
+        <a href="Perforation.html" class="tile wide" aria-label="Perforation systems">
+          <div class="img-wrap">
+            <img src="images/perforation.jpeg" alt="Perforation System">
+            <div class="overlay">
+              <h4>Perforation</h4>
+              <p>Clean, consistent perforation technology</p>
             </div>
-          </a>
-          <!-- Quilting -->
-          <a href="Quilting.html" class="machine-card" style="width: 600px; height: 450px;" aria-label="Quilting machines">
-            <div class="machine-image" style="width: 600px; height: 450px;">
-              <img src="images/Quilting.png" alt="Quilting Machine">
-              <div class="image-overlay">
-                <h4>Quilting</h4>
-                <p>Large-format with perfect stitch consistency</p>
-              </div>
+          </div>
+        </a>
+
+        <!-- Grid 2.2 — SMALL -->
+        <a href="Quilting.html" class="tile small" aria-label="Quilting machines">
+          <div class="img-wrap">
+            <img src="images/Quilting.png" alt="Quilting Machine">
+            <div class="overlay">
+              <h4>Quilting</h4>
+              <p>Large-format with perfect stitch consistency</p>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </section>
   </main>
@@ -481,7 +500,6 @@
 
     menuToggle.addEventListener('click', () => {
       navCenter.classList.toggle('open');
-      // Toggle between hamburger and close icon
       if (navCenter.classList.contains('open')) {
         menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times');
       } else {

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dukejia — Multi-Head Embroidery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --pur:#045285; --pur2:#833ade; --lav:#A29BFE;
+      --cream:#FAF9F6; --lgray:#E8EDF2; --text:#2D3436; --muted:#5f6970; --muted2:#6f7a82;
+      --primary:var(--pur2); --accent:var(--lav);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--cream);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{margin:0 auto;padding:0 40px}
+    @media (max-width:1024px){.container{padding:0 24px}}
+    @media (max-width:480px){.container{padding:0 16px}}
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--lgray)}
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .menu-toggle{display:none;background:none;border:none;font-size:1.5rem}
+    @media (max-width:780px){
+      .menu-toggle{display:block}
+      .nav-center{position:fixed;top:72px;left:0;right:0;background:rgba(250,249,246,.98);backdrop-filter:blur(10px);flex-direction:column;padding:20px 24px;gap:0;transform:translateY(-100%);opacity:0;visibility:hidden;transition:.3s;border-bottom:1px solid var(--lgray)}
+      .nav-center.open{transform:translateY(0);opacity:1;visibility:visible}
+      .nav-center a{padding:16px 0;width:100%;border-bottom:1px solid #eee}
+      .nav-center a:last-child{border-bottom:none}
+    }
+
+    /* Hero */
+    .hero{padding:64px 0}
+    .headline{font-size:clamp(2.2rem,5vw,3.5rem);margin:0 0 10px;color:var(--pur)}
+    .headline .accent{color:transparent;background:linear-gradient(90deg,var(--pur),var(--pur2));-webkit-background-clip:text;background-clip:text}
+    .sub{max-width:80ch;color:#4a5258}
+
+    /* Grid of models (no links) */
+    .section-machines{padding:48px 0}
+    .center{text-align:center}
+    .center h1{margin:0 0 6px;color:var(--pur)}
+    .machines-row{display:grid;gap:10px;margin-top:10px}
+    .row-1{grid-template-columns:.9fr 1.6fr}
+    .row-2{grid-template-columns:1.6fr .9fr}
+    @media (max-width:1024px){.row-1,.row-2{grid-template-columns:1fr 1fr}}
+    @media (max-width:720px){.row-1,.row-2{grid-template-columns:1fr}}
+    .tile{display:block;background:#fff;border:1px solid var(--lgray);box-shadow:0 8px 30px rgba(0,0,0,.06);overflow:hidden;cursor:pointer;transition:.25s}
+    .tile:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(0,0,0,.12)}
+    .img-wrap{position:relative;background:linear-gradient(90deg, rgba(1,40,107,.08), rgba(2,115,191,.10))}
+    .tile.small .img-wrap{aspect-ratio:4/3}
+    .tile.wide .img-wrap{aspect-ratio:21/9}
+    .img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.5s}
+    .tile:hover .img-wrap img{transform:scale(1.05)}
+    .overlay{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,#03002a);padding:18px;color:#fff}
+    .overlay h4{margin:0 0 6px}
+
+    /* ===== Modal with tabs ===== */
+    .model-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .25s}
+    .model-modal.active{display:flex;opacity:1}
+    .sheet{background:#fff;border-radius:20px;max-width:1100px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.25);border:1px solid var(--lgray);overflow:hidden}
+    .sheet-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--lgray)}
+    .sheet-title{font-size:1.25rem;font-weight:900;margin:0}
+    .sheet-close{background:none;border:none;width:40px;height:40px;border-radius:10px;color:#6b7280;cursor:pointer}
+    .sheet-close:hover{background:#f4f7fb}
+
+    /* top content */
+    .sheet-top{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;padding:18px}
+    @media (max-width:900px){.sheet-top{grid-template-columns:1fr}}
+    .top-left{display:flex;gap:16px;align-items:flex-start}
+    .top-img{width:220px;min-width:220px;height:160px;border:1px solid var(--lgray);border-radius:14px;background:#f5f7fb;overflow:hidden;display:grid;place-items:center}
+    .top-img img{width:100%;height:100%;object-fit:contain}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem;background:#eef2ff;color:#444;border:1px solid #e5e7eb}
+    .top-title{margin:2px 0 6px;font-size:1.1rem;font-weight:900}
+    .top-sub{margin:0;color:#6b7280;line-height:1.6}
+
+    .top-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--lgray);background:#fff;font-weight:800;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(1,40,107,.18)}
+    .btn i{font-size:.95rem}
+    .likes{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--lgray);background:#fff;font-weight:800}
+
+    /* tabs */
+    .tabs{padding:0 18px 18px}
+    .tab-nav{display:flex;gap:8px;border-bottom:1px solid var(--lgray)}
+    .tab-btn{appearance:none;background:none;border:none;padding:12px 14px;border-radius:10px 10px 0 0;font-weight:800;color:#6b7280;cursor:pointer}
+    .tab-btn.active{color:#111;background:#fff;border:1px solid var(--lgray);border-bottom-color:#fff}
+    .tab-panel{display:none;padding:16px 0}
+    .tab-panel.active{display:block}
+
+    /* specs table */
+    .spec-table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--lgray)}
+    .spec-table tr{border-bottom:1px solid var(--lgray)}
+    .spec-table tr:last-child{border-bottom:none}
+    .spec-table th,.spec-table td{padding:12px 14px;text-align:left}
+    .spec-table th{width:44%;background:#f7f9ff;color:#374151}
+    .spec-table td{color:#4b5563}
+
+    /* features grid */
+    .feat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media (max-width:620px){.feat-grid{grid-template-columns:1fr}}
+    .feat{border:1px solid var(--lgray);border-radius:12px;padding:12px 14px;background:#fff}
+
+    /* Explore btn (kept) */
+    .explore-row{display:flex;justify-content:center;margin:28px 0 0}
+    .btn-explore{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:14px;font-weight:800;background:#fff;color:var(--primary);border:1px solid var(--lgray);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="images/dukejia.png" width="190" height="55" alt="DUKEJIA" /></a>
+      <button class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+      <nav class="nav-center" aria-label="Primary">
+        <a href="About.html">About</a>
+        <a href="Products-Details.html">Products</a>
+        <a href="Contact.html">Contact</a>
+        <a class="btn primary" href="https://wa.me/919999999999" target="_blank" rel="noopener"><i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="headline">Multi Head Embroidery <span class="accent">Machines</span></h1>
+      <p class="sub">Precision multi-head embroidery engineered for India’s production hubs. Unified controls keep design, drive, and tension in sync—reducing rework and boosting throughput.</p>
+    </div>
+  </section>
+
+  <!-- Models -->
+  <main id="models">
+    <section class="section-machines container" aria-labelledby="our-machines-title">
+      <div class="center">
+        <h1 id="our-machines-title">Our Models</h1>
+        <p class="lead" style="color:#6b7280">Advanced textile solutions for every production need</p>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="machines-row row-1">
+        <div class="tile small" data-model="DY-908">
+          <div class="img-wrap"><img src="images/single.png" alt="DY-908">
+            <div class="overlay"><h4>DY-908</h4><p>9 Needles • 8 Heads • Tubular</p></div>
+          </div>
+        </div>
+        <div class="tile wide" data-model="DY-912">
+          <div class="img-wrap"><img src="images/multi.jpeg" alt="DY-912">
+            <div class="overlay"><h4>DY-912</h4><p>9 Needles • 12 Heads • Tubular</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="machines-row row-2">
+        <div class="tile wide" data-model="DY-918">
+          <div class="img-wrap"><img src="images/perforation.jpeg" alt="DY-918">
+            <div class="overlay"><h4>DY-918</h4><p>Automatic High-Speed (18 Heads)</p></div>
+          </div>
+        </div>
+        <div class="tile small" data-model="DY606+6">
+          <div class="img-wrap"><img src="images/Quilting.png" alt="DY606+6">
+            <div class="overlay"><h4>DY606+6</h4><p>Multi-Head Mixed Embroidery</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="machines-row row-1">
+        <div class="tile small" data-model="DY-1204">
+          <div class="img-wrap"><img src="images/single.png" alt="DY-1204">
+            <div class="overlay"><h4>DY-1204</h4><p>4 Heads • Tubular</p></div>
+          </div>
+        </div>
+        <div class="tile wide" data-model="DY-1206">
+          <div class="img-wrap"><img src="images/multi.jpeg" alt="DY-1206">
+            <div class="overlay"><h4>DY-1206</h4><p>6 Heads • Tubular</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explore-row">
+        <a class="btn-explore" href="Products-Details.html">Explore <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="model-modal" id="modelModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="sheet">
+      <div class="sheet-header">
+        <h3 class="sheet-title" id="mTitle">Model</h3>
+        <button class="sheet-close" id="mClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sheet-top">
+        <div class="top-left">
+          <div class="top-img"><img id="mImg" alt=""></div>
+          <div>
+            <div class="chip" id="mBadge"><i class="fa-solid fa-star"></i><span>Embroidery</span></div>
+            <h4 class="top-title" id="mModel">Model</h4>
+            <p class="top-sub" id="mDesc">Description</p>
+
+            <div class="top-actions">
+              <button class="btn" id="mCopy"><i class="fa-solid fa-link"></i> Copy link</button>
+              <div class="likes" id="mLike"><i class="fa-solid fa-thumbs-up"></i> <span id="mLikes">0</span></div>
+              <button class="btn primary" id="mWhats"><i class="fa-solid fa-phone"></i> Get Quote on WhatsApp</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- quick spec chips (optional) -->
+        <div id="mQuickSpecs" style="display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start"></div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="overview">Overview</button>
+          <button class="tab-btn" data-tab="specs">Specs</button>
+          <button class="tab-btn" data-tab="features">Features</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-overview">
+          <p id="mOverview" style="color:#4b5563;line-height:1.7;margin:10px 2px 0"></p>
+        </div>
+
+        <div class="tab-panel" id="tab-specs">
+          <table class="spec-table" id="mSpecTable"></table>
+        </div>
+
+        <div class="tab-panel" id="tab-features">
+          <div class="feat-grid" id="mFeatGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Footer nav toggle (if present)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const menuIcon = menuToggle?.querySelector('i');
+    menuToggle?.addEventListener('click',()=>{
+      navCenter.classList.toggle('open');
+      if(menuIcon){menuIcon.classList.toggle('fa-bars');menuIcon.classList.toggle('fa-xmark');}
+    });
+
+    // ===== Model data with Overview / Specs / Features =====
+    const MODELS = [
+      {
+        id:'DY-908', badge:'Embroidery', image:'images/single.png',
+        title:'DY-908', subtitle:'9 Needles 8 Heads Tubular Embroidery Machine.',
+        overview:'Compact 8-head tubular machine ideal for SMEs. Balanced head spacing and auto color change reduce cycle time while maintaining stitch quality.',
+        quick:['8 Heads','9 Needles','Tubular','Auto Color Change'],
+        likes:12,
+        specs:{
+          'Embroidery Area (mm)':'400 × 450',
+          'Heads':'8','Needles per Head':'9','Max Speed (spm)':'1000',
+          'Memory':'20 million stitches','Power':'AC 380V 50/60Hz'
+        },
+        features:[
+          'Automatic thread trim & break detection',
+          'Servo-driven X/Y with low vibration',
+          'Cap/Flat/Tubular frames included',
+          'USB + network design transfer'
+        ]
+      },
+      {
+        id:'DY-912', badge:'Embroidery', image:'images/multi.jpeg',
+        title:'DY-912', subtitle:'9 Needles 12 Heads Tubular Embroidery Machine',
+        overview:'Production-grade multi-head for apparel runs. Optimized motion profile keeps quality consistent at speed.',
+        quick:['12 Heads','9 Needles','Tubular','Production Grade'],
+        likes:18,
+        specs:{
+          'Embroidery Area (mm)':'400 × 450',
+          'Heads':'12','Needles per Head':'9','Max Speed (spm)':'1050',
+          'Communication':'LAN / USB','Power':'AC 380V 50/60Hz'
+        },
+        features:[
+          'Auto lubrication system',
+          'Independent color change motors',
+          'LED work lights per head',
+          'Integrated design queue management'
+        ]
+      },
+      {
+        id:'DY-918', badge:'High-Speed', image:'images/perforation.jpeg',
+        title:'DY-918', subtitle:'Multi-Head Automatic High-Speed Embroidery (18 Heads)',
+        overview:'High-throughput line for bulk orders. Rigid frame with reinforced rails keeps registration tight even at top speed.',
+        quick:['18 Heads','High-Speed','Auto Thread Trim','Large Area'],
+        likes:26,
+        specs:{
+          'Embroidery Width (mm)':'1200',
+          'Heads':'18','Needles per Head':'9','Max Speed (spm)':'1100',
+          'Frame Type':'Flat & Tubular','Power':'AC 380V 50/60Hz'
+        },
+        features:[
+          'Real-time production counter & diagnostics',
+          'Precision thread tensioning system',
+          'Smart stop on thread break',
+          'Remote service support'
+        ]
+      },
+      {
+        id:'DY606+6', badge:'Mixed', image:'images/Quilting.png',
+        title:'DY606+6', subtitle:'Multi-Head Mixed Embroidery Machine',
+        overview:'Mixed heads allow chenille + lockstitch combinations for premium decorative work.',
+        quick:['Mixed Embroidery','High Torque','Multi-Material','Precision Drive'],
+        likes:9,
+        specs:{
+          'Embroidery Area (mm)':'500 × 450',
+          'Heads':'12 (6+6)','Needles per Head':'Varies','Max Speed (spm)':'900',
+          'Speciality':'Mixed (chenille/chain/lock)','Power':'AC 380V 50/60Hz'
+        },
+        features:[
+          'Dual-mode head selection',
+          'Heavy fabric drive support',
+          'Pattern repeat & mirror',
+          'Quick-swap presser feet'
+        ]
+      },
+      {
+        id:'DY-1204', badge:'Embroidery', image:'images/single.png',
+        title:'DY-1204', subtitle:'4 Heads Tubular Embroidery Machine',
+        overview:'Entry multi-head with small footprint—perfect for boutique labels ramping up.',
+        quick:['4 Heads','Compact','Energy Efficient','Tubular'],
+        likes:7,
+        specs:{
+          'Embroidery Area (mm)':'400 × 450',
+          'Heads':'4','Needles per Head':'12','Max Speed (spm)':'1050',
+          'Footprint (mm)':'2500 × 1200','Power':'AC 220V 50/60Hz'
+        },
+        features:[
+          'Quiet drive motors',
+          'On-screen job preview',
+          'Color change optimization',
+          'Safety stop sensors'
+        ]
+      },
+      {
+        id:'DY-1206', badge:'Embroidery', image:'images/multi.jpeg',
+        title:'DY-1206', subtitle:'6 Heads Tubular Embroidery Machine',
+        overview:'Balanced 6-head platform for steady throughput with flexible job changeovers.',
+        quick:['6 Heads','Auto Color Change','Tubular','Balanced Throughput'],
+        likes:13,
+        specs:{
+          'Embroidery Area (mm)':'400 × 450',
+          'Heads':'6','Needles per Head':'12','Max Speed (spm)':'1050',
+          'Controller':'7" touch','Power':'AC 220V 50/60Hz'
+        },
+        features:[
+          'Job memory & repeat counters',
+          'Quick hoop change system',
+          'Networked design library',
+          'Low-maintenance belt path'
+        ]
+      }
+    ];
+
+    // ===== DOM hooks
+    const modal = document.getElementById('modelModal');
+    const mClose = document.getElementById('mClose');
+    const mTitle = document.getElementById('mTitle');
+    const mImg   = document.getElementById('mImg');
+    const mModel = document.getElementById('mModel');
+    const mDesc  = document.getElementById('mDesc');
+    const mBadge = document.getElementById('mBadge').lastElementChild;
+    const mLikes = document.getElementById('mLikes');
+    const mCopy  = document.getElementById('mCopy');
+    const mWhats = document.getElementById('mWhats');
+    const mQuick = document.getElementById('mQuickSpecs');
+    const mOverview = document.getElementById('mOverview');
+    const mSpecTable = document.getElementById('mSpecTable');
+    const mFeatGrid = document.getElementById('mFeatGrid');
+
+    let current = null;
+
+    function pill(text){
+      const el = document.createElement('div');
+      el.className = 'chip';
+      el.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${text}</span>`;
+      return el;
+    }
+
+    function renderTable(obj){
+      mSpecTable.innerHTML = '';
+      Object.entries(obj).forEach(([k,v])=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<th>${k}</th><td>${v}</td>`;
+        mSpecTable.appendChild(tr);
+      });
+    }
+
+    function openModel(id){
+      const m = MODELS.find(x=>x.id===id);
+      if(!m) return;
+      current = m;
+
+      mTitle.textContent = m.title;
+      mModel.textContent = `${m.title} — ${m.subtitle}`;
+      mDesc.textContent = m.subtitle;
+      mImg.src = m.image; mImg.alt = `${m.title} image`;
+      mBadge.textContent = m.badge;
+      mLikes.textContent = m.likes;
+
+      // Quick spec chips
+      mQuick.innerHTML = '';
+      m.quick.forEach(q => mQuick.appendChild(pill(q)));
+
+      // Tabs content
+      mOverview.textContent = m.overview;
+      renderTable(m.specs);
+      mFeatGrid.innerHTML = '';
+      m.features.forEach(f=>{
+        const div = document.createElement('div');
+        div.className = 'feat';
+        div.textContent = f;
+        mFeatGrid.appendChild(div);
+      });
+
+      // Actions
+      mCopy.onclick = ()=>{
+        const url = `${location.origin}${location.pathname}?model=${encodeURIComponent(m.id)}`;
+        navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));
+      };
+      mWhats.onclick = ()=>{
+        const msg = encodeURIComponent(`Hi Duke Jia Team, I'm interested in model ${m.title}. Please share pricing & availability.`);
+        window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+      };
+      document.getElementById('mLike').onclick = ()=>{
+        m.likes += 1;
+        mLikes.textContent = m.likes;
+      };
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      activateTab('overview');
+    }
+
+    function closeModel(){
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Card clicks
+    document.querySelectorAll('[data-model]').forEach(el=>{
+      el.addEventListener('click', ()=> openModel(el.dataset.model));
+    });
+
+    // Close handlers
+    mClose.addEventListener('click', closeModel);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModel(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModel(); });
+
+    // Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    function activateTab(name){
+      tabButtons.forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(`tab-${name}`).classList.add('active');
+    }
+    tabButtons.forEach(b=>b.addEventListener('click', ()=>activateTab(b.dataset.tab)));
+
+    // Deep link (?model=ID)
+    const params = new URLSearchParams(location.search);
+    const deep = params.get('model');
+    if (deep && MODELS.some(m=>m.id===deep)) openModel(deep);
+  </script>
+</body>
+</html>

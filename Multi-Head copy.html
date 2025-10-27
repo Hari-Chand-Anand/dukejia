@@ -1,218 +1,547 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dukejia — Multi-Head Embroidery</title>
-<meta name="theme-color" content="#0b1224" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-<style>
-/* Shared design tokens & base */
-:root{
-  --bg:#0b1224; --bg-elev:#0e1735; --panel:#0c1530;
-  --ink:#e8ecf6; --muted:#a5b0c7;
-  --brand:#6d28d9; --brand-2:#b794f4;
-  --bd:rgba(255,255,255,.10); --bd-2:rgba(255,255,255,.18);
-  --chip:#3a4465; --success:#22c55e;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dukejia — Multi-Head Embroidery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== DUKEJIA Design Tokens (brand palette) ===== */
+    :root{
+      /* Core Brand */
+      --pur:#045285;
+      --pur2:#833ade;
+
+      /* Warm Secondaries */
+      --coral:#F4845F; --gold:#F7B731; --sage:#98D8C8;
+
+      /* Accents */
+      --lavender:#A29BFE; --terracotta:#E17055;
+
+      /* Neutrals */
+      --cream:#FAF9F6; --lgray:#E8EDF2; --charcoal:#2D3436;
+
+      /* Map to existing names so classes work unchanged */
+      --bg:var(--cream);
+      --text:var(--charcoal);
+      --muted:#5f6970;
+      --muted2:#6f7a82;
+      --border:rgba(1,40,107,.12);
+      --bd-2:rgba(1,40,107,.14);
+
+      --primary:var(--pur2);
+      --accent:var(--lavender);
+
+      /* Buttons & Gradients */
+      --brand:var(--pur); --brand-2:var(--pur2);
+      --cta:var(--pur2); --cta2:var(--pur);
+
+      /* Surfaces */
+      --card:#ffffff; --surface:#ffffff; --panel:#ffffff; --bg-soft:#FDFCFB; --chip:#dfe8f4;
+
+      /* Ink */
+      --ink:var(--charcoal); --ink-inv:#ffffff;
+
+      /* Hero image */
+      --hero-img:url('assets/duke-emb-perf-hero.jpg');
+    }
+
+    /* ===== Base Styles ===== */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    /* ===== Container ===== */
+    .container{margin:0 auto;padding:0 40px}
+    @media (max-width:1024px){.container{max-width:100%;padding:0 24px}}
+    @media (max-width:480px){.container{padding:0 16px}}
+
+    /* ===== Header ===== */
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(250,249,246,.85);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--lgray)
+    }
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+
+    .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .brand-name{color:var(--pur);font-weight:900;font-size:18px;text-decoration:none}
+
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .nav-center a{color:var(--charcoal);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:var(--pur2)}
+
+    .btn-quote{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--lavender),var(--pur2));
+      color:#3a2b00;text-decoration:none;box-shadow:#bcb8ee;
+    }
+    .btn-quote i{opacity:.9}
+
+    /* Mobile Navigation */
+    .menu-toggle {
+      display:none;background:none;border:none;color:var(--pur);
+      font-size:1.5rem;cursor:pointer;padding:8px;border-radius:6px;transition:background-color .3s;
+    }
+    .menu-toggle:hover { background-color: rgba(1,40,107,.08); }
+
+    @media (max-width:780px){
+      .nav-center {
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: rgba(250,249,246,.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column; padding: 20px 24px; gap: 0;
+        transform: translateY(-100%); opacity: 0; visibility: hidden;
+        transition: all .3s ease;
+        border-bottom: 1px solid var(--lgray);
+      }
+      .nav-center.open { transform: translateY(0); opacity: 1; visibility: visible; }
+      .nav-center a {
+        padding:16px 0; width:100%; border-bottom:1px solid #eee;
+        display:flex; align-items:center; justify-content:flex-start;
+      }
+      .nav-center a:last-child { border-bottom:none; }
+      .menu-toggle { display:block; }
+      .btn-quote { width:100%; justify-content:center; }
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;overflow:hidden;isolation:isolate;
+      color:var(--ink);background:var(--cream);
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(2,115,191,.08), transparent 60%),
+        radial-gradient(800px 380px at -10% 90%, rgba(162,155,254,.10), transparent 60%),
+        var(--hero-img) right 25% / cover no-repeat;
+      filter:saturate(1.02) contrast(1.02);transform:scale(1.02);
+      z-index:-2;
+    }
+    .hero-overlay{
+      position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(250,249,246,.85) 0%, rgba(250,249,246,.95) 60%, rgba(250,249,246,1) 100%),
+        radial-gradient(600px 300px at 25% 20%, rgba(1,40,107,.06), transparent 60%);
+      backdrop-filter: saturate(1.05) blur(.6px); z-index:-1;
+    }
+    .hero-inner{max-width:1500px;margin:0 auto;}
+
+    .hero::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background-image:
+        radial-gradient(circle at 0 0, rgba(151,173,189,.04) 0 2px, transparent 2px),
+        radial-gradient(circle at 4px 4px, rgba(151,173,189,.04) 0 2px, transparent 2px);
+      background-size:12px 12px,12px 12px; mix-blend-mode:multiply;
+    }
+
+    .trust-chip{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;
+      background:#fff;border:1px solid var(--lgray);backdrop-filter:blur(2px);
+      color:var(--pur);font-weight:800
+    }
+    .trust-chip i{color:var(--pur2)}
+
+    .headline{
+      font-size:clamp(2.6rem,5.2vw,5rem);line-height:1.05;margin:.9rem 0 1rem;
+      font-weight:900;letter-spacing:-.02em;color:var(--pur);
+    }
+    .headline .accent{
+      color:transparent;
+      background:linear-gradient(90deg,var(--pur),var(--pur2));
+      -webkit-background-clip:text;background-clip:text
+    }
+
+    .sub{
+      font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;
+      color:#4a5258; max-width:100ch; margin:0 0 1.75rem;
+    }
+
+    .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;
+      box-shadow:0 10px 24px rgba(1,40,107,.25); transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(2,115,191,.28); }
+    .btn-secondary{background:#fff;color:var(--pur);border:1px solid var(--lgray)}
+
+    @media (max-width:1100px){ .headline{font-size:52px} }
+    @media (max-width:780px){
+      .headline{font-size:38px}
+      .sub{font-size:18px}
+      .btn-lg{width:100%;justify-content:center}
+    }
+    @media(max-width:480px){ .trust-chip{font-size:.85rem; padding:8px 12px;} }
+
+    /* ===== Section Spacing ===== */
+    section{padding:107px 0;border-bottom:1px solid var(--lgray)}
+    @media (max-width:768px){ section{padding:48px 0} }
+
+    /* ===== Warm CTA button ===== */
+    .btn-orange{
+      display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800;
+      background:linear-gradient(90deg,var(--lavender),var(--pur2));
+      color:var(--card); text-decoration:none; box-shadow:0 10px 28px rgba(244,132,95,.24);
+      transition:transform .25s; }
+    .btn-orange:hover{ transform:translateY(-2px); }
+
+    /* ===== Flagship Section ===== */
+    .flagship{
+      position:relative;overflow:hidden;border-bottom:1px solid var(--lgray);
+      display:flex; align-items:center; justify-content:space-between; gap:48px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);
+    }
+    .flagship-bg{ display:none; }
+    .flagship-wrap{ display:flex; align-items:center; justify-content:space-between; gap:48px; }
+    .flagship-badge{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px;
+      font-weight:700; font-size:14px; background:rgba(2,115,191,.10);
+      border:1px solid rgba(2,115,191,.25); color:var(--pur)
+    }
+    .flagship-title{margin:18px 0 8px; font-size:56px; line-height:1.05; letter-spacing:.2px; color:var(--pur)}
+    .flagship-lead{color:#4f5960; font-size:18px; max-width:58ch}
+    .flagship-cta{display:flex; gap:14px; margin:20px 0 10px; flex-wrap:wrap}
+    .btn-ghost{display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800; text-decoration:none;background:#fff; color:var(--pur); border:1px solid var(--lgray)}
+    .flagship-card{ border-radius:24px; padding:20px; box-shadow:0 20px 60px rgba(0,0,0,.08); width:min(50vw, 570px); background:#fff; border:1px solid var(--lgray)}
+    .flagship-image-box{ border-radius:16px; overflow:hidden; background:#fff; padding:0; }
+    .flagship-image-box img{ width:100%; height:clamp(300px, 43vh, 1000px); object-fit:contain; display:block; }
+
+    @media (max-width:1100px){ .flagship-wrap{grid-template-columns:1fr} .flagship-title{font-size:44px} .flagship-screen{height:360px} }
+    @media (max-width:900px){ .flagship-wrap{flex-direction:column; align-items:flex-start;} .flagship-card{width:100%;} .flagship-image-box img{height:clamp(260px, 42vh, 500px);} }
+    @media (max-width:560px){ .flagship-title{font-size:36px} .btn-orange, .btn-ghost{width:100%; text-align:center} }
+
+    /* ===== Our Machines – 2 rows, asymmetric columns ===== */
+    .section-machines { padding: 64px 0; }
+    .section-machines .center { text-align: center; }
+    .section-machines h1 { font-size: 44px; margin: 0 0 8px; color: var(--pur); }
+    .section-machines .lead { color: var(--muted); font-size: 18px; max-width: 840px; margin: 0 auto; }
+
+    /* each row is its own grid */
+    .machines-row {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* Row 1: [small | wide]  •  Row 2: [wide | small] */
+    .machines-row.row-1 { grid-template-columns: 0.9fr 1.6fr; }
+    .machines-row.row-2 { grid-template-columns: 1.6fr 0.9fr; }
+
+    /* cards */
+    .tile {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--lgray);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.06);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,.12); border-color: rgba(2,115,191,.28); }
+
+    /* image sizing */
+    .img-wrap { position: relative; width: 100%; height: -webkit-fill-available; overflow: hidden; background: linear-gradient(90deg, rgba(1,40,107,.08), rgba(2,115,191,.10)); }
+    .img-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+    .tile:hover .img-wrap img { transform: scale(1.05); }
+
+    /* aspect ratios for small vs wide tiles */
+    .tile.small .img-wrap { aspect-ratio: 4 / 3; }   /* small */
+    .tile.wide  .img-wrap { aspect-ratio: 21 / 9; }  /* wide banner */
+
+    /* overlay */
+    .overlay {
+      position:absolute; left:0; right:0; bottom:0;
+      background:linear-gradient(transparent, #03002a);
+      padding:18px; color:#fff; transform:translateY(4px); transition:transform .25s ease;
+    }
+    .tile:hover .overlay { transform:translateY(0); }
+    .overlay h4 { margin:0 0 6px; font-size:1.1rem; font-weight:800; color:#fff; }
+    .overlay p  { margin:0; opacity:.9; font-size:.95rem; }
+
+    /* Tablet: balance to 2 equal columns */
+    @media (max-width: 1024px) {
+      .machines-row.row-1,
+      .machines-row.row-2 { grid-template-columns: 1fr 1fr; }
+      .tile.wide .img-wrap { aspect-ratio: 16 / 9; }
+    }
+
+    /* Mobile: single column stack */
+    @media (max-width: 720px) {
+      .machines-row.row-1,
+      .machines-row.row-2 { grid-template-columns: 1fr; }
+      .tile.wide .img-wrap,
+      .tile.small .img-wrap { aspect-ratio: 4 / 3; }
+    }
+    /* Explore more button under Models */
+.explore-row{
+  display:flex;
+  justify-content:center;
+  margin-top:28px;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+.btn-explore{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 20px; border-radius:14px; font-weight:800;
+  background:#fff; color:var(--primary);
+  border:1px solid var(--lgray);
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-explore:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(2,115,191,.18);
+  background:linear-gradient(90deg,var(--brand),var(--brand-2));
+  color:#fff; border-color:transparent;
+}
+    /* ===== Footer ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--lgray);color:#e7f1ff;background:var(--pur)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+    .footer-brand{
+      margin:0 0 10px;font-size:36px;font-weight:900;
+      background:linear-gradient(90deg,#ffffff,var(--sage));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .footer-about p{margin:0 0 18px;color:#e7f1ff}
+    .footer-socials{display:flex; gap:12px}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:rgba(255,255,255,.1);color:#e7f1ff;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+    .soc:hover{transform:translateY(-1px)}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links ul{list-style:none;padding:0;margin:0}
+    .footer-links li{margin:10px 0}
+    .footer-links a{color:#e7f1ff;text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
+    .frow .ico{color:#e7f1ff;width:28px;height:28px;display:grid;place-items:center;background:rgba(255,255,255,.1);border-radius:8px;border:1px solid rgba(255,255,255,.16)}
+    .frow .muted{color:#d5e3ff}
+    .foot-divider{height:1px;background:rgba(255,255,255,.18);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#d9e7ff;font-size:14px}
+    .legal a{color:#d9e7ff;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#fff}
+    @media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
 
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.section{padding:56px 0}
-.h1{font-size:44px;line-height:1.1;margin:0 0 10px}
-.lead{color:var(--muted);font-size:18px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--bd);border-radius:18px}
-.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(109,40,217,.18);border:1px solid rgba(109,40,217,.35);color:#ddd4ff;font-weight:700;border-radius:999px;padding:6px 10px}
-
-/* Header + nav */
-.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,18,36,.98),rgba(11,18,36,.86));backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-mark{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:8px 10px;border-radius:10px;font-weight:800}
-.brand-name{font-weight:800}
-.nav a{font-weight:600;opacity:.95;padding:8px 12px;border-radius:10px}
-.nav a:hover{background:rgba(255,255,255,.06)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
-.btn.ghost{background:transparent;border:1px solid var(--bd-2)}
-.btn.chip{background:rgba(255,255,255,.05);border:1px solid var(--bd);font-weight:700}
-
-/* Hero */
-.hero{padding:80px 0;background:
-  radial-gradient(800px 400px at 70% -20%, rgba(109,40,217,.35), transparent 60%),
-  radial-gradient(800px 400px at 10% -20%, rgba(183,148,244,.25), transparent 60%)}
-.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-
-/* Filters */
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.filters .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--bd);background:rgba(255,255,255,.05);font-weight:700}
-.filters .chip.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent}
-
-/* Models grid */
-.models{display:grid;grid-template-columns:1fr;gap:22px;margin-top:26px}
-@media(min-width:760px){.models{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1100px){.models{grid-template-columns:repeat(3,1fr)}}
-.model-card .shot{border-radius:16px;overflow:hidden;border:1px solid var(--bd);background:var(--panel)}
-.model-card .shot img{width:100%;height:200px;object-fit:cover}
-.model-card .body{padding:14px 16px}
-.model-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.model-title h3{margin:0;font-size:18px}
-.tag{font-size:12px;background:rgba(255,255,255,.06);border:1px solid var(--bd);padding:4px 8px;border-radius:999px}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 6px}
-.spec{font-size:13px;color:var(--muted)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-small.tiny{display:block;color:var(--muted);margin-top:6px}
-
-.footer{border-top:1px solid var(--bd);padding:28px 0;color:var(--muted)}
-</style>
+    /* ===== Additional Header Styles ===== */
+    .header{position:sticky;top:0;z-index:40;
+      background:linear-gradient(180deg,rgba(250,249,246,.95),rgba(250,249,246,.75));
+      backdrop-filter:blur(8px);border-bottom:1px solid var(--lgray)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+    .nav a:hover{background:rgba(2,115,191,.06)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
+    .btn.outline{background:transparent;border:1px solid var(--bd-2)}
+  </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="Back to Home">
-      <span class="brand-mark">DJ</span><span class="brand-name">Dukejia</span>
-    </a>
-    <nav class="nav">
-      <a href="single-head.html">Single-Head</a>
-      <a href="multi-head.html" aria-current="page">Multi-Head</a>
-      <a href="perforation.html">Perforation</a>
-      <a href="quilting.html">Quilting</a>
-      <a class="btn ghost" href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Duke Jia Home">
+        <span><img src="images/dukejia.png" width="190" height="55" alt="DUKEJIA"></span>
+      </a>
 
-<section class="hero">
-  <div class="container">
-    <span class="badge">Embroidery</span>
-    <h1 class="h1">Multi-Head Embroidery</h1>
-    <p class="lead">Stable, repeatable stitch quality across heads with fast changeovers and shared spares—built for Indian production floors.</p>
-    <div class="actions">
-      <a class="btn" href="single-head.html">View Single-Head</a>
-      <a class="btn ghost" href="index.html#contact">Enquire</a>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-center" aria-label="Primary">
+        <a href="About.html">About</a>
+        <a href="Products-Details.html">Products</a>
+        <a href="Contact.html">Contact</a>
+        <a class="btn-quote"
+           href="https://wa.me/919999999999?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
+           target="_blank" rel="noopener">
+          <i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
     </div>
-    <div class="filters" aria-label="Quick filters">
-      <span class="chip active">All</span>
-      <span class="chip">9 Heads</span>
-      <span class="chip">12 Heads</span>
-      <span class="chip">15 Heads</span>
-      <span class="chip">Flat + Cap</span>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="trust-chip">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        Trusted by Textile Manufacturers Across India
+      </div>
+
+      <h1 class="headline">
+        Multi Head Embroidery
+        <br />
+        <span class="accent">Machinesy</span>
+      </h1>
+
+      <p class="sub">
+        Precision single-head embroidery engineered for India's production hubs. Unified controls keep design, drive and tension in sync and reducing rework and boosting throughput.</p>
+
+      <div class="cta-row">
+        <a class="btn-lg btn-primary" href="#models">
+          View Models <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<main class="section">
-  <div class="container">
-    <div class="models">
-      <!-- Model A -->
-      <article class="card model-card">
-        <div class="shot">
-          <img src="images/multi/DJ-E912.jpg" alt="Dukejia DJ-E912 12-head embroidery machine">
-        </div>
-        <div class="body">
-          <div class="model-title">
-            <h3>DJ-E912</h3>
-            <span class="tag">12-Head</span>
-          </div>
-          <p class="spec">Flat + Cap compatible</p>
-          <div class="specs">
-            <div class="spec">Area/Head: 400 × 500 mm</div>
-            <div class="spec">Speed: up to 1000 SPM</div>
-            <div class="spec">Gauge: 400 mm</div>
-            <div class="spec">Drive: Servo</div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="catalogs/multi/DJ-E912_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
-            <a class="btn chip" href="index.html#contact">Get Pricing</a>
-          </div>
-          <small class="tiny">Balanced throughput for mid-to-large orders.</small>
-        </div>
-      </article>
 
-      <!-- Model B -->
-      <article class="card model-card">
-        <div class="shot">
-          <img src="images/multi/DJ-E915.jpg" alt="Dukejia DJ-E915 15-head embroidery machine">
-        </div>
-        <div class="body">
-          <div class="model-title">
-            <h3>DJ-E915</h3>
-            <span class="tag">15-Head</span>
-          </div>
-          <p class="spec">High-density production</p>
-          <div class="specs">
-            <div class="spec">Area/Head: 400 × 500 mm</div>
-            <div class="spec">Speed: up to 1000 SPM</div>
-            <div class="spec">Auto-trim</div>
-            <div class="spec">LAN / USB</div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="catalogs/multi/DJ-E915_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
-            <a class="btn chip" href="index.html#contact">Request Demo</a>
-          </div>
-          <small class="tiny">Popular in Surat & Tirupur hubs.</small>
-        </div>
-      </article>
+  <!-- ===== Our Machines (two rows: small|wide then wide|small) ===== -->
+  <main id="models">
+    <section id="Our Machines" class="section-machines container" aria-labelledby="our-machines-title">
+      <div class="center">
+        <h1 id="our-machines-title">Our Models</h1>
+        <p class="lead">Advanced textile solutions for every production need</p>
+      </div>
 
-      <!-- Model C -->
-      <article class="card model-card">
-        <div class="shot">
-          <img src="images/multi/DJ-E920.jpg" alt="Dukejia DJ-E920 20-head embroidery machine">
-        </div>
-        <div class="body">
-          <div class="model-title">
-            <h3>DJ-E920</h3>
-            <span class="tag">20-Head</span>
+      <!-- ROW 1: col-1 small, col-2 wide -->
+      <div class="machines-row row-1">
+        <!-- Grid 1.1 — SMALL -->
+        <a href="Single-Head.html" class="tile small" aria-label="Single Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/single.png" alt="Single Head Needle Embroidery Machine">
+            <div class="overlay">
+              <h4>DY-908</h4>
+              <p>9 Needles 8 Heads Tubular Embroidery Machine.</p>
+            </div>
           </div>
-          <p class="spec">Max throughput</p>
-          <div class="specs">
-            <div class="spec">Area/Head: 400 × 450 mm</div>
-            <div class="spec">Speed: up to 950 SPM</div>
-            <div class="spec">Gauge: 400 mm</div>
-            <div class="spec">Shared spares</div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="catalogs/multi/DJ-E920_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
-            <a class="btn chip" href="index.html#contact">Talk to Sales</a>
-          </div>
-          <small class="tiny">For continuous multi-style lines.</small>
-        </div>
-      </article>
+        </a>
 
-      <!-- Model D -->
-      <article class="card model-card">
-        <div class="shot">
-          <img src="images/multi/DJ-E909C.jpg" alt="Dukejia DJ-E909C 9-head compact embroidery machine">
+        <!-- Grid 1.2 — WIDE -->
+        <a href="Multi-Head.html" class="tile wide" aria-label="Multi Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/multi.jpeg" alt="Multi Head Needle Embroidery">
+            <div class="overlay">
+              <h4>DY-912</h4>
+              <p>9 Needles 12 Heads Tubular Embroidery Machine</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ROW 2: col-1 wide, col-2 small (reversed) -->
+      <div class="machines-row row-2">
+        <!-- Grid 2.1 — WIDE -->
+        <a href="Perforation.html" class="tile wide" aria-label="Perforation systems">
+          <div class="img-wrap">
+            <img src="images/perforation.jpeg" alt="Perforation System">
+            <div class="overlay">
+              <h4>DY-918</h4>
+              <p>Multi-Head Automatic High-Speed Embroidery (18 Heads)</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Grid 2.2 — SMALL -->
+        <a href="Quilting.html" class="tile small" aria-label="Quilting machines">
+          <div class="img-wrap">
+            <img src="images/Quilting.png" alt="Quilting Machine">
+            <div class="overlay">
+              <h4>DY606+6</h4>
+              <p>Multi-Head Mixed Embroidery Machine</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ROW 3: col-1 small, col-2 wide -->
+      <div class="machines-row row-1">
+        <!-- Grid 1.1 — SMALL -->
+        <a href="Single-Head.html" class="tile small" aria-label="Single Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/single.png" alt="Single Head Needle Embroidery Machine">
+            <div class="overlay">
+              <h4>DY-1204</h4>
+              <p>4 Heads Tubular Embroidery Machine</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Grid 1.2 — WIDE -->
+        <a href="Multi-Head.html" class="tile wide" aria-label="Multi Head embroidery machines">
+          <div class="img-wrap">
+            <img src="images/multi.jpeg" alt="Multi Head Needle Embroidery">
+            <div class="overlay">
+              <h4>DY-1206</h4>
+              <p>6 Heads Tubular Embroidery Machine</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="explore-row">
+  <a class="btn-explore" href="Products-Details.html">
+    Explore <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+  </a>
+</div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-brand">Duke Jia</h3>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 15 years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook" class="soc">f</a>
+          <a href="#" aria-label="Instagram" class="soc">◎</a>
+          <a href="#" aria-label="LinkedIn" class="soc">in</a>
         </div>
-        <div class="body">
-          <div class="model-title">
-            <h3>DJ-E909C</h3>
-            <span class="tag">9-Head</span>
-          </div>
-          <p class="spec">Compact line</p>
-          <div class="specs">
-            <div class="spec">Area/Head: 360 × 450 mm</div>
-            <div class="spec">Speed: up to 1000 SPM</div>
-            <div class="spec">Energy-efficient</div>
-            <div class="spec">Quiet Drive</div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="catalogs/multi/DJ-E909C_Catalog.pdf" target="_blank" rel="noopener">Brochure</a>
-            <a class="btn chip" href="index.html#contact">Enquire</a>
-          </div>
-          <small class="tiny">Ideal for growing job-work units.</small>
-        </div>
-      </article>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Products-Details.html">Products</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="frow"><span class="ico">📍</span><div><span class="muted">PAN-India Service Network</span></div></div>
+        <div class="frow"><span class="ico">📞</span><div>+91 9350513789</div></div>
+        <div class="frow"><span class="ico">✉️</span><div>embroidery@grouphca.com</div></div>
+      </div>
     </div>
-  </div>
-</main>
 
-<footer class="footer">
-  <div class="container">© Dukejia • Multi-Head Embroidery</div>
-</footer>
+    <div class="container foot-divider"></div>
 
+    <div class="container foot-bottom">
+      <div>© <span id="year"></span> Duke Jia – Part of Jia Group. All rights reserved.</div>
+      <nav class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const menuIcon = menuToggle.querySelector('i');
+
+    menuToggle.addEventListener('click', () => {
+      navCenter.classList.toggle('open');
+      if (navCenter.classList.contains('open')) {
+        menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-center a').forEach(link => {
+      link.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+  </script>
 </body>
 </html>
