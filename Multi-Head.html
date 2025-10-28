@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dukejia — Multi-Head Embroidery</title>
+  <title>Dukejia - Multi-Head Embroidery</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,7 +155,7 @@
     .dj-top{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;padding:18px}
     @media (max-width:900px){.dj-top{grid-template-columns:1fr}}
     .dj-left{display:flex;gap:16px;align-items:flex-start}
-    .dj-thumb{width:220px;min-width:220px;height:160px;border:1px solid var(--lgray);border-radius:14px;background:#f5f7fb;overflow:hidden;display:grid;place-items:center}
+    .dj-thumb{width:220px;min-width:220px;/*height:160px;*/border:1px solid var(--lgray);border-radius:14px;background:#f5f7fb;overflow:hidden;display:grid;place-items:center}
     .dj-thumb img{width:100%;height:100%;object-fit:contain}
     .dj-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem;background:#eef2ff;color:#444;border:1px solid #e5e7eb}
     .dj-top-title{margin:2px 0 6px;font-size:1.1rem;font-weight:900}
@@ -500,7 +500,7 @@
     <div class="container footer-grid">
       <div class="footer-about">
         <h3 class="footer-brand">Duke Jia</h3>
-        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 15 years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 100+ years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
         <div class="footer-socials">
           <a href="#" aria-label="Facebook" class="soc">f</a>
           <a href="#" aria-label="Instagram" class="soc">◎</a>
@@ -777,7 +777,7 @@
       current = m;
 
       djTitle.textContent = m.title;
-      djModel.textContent = `${m.title} — ${m.subtitle}`;
+      djModel.textContent = `${m.title} - ${m.subtitle}`;
       djSub.textContent   = m.subtitle;
       djImg.src = m.image; djImg.alt = `${m.title} image`;
       djBadgeSpan.textContent = m.badge;
