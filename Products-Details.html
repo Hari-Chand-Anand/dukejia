@@ -228,7 +228,7 @@
           <!-- ====== CTA ROW (updated: Play replaces Like) ====== -->
           <div class="cta-row">
             <button class="btn" id="pdCopy"><i class="fa-solid fa-link"></i> Copy link</button>
-            <button class="btn" id="pdPlay"><i class="fa-solid fa-play"></i> Play video</button>
+            <button class="btn" id="pdPlay"><i class="fa-solid fa-play"></i> Watch Demo</button>
             <a class="btn btn-primary" id="pdWhats" target="_blank" rel="noopener">
               <i class="fa-brands fa-whatsapp"></i> Get Quote on WhatsApp
             </a>
@@ -526,7 +526,7 @@
       // Enable/disable Play based on media presence
       const hasVid = !!(p.media && (p.media.youtubeId || p.media.youtubeUrl));
       pdPlay.disabled = !hasVid;
-      pdPlay.innerHTML = hasVid ? '<i class="fa-solid fa-play"></i> Play video'
+      pdPlay.innerHTML = hasVid ? '<i class="fa-solid fa-play"></i> Watch Demo'
                                 : '<i class="fa-solid fa-ban"></i> No video';
 
       // Tabs and show
