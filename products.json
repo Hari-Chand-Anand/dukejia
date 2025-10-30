@@ -76,7 +76,7 @@
   },
   {
     "id": "dy-sk-d2-2orh",
-    "brand": "Jinyuelai",
+    "brand": "DUKE JIA",
     "model": "DY-SK-D2-2.0RH",
     "name": "Full Automatic Leather Punching Machine",
     "category": "perforation",
@@ -161,7 +161,7 @@
     "model": "DY-1201",
     "name": "Compact Computerized Embroidery Machine",
     "category": "embroidery",
-    "thumbnail": "images/Embroidery.png",
+    "thumbnail": "images/dy-1201-comp.png",
     "popularity": "medium",
     "views": 120,
     "likes": 10,
@@ -884,9 +884,9 @@
     "tags": ["2 heads", "compact", "cap frame"]
   },
   {
-    "id": "dy918-120",
+    "id": "DY918",
     "brand": "DUKE JIA",
-    "model": "DY918-120",
+    "model": "DY918",
     "name": "Multi-Head Automatic High-Speed Embroidery (18 Heads)",
     "category": "embroidery",
     "thumbnail": "images/Multi-Head.jpg",
@@ -921,9 +921,9 @@
     "tags": ["18 heads", "all-servo", "high speed"]
   },
   {
-    "id": "dy915-120",
+    "id": "dy915",
     "brand": "DUKE JIA",
-    "model": "DY915-120",
+    "model": "DY915",
     "name": "Multi-Head High-Speed Embroidery (15 Heads)",
     "category": "embroidery",
     "thumbnail": "images/Multi-Head.jpg",

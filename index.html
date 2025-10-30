@@ -76,6 +76,7 @@
     .nav-center{display:flex;gap:28px;align-items:center}
     .nav-center a{color:var(--charcoal);font-weight:600;text-decoration:none}
     .nav-center a:hover{color:var(--pur2)}
+    .nav a:hover{background:rgba(2,115,191,.06)}
 
     .btn-quote{
       display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
@@ -205,7 +206,7 @@
       font-weight:700; font-size:14px; background:rgba(2,115,191,.10);
       border:1px solid rgba(2,115,191,.25); color:var(--pur)
     }
-    .flagship-title{margin:18px 0 8px; font-size:56px; line-height:1.05; letter-spacing:.2px; color:var(--pur)}
+    .flagship-title{margin:18px 0 8px; font-size:46px; line-height:1.05; letter-spacing:.2px; color:var(--pur)}
     .flagship-lead{color:#4f5960; font-size:18px; max-width:58ch}
     .flagship-cta{display:flex; gap:14px; margin:20px 0 10px; flex-wrap:wrap}
     .btn-ghost{display:inline-block; padding:14px 18px; border-radius:14px; font-weight:800; text-decoration:none;background:#fff; color:var(--pur); border:1px solid var(--lgray)}
@@ -314,6 +315,79 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
       background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:700}
     .btn.outline{background:transparent;border:1px solid var(--bd-2)}
+
+    /* ===== Modal (shared) ===== */
+    .dj-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .25s}
+    .dj-modal.active{display:flex;opacity:1}
+    .dj-sheet{background:#fff;border-radius:20px;max-width:1100px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.25);border:1px solid var(--lgray);overflow:hidden}
+    .dj-sheet-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--lgray)}
+    .dj-sheet-title{font-size:1.25rem;font-weight:900;margin:0}
+    .dj-close{background:none;border:none;width:40px;height:40px;border-radius:10px;color:#6b7280;cursor:pointer}
+    .dj-close:hover{background:#f4f7fb}
+    .dj-top{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;padding:18px}
+    @media (max-width:900px){.dj-top{grid-template-columns:1fr}}
+    .dj-left{display:flex;gap:16px;align-items:flex-start}
+    .dj-thumb{width:220px;min-width:220px;border:1px solid var(--lgray);border-radius:14px;background:#f5f7fb;overflow:hidden;display:grid;place-items:center}
+    .dj-thumb img{width:100%;height:100%;object-fit:contain}
+    .dj-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem;background:#eef2ff;color:#444;border:1px solid #e5e7eb}
+    .dj-top-title{margin:2px 0 6px;font-size:1.1rem;font-weight:900}
+    .dj-top-sub{margin:0;color:#6b7280;line-height:1.6}
+    .dj-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .dj-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--lgray);background:#fff;font-weight:800;cursor:pointer}
+    .dj-btn.dj-primary{background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(1,40,107,.18)}
+    .dj-quick{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+    .dj-quick .dj-chip i{color:#10b981}
+    .dj-tabs{padding:0 18px 18px}
+    .dj-tab-nav{display:flex;gap:8px;border-bottom:1px solid var(--lgray)}
+    .dj-tab-btn{appearance:none;background:none;border:none;padding:12px 14px;border-radius:10px 10px 0 0;font-weight:800;color:#6b7280;cursor:pointer}
+    .dj-tab-btn.active{color:#111;background:#fff;border:1px solid var(--lgray);border-bottom-color:#fff}
+    .dj-tab-panel{display:none;padding:16px 0}
+    .dj-tab-panel.active{display:block}
+    .dj-specs{width:100%;border-collapse:collapse;border-radius:14px;border:1px solid var(--lgray);overflow:hidden}
+    .dj-specs tr{border-bottom:1px solid var(--lgray)}
+    .dj-specs tr:last-child{border-bottom:none}
+    .dj-specs th,.dj-specs td{padding:12px 14px;text-align:left}
+    .dj-specs th{width:44%;background:#f7f9ff;color:#374151}
+    .dj-specs td{color:#4b5563}
+    .dj-feats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media (max-width:620px){.dj-feats{grid-template-columns:1fr}}
+    .dj-feats .feat{border:1px solid var(--lgray);border-radius:12px;padding:12px 14px;background:#fff}
+
+    .dj-video-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1100;align-items:center;justify-content:center;padding:2rem}
+    .dj-video{position:relative;width:min(100%,960px);aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+    .dj-video iframe{width:100%;height:100%;border:0}
+    .dj-video-close{position:absolute;top:8px;right:8px;background:#fff;border:none;border-radius:10px;width:40px;height:40px;cursor:pointer}
+
+    /* ===== Mobile modal tweaks ===== */
+    @media (max-width: 640px){
+      .dj-modal{align-items:flex-end;padding:0;background:rgba(0,0,0,.65)}
+      .dj-sheet{width:100%;max-width:none;border-radius:16px 16px 0 0;border-left:none;border-right:none;max-height:100svh;overflow:auto;-webkit-overflow-scrolling:touch}
+      .dj-sheet-header{padding:14px 16px;position:sticky;top:0;z-index:2;background:#fff}
+      .dj-close{width:44px;height:44px}
+      .dj-top{grid-template-columns:1fr !important;gap:14px;padding:14px 16px}
+      .dj-left{flex-direction:column;align-items:stretch;gap:12px}
+      .dj-thumb{width:100%;min-width:0;height:auto;aspect-ratio:16/9;max-height:55svh;border-radius:12px}
+      .dj-thumb img{object-fit:cover}
+      .dj-chip{font-size:.78rem;padding:6px 10px}
+      .dj-actions{gap:10px;margin-top:12px}
+      .dj-btn{flex:1 1 calc(50% - 6px);justify-content:center;padding:12px 14px;font-weight:800}
+      .dj-btn.dj-primary{flex-basis:100%;order:3}
+      .dj-quick{gap:8px}
+      .dj-tabs{padding:0 16px 16px}
+      .dj-tab-nav{position:sticky;top:0;z-index:1;background:#fff;padding-top:6px}
+      .dj-tab-btn{padding:10px 12px;font-size:.95rem}
+      .dj-specs{display:block;border-radius:12px}
+      .dj-specs tr{display:block;padding:10px 12px;border-bottom:1px solid var(--lgray)}
+      .dj-specs th,.dj-specs td{display:block;padding:0;text-align:left}
+      .dj-specs th{background:transparent;color:#374151;font-weight:800;margin-bottom:6px}
+      .dj-specs td{color:#4b5563}
+      .dj-feats{grid-template-columns:1fr !important;gap:10px}
+      .dj-feats .feat{padding:12px;border-radius:12px}
+      .dj-video-overlay{padding:0}
+      .dj-video{width:100vw;max-width:100vw;aspect-ratio:16/9;border-radius:0}
+      .dj-video-close{top:10px;right:10px;width:44px;height:44px}
+      .dj-sheet::after{content:"";display:block;height:calc(env(safe-area-inset-bottom, 0px) + 8px)}
+    }
   </style>
 </head>
 <body>
@@ -373,14 +447,17 @@
   <section id="flagship-cta" class="flagship">
     <div class="container flagship-wrap">
       <div class="flagship-copy">
-        <span class="flagship-badge">Flagship Model</span>
-        <h2 class="flagship-title">Embroidery + Perforation<br>Unified Flagship</h2>
+        <span class="flagship-badge">Unified Flagship Model</span>
+        <h2 class="flagship-title" style="color:transparent;
+      background:linear-gradient(90deg,var(--pur),var(--pur2));
+      -webkit-background-clip:text;background-clip:text">Embroidery + Perforation<br><h2>DY-PE750x600</h2></h2>
         <p class="flagship-lead">
           High-speed precision embroidery paired with synchronized perforation on a single, production-ready platform. Built for apparel, footwear and technical textiles.
         </p>
         <div class="flagship-cta">
-          <a href="https://wa.me/919350513789?text=Hi%20Duke%20Jia%20Team%2C%20please%20share%20pricing%20for%20the%20Embroidery%20%2B%20Perforation%20Unified%20Flagship."
-             class="btn-orange" target="_blank" rel="noopener">Explore</a>
+          <!-- Explore opens modal -->
+
+          <a id="flagshipExplore" data-model="DY-PE750x600" href="#" class="btn-orange" rel="noopener">Explore</a>
         </div>
       </div>
 
@@ -490,6 +567,58 @@
     </div>
   </footer>
 
+  <!-- ===== Shared Model Detail Modal ===== -->
+  <div class="dj-modal" id="djModelModal" role="dialog" aria-modal="true" aria-labelledby="djTitle" style="display:none">
+    <div class="dj-sheet">
+      <div class="dj-sheet-header">
+        <h3 class="dj-sheet-title" id="djTitle">Model</h3>
+        <button class="dj-close" id="djClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="dj-top">
+        <div class="dj-left">
+          <div class="dj-thumb"><img id="djImg" alt=""></div>
+          <div>
+            <div class="dj-chip" id="djBadge"><i class="fa-solid fa-tag"></i><span>Perforation</span></div>
+            <h4 class="dj-top-title" id="djModel">Model</h4>
+            <p class="dj-top-sub" id="djSub">Subtitle</p>
+            <div class="dj-actions">
+              <button class="dj-btn" id="djCopy"><i class="fa-solid fa-link"></i> Copy link</button>
+              <button class="dj-btn" id="djPlay"><i class="fa-solid fa-play"></i> Watch Demo</button>
+              <button class="dj-btn dj-primary" id="djWhats"><i class="fa-brands fa-whatsapp"></i> Get Quote on WhatsApp</button>
+            </div>
+          </div>
+        </div>
+        <div id="djQuick" class="dj-quick"></div>
+      </div>
+
+      <div class="dj-tabs">
+        <div class="dj-tab-nav">
+          <button class="dj-tab-btn" data-tab="specs">Specs</button>
+          <button class="dj-tab-btn" data-tab="features">Features</button>
+        </div>
+        <div class="dj-tab-panel" id="dj-specs"><table class="dj-specs" id="djSpecTable"></table></div>
+        <div class="dj-tab-panel" id="dj-features"><div class="dj-feats" id="djFeatGrid"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video overlay -->
+  <div class="dj-video-overlay" id="djVideoOverlay" role="dialog" aria-modal="true" aria-label="Product video" style="display:none">
+    <div class="dj-video">
+      <button class="dj-video-close" id="djVideoClose" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <iframe id="djVideoFrame" title="Product demo"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+      <button id="djVideoOpenOnYT"
+              style="position:absolute;left:12px;bottom:12px;padding:10px 14px;border:1px solid #fff;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(2px);display:none;cursor:pointer">
+        Open on YouTube
+      </button>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -515,6 +644,193 @@
         menuIcon.classList.add('fa-bars');
       });
     });
+  </script>
+
+  <!-- ===== Modal JS + Dataset ===== -->
+  <script>
+  /* ——— Dataset (flagship DY-PE750×600 for index modal) ——— */
+  const DJ_MODELS = [
+    {
+      id:'DY-PE750x600', badge:'Perforation', image:'images/Perforation.png',
+  title:'DY-PE750×600',
+  subtitle:'Single-head perforation & stitching machine for precise leather/textile work.',
+  quick:['Single Head','Perforation + Stitch','750×600 mm','1200 RPM'],
+  youtubeUrl:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  youtubeId:'dQw4w9WgXcQ',
+  specs:{
+    'Machine Dimensions (mm)':'2000×1500×1800',
+    'Max Speed (rpm)':1200,    
+    'Air Pressure (MPa)':0.5,  
+    'Power Supply':'AC 380V 50/60Hz',
+  },
+  features:[
+    'Integrated perforation and stitching for productivity.',
+    'Precision servo-driven control system.',
+    'Adjustable perforation depth & stitch speed.',
+    'User-friendly operation panel.'
+  ]
+}
+  ];
+
+  /* ——— Modal + Video refs ——— */
+  const modal   = document.getElementById('djModelModal');
+  const djClose = document.getElementById('djClose');
+  const djTitle = document.getElementById('djTitle');
+  const djImg   = document.getElementById('djImg');
+  const djModel = document.getElementById('djModel');
+  const djSub   = document.getElementById('djSub');
+  const djBadgeSpan = document.getElementById('djBadge').querySelector('span');
+  const djCopy  = document.getElementById('djCopy');
+  const djWhats = document.getElementById('djWhats');
+  const djPlay  = document.getElementById('djPlay');
+  const djQuick = document.getElementById('djQuick');
+  const djSpecTable = document.getElementById('djSpecTable');
+  const djFeatGrid  = document.getElementById('djFeatGrid');
+
+  const djVideoOverlay  = document.getElementById('djVideoOverlay');
+  const djVideoFrame    = document.getElementById('djVideoFrame');
+  const djVideoClose    = document.getElementById('djVideoClose');
+  const djVideoOpenOnYT = document.getElementById('djVideoOpenOnYT');
+
+  /* ——— Helpers ——— */
+  function chip(text){
+    const div = document.createElement('div');
+    div.className = 'dj-chip';
+    div.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>'+text+'</span>';
+    return div;
+  }
+  function renderSpecs(obj){
+    djSpecTable.innerHTML = '';
+    Object.entries(obj).forEach(([k,v])=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<th>${k}</th><td>${Array.isArray(v) ? v.join(' / ') : v}</td>`;
+      djSpecTable.appendChild(tr);
+    });
+  }
+  function extractYouTubeId(input) {
+    if (!input) return null;
+    if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
+    try {
+      const u = new URL(input, location.href);
+      const host = u.hostname.replace(/^www\./, '');
+      if (host.endsWith('youtube.com') && u.searchParams.get('v')) return u.searchParams.get('v');
+      if (host === 'youtu.be') return u.pathname.split('/').filter(Boolean)[0] || null;
+      if (host.endsWith('youtube.com') && u.pathname.startsWith('/shorts/')) return u.pathname.split('/').filter(Boolean)[1] || null;
+    } catch(e) {}
+    return null;
+  }
+  function buildEmbedUrl(id) {
+    const base = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
+    return `${base}&origin=${encodeURIComponent(location.origin)}`;
+  }
+
+  /* ——— Video open/close ——— */
+  let videoLoadTimer = null;
+  let lastVideoUrl = null;
+
+  function openVideoForModel(model) {
+    const idFromId  = extractYouTubeId(model.youtubeId);
+    const idFromUrl = extractYouTubeId(model.youtubeUrl);
+    const videoId   = idFromUrl || idFromId;
+    if (!videoId) return;
+
+    lastVideoUrl = `https://youtu.be/${videoId}`;
+    if (djVideoOpenOnYT) {
+      djVideoOpenOnYT.style.display = 'none';
+      djVideoOpenOnYT.onclick = () => window.open(lastVideoUrl, '_blank', 'noopener');
+    }
+    djVideoOverlay.style.display = 'flex';
+    clearTimeout(videoLoadTimer);
+    videoLoadTimer = setTimeout(() => { djVideoOpenOnYT.style.display = 'inline-flex'; }, 3500);
+    djVideoFrame.src = buildEmbedUrl(videoId);
+  }
+  function closeVideo(){
+    djVideoOverlay.style.display = 'none';
+    djVideoFrame.removeAttribute('src');
+    clearTimeout(videoLoadTimer);
+    djVideoOpenOnYT.style.display = 'none';
+  }
+
+  /* ——— Modal open/close ——— */
+  let current = null;
+
+  function openModel(id){
+    const m = DJ_MODELS.find(x=>x.id===id);
+    if(!m) return;
+
+    current = m;
+    djTitle.textContent = m.title;
+    djModel.textContent = `${m.title} - ${m.subtitle}`;
+    djSub.textContent   = m.subtitle;
+    djImg.src = m.image; djImg.alt = `${m.title} image`;
+    djBadgeSpan.textContent = m.badge;
+
+    djQuick.innerHTML = ''; m.quick.forEach(q=>djQuick.appendChild(chip(q)));
+    renderSpecs(m.specs);
+    djFeatGrid.innerHTML = ''; m.features.forEach(f=>{
+      const d=document.createElement('div'); d.className='feat'; d.textContent=f; djFeatGrid.appendChild(d);
+    });
+
+    djCopy.onclick = ()=>{
+      const url = `${location.origin}${location.pathname}?model=${encodeURIComponent(m.id)}#flagship-cta`;
+      navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));
+    };
+    djWhats.onclick = ()=>{
+      const msg = encodeURIComponent(`Hi Duke Jia Team, I'm interested in model ${m.title}. Please share pricing & availability.`);
+      window.open(`https://wa.me/919350513789?text=${msg}`,'_blank','noopener');
+    };
+    djPlay.onclick = ()=> openVideoForModel(m);
+
+    modal.style.display = 'flex';
+    requestAnimationFrame(()=> modal.classList.add('active'));
+    document.body.style.overflow = 'hidden';
+    activateTab('specs');
+  }
+
+  function closeModel(){
+    modal.classList.remove('active');
+    setTimeout(()=> modal.style.display = 'none', 200);
+    document.body.style.overflow = 'auto';
+    closeVideo();
+  }
+
+  /* Tabs */
+  const tabBtns = document.querySelectorAll('.dj-tab-btn');
+  function activateTab(name){
+    tabBtns.forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+    document.querySelectorAll('.dj-tab-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('dj-'+name).classList.add('active');
+  }
+  tabBtns.forEach(b=>b.addEventListener('click', ()=>activateTab(b.dataset.tab)));
+
+  /* Esc + overlay close */
+  document.getElementById('djClose').addEventListener('click', closeModel);
+  modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModel(); });
+  djVideoClose.addEventListener('click', closeVideo);
+  djVideoOverlay.addEventListener('click', (e)=>{ if(e.target===djVideoOverlay) closeVideo(); });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='Escape'){
+      if (djVideoOverlay.style.display==='flex') closeVideo();
+      else if (modal.style.display==='flex') closeModel();
+    }
+  });
+
+  /* ——— Hook the flagship Explore button ——— */
+  const flagshipExplore = document.getElementById('flagshipExplore');
+  if (flagshipExplore){
+    flagshipExplore.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = flagshipExplore.dataset.model || 'DY-PE750x600';
+      openModel(id);
+    });
+  }
+
+  /* ——— Support deep link: ?model=DY-PE750x600 ——— */
+  const params = new URLSearchParams(location.search);
+  const deep = params.get('model');
+  if (deep && DJ_MODELS.some(m=>m.id===deep)) {
+    openModel(deep);
+  }
   </script>
 </body>
 </html>
