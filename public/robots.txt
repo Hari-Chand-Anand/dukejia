@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dukejiaa.vercel.app/sitemap.xml

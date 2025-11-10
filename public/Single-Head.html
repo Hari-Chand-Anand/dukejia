@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+  <title>Dukejia - Single-Head Embroidery</title>
+  <meta name="description" content="Sales & service for embroidery, perforation and quilting machines across India. DUKEJIA by HCA — Delhi, Chennai, Bengaluru, Kolkata, Indore, Ludhiana, Tiruppur."/>
+<link rel="canonical" href="https://dukejiaa.vercel.app/Single-Head.html">
+  <meta name="robots" content="index,follow"/>
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dukejiaa.vercel.app/"/>
+  <meta property="og:title" content="DUKEJIA — Industrial Embroidery, Perforation & Quilting Machines"/>
+  <meta property="og:description" content="High-precision embroidery, perforation and quilting solutions with all-India sales & service."/>
+  <meta property="og:image" content="https://dukejiaa.vercel.app/images/dukejia.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- Icons -->
+  <link rel="icon" href="/images/dukejia.png"/>
+  <link rel="apple-touch-icon" href="/images/dukejia.png"/>
+  <meta name="theme-color" content="#01286B"/>
+
+  <!-- Fonts & Icons (yours) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --pur:#045285; --pur2:#833ade;
+      --coral:#F4845F; --gold:#F7B731; --sage:#98D8C8;
+      --lavender:#A29BFE; --terracotta:#E17055;
+      --cream:#FAF9F6; --lgray:#E8EDF2; --charcoal:#2D3436;
+      --bg:var(--cream); --text:var(--charcoal);
+      --muted:#5f6970; --muted2:#6f7a82;
+      --border:rgba(1,40,107,.12); --bd-2:rgba(1,40,107,.14);
+      --primary:var(--pur2); --accent:var(--lavender);
+      --brand:var(--pur); --brand-2:var(--pur2);
+      --card:#ffffff; --surface:#ffffff; --panel:#ffffff; --bg-soft:#FDFCFB; --chip:#dfe8f4;
+      --ink:var(--charcoal); --ink-inv:#ffffff;
+      --hero-img:url('assets/duke-emb-perf-hero.jpg');
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{margin:0 auto;padding:0 40px}
+    @media (max-width:1024px){.container{max-width:100%;padding:0 24px}}
+    @media (max-width:480px){.container{padding:0 16px}}
+
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--lgray)}
+    .container.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+    .brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .brand-name{color:var(--pur);font-weight:900;font-size:18px;text-decoration:none}
+    .nav-center{display:flex;gap:28px;align-items:center}
+    .nav-center a{color:var(--charcoal);font-weight:600;text-decoration:none}
+    .nav-center a:hover{color:var(--pur2)}
+    .nav a:hover{background:rgba(2,115,191,.06)}
+    .btn-quote{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      font-weight:700;background:linear-gradient(90deg,var(--lavender),var(--pur2));
+      color:#3a2b00;text-decoration:none;box-shadow:#bcb8ee;}
+    .btn-quote i{opacity:.9}
+
+    .menu-toggle{display:none;background:none;border:none;color:var(--pur);
+      font-size:1.5rem;cursor:pointer;padding:8px;border-radius:6px;transition:background-color .3s;}
+    .menu-toggle:hover { background-color: rgba(1,40,107,.08); }
+    @media (max-width:780px){
+      .nav-center {
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: rgba(250,249,246,.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column; padding: 20px 24px; gap: 0;
+        transform: translateY(-100%); opacity: 0; visibility: hidden;
+        transition: all .3s ease;
+        border-bottom: 1px solid var(--lgray);
+      }
+      .nav-center.open { transform: translateY(0); opacity: 1; visibility: visible; }
+      .nav-center a { padding:16px 0; width:100%; border-bottom:1px solid #eee; display:flex; align-items:center; justify-content:flex-start; }
+      .nav-center a:last-child { border-bottom:none; }
+      .menu-toggle { display:block; }
+      .btn-quote { width:100%; justify-content:center; }
+    }
+
+    .hero{position:relative;overflow:hidden;isolation:isolate;color:var(--ink);background:var(--cream)}
+    .hero-bg{position:absolute;inset:0;background:
+      radial-gradient(900px 420px at 85% -10%, rgba(2,115,191,.08), transparent 60%),
+      radial-gradient(800px 380px at -10% 90%, rgba(162,155,254,.10), transparent 60%),
+      var(--hero-img) right 25% / cover no-repeat;filter:saturate(1.02) contrast(1.02);transform:scale(1.02);z-index:-2}
+    .hero-overlay{position:absolute;inset:0;background:
+      linear-gradient(180deg, rgba(250,249,246,.85) 0%, rgba(250,249,246,.95) 60%, rgba(250,249,246,1) 100%),
+      radial-gradient(600px 300px at 25% 20%, rgba(1,40,107,.06), transparent 60%);backdrop-filter:saturate(1.05) blur(.6px);z-index:-1}
+    .hero-inner{max-width:1500px;margin:0 auto;}
+    .trust-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:28px;background:#fff;border:1px solid var(--lgray);backdrop-filter:blur(2px);color:var(--pur);font-weight:800}
+    .trust-chip i{color:var(--pur2)}
+    .headline{font-size:clamp(2.6rem,5.2vw,5rem);line-height:1.05;margin:.9rem 0 1rem;font-weight:900;letter-spacing:-.02em;color:var(--pur);}
+    .headline .accent{color:transparent;background:linear-gradient(90deg,var(--pur),var(--pur2));-webkit-background-clip:text;background-clip:text}
+    .sub{font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.8;color:#4a5258; max-width:100ch; margin:0 0 1.75rem;}
+    .cta-row{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:14px;font-weight:800;text-decoration:none}
+    .btn-primary{background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;box-shadow:0 10px 24px rgba(1,40,107,.25); transition:transform .25s ease, box-shadow .25s ease;}
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(2,115,191,.28); }
+    .btn-secondary{background:#fff;color:var(--pur);border:1px solid var(--lgray)}
+    @media (max-width:1100px){ .headline{font-size:52px} }
+    @media (max-width:780px){
+      .headline{font-size:38px}
+      .sub{font-size:18px}
+      .btn-lg{width:100%;justify-content:center}
+    }
+
+    section{padding:107px 0;border-bottom:1px solid var(--lgray)}
+    @media (max-width:768px){ section{padding:48px 0} }
+
+    .section-machines { padding: 64px 0; }
+    .section-machines .center { text-align: center; }
+    .section-machines h1 { font-size: 44px; margin: 0 0 8px; color: var(--pur); }
+    .section-machines .lead { color: var(--muted); font-size: 18px; max-width: 840px; margin: 0 auto; }
+    .machines-row { display: grid; gap: 10px; margin-top: 10px; }
+    .machines-row.row-1 { grid-template-columns: 0.9fr 1.6fr; }
+    .machines-row.row-2 { grid-template-columns: 1.6fr 0.9fr; }
+    .tile { display: block; background: #fff; border: 1px solid var(--lgray); overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.06); transition: .25s; cursor:pointer }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,.12); border-color: rgba(2,115,191,.28); }
+    .img-wrap { position: relative; width: 100%; height: -webkit-fill-available; overflow: hidden; background: linear-gradient(90deg, rgba(1,40,107,.08), rgba(2,115,191,.10)); }
+    .img-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+    .tile:hover .img-wrap img { transform: scale(1.05); }
+    .tile.small .img-wrap { aspect-ratio: 4 / 3; }
+    .tile.wide  .img-wrap { aspect-ratio: 21 / 9; }
+    .overlay { position:absolute; left:0; right:0; bottom:0; background:linear-gradient(transparent, #03002a); padding:18px; color:#fff; }
+    .overlay h4 { margin:0 0 6px; font-size:1.1rem; font-weight:800; color:#fff; }
+    .overlay p  { margin:0; opacity:.9; font-size:.95rem; }
+    @media (max-width: 1024px) { .machines-row.row-1, .machines-row.row-2 { grid-template-columns: 1fr 1fr; } .tile.wide .img-wrap { aspect-ratio: 16 / 9; } }
+    @media (max-width: 720px)   { .machines-row.row-1, .machines-row.row-2 { grid-template-columns: 1fr; } .tile.wide .img-wrap, .tile.small .img-wrap { aspect-ratio: 4 / 3; } }
+
+    .explore-row{ display:flex; justify-content:center; margin-top:28px; }
+    .btn-explore{ display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border-radius:14px; font-weight:800; background:#fff; color:var(--primary); border:1px solid var(--lgray); box-shadow:0 8px 20px rgba(0,0,0,.06); }
+    .btn-explore:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(2,115,191,.18); background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#fff; border-color:transparent; }
+
+    /* ===== Footer ===== */
+    .site-footer{padding:28px 24px;border-top:1px solid var(--lgray);color:#e7f1ff;background:var(--pur)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+    .footer-brand{
+      margin:0 0 10px;font-size:36px;font-weight:900;
+      background:linear-gradient(90deg,#ffffff,var(--sage));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .footer-about p{margin:0 0 18px;color:#e7f1ff}
+    .footer-socials{display:flex; gap:12px}
+    .soc{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:rgba(255,255,255,.1);color:#e7f1ff;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+    .soc:hover{transform:translateY(-1px)}
+    .footer-links h4,.footer-contact h4{margin:0 0 12px;color:#fff;font-size:22px}
+    .footer-links ul{list-style:none;padding:0;margin:0}
+    .footer-links li{margin:10px 0}
+    .footer-links a{color:#e7f1ff;text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .frow{display:flex;align-items:flex-start;gap:12px;margin:12px 0}
+    .frow .ico{color:#e7f1ff;width:28px;height:28px;display:grid;place-items:center;background:rgba(255,255,255,.1);border-radius:8px;border:1px solid rgba(255,255,255,.16)}
+    .frow .muted{color:#d5e3ff}
+    .foot-divider{height:1px;background:rgba(255,255,255,.18);margin:28px 0 14px}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#d9e7ff;font-size:14px}
+    .legal a{color:#d9e7ff;text-decoration:none;margin-left:16px}
+    .legal a:hover{color:#fff}
+    @media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.footer-grid{grid-template-columns:1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}}
+
+    /* ===== Modal (desktop defaults) ===== */
+    .dj-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .25s}
+    .dj-modal.active{display:flex;opacity:1}
+    .dj-sheet{background:#fff;border-radius:20px;max-width:1100px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.25);border:1px solid var(--lgray);overflow:hidden}
+    .dj-sheet-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--lgray)}
+    .dj-sheet-title{font-size:1.25rem;font-weight:900;margin:0}
+    .dj-close{background:none;border:none;width:40px;height:40px;border-radius:10px;color:#6b7280;cursor:pointer}
+    .dj-close:hover{background:#f4f7fb}
+    .dj-top{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;padding:18px}
+    @media (max-width:900px){.dj-top{grid-template-columns:1fr}}
+    .dj-left{display:flex;gap:16px;align-items:flex-start}
+    .dj-thumb{width:220px;min-width:220px;/*height:160px;*/border:1px solid var(--lgray);border-radius:14px;background:#f5f7fb;overflow:hidden;display:grid;place-items:center}
+    .dj-thumb img{width:100%;height:100%;object-fit:contain}
+    .dj-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem;background:#eef2ff;color:#444;border:1px solid #e5e7eb}
+    .dj-top-title{margin:2px 0 6px;font-size:1.1rem;font-weight:900}
+    .dj-top-sub{margin:0;color:#6b7280;line-height:1.6}
+    .dj-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .dj-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--lgray);background:#fff;font-weight:800;cursor:pointer}
+    .dj-btn.dj-primary{background:linear-gradient(90deg,var(--pur),var(--pur2));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(1,40,107,.18)}
+    .dj-quick{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+    .dj-quick .dj-chip i{color:#10b981}
+    .dj-tabs{padding:0 18px 18px}
+    .dj-tab-nav{display:flex;gap:8px;border-bottom:1px solid var(--lgray)}
+    .dj-tab-btn{appearance:none;background:none;border:none;padding:12px 14px;border-radius:10px 10px 0 0;font-weight:800;color:#6b7280;cursor:pointer}
+    .dj-tab-btn.active{color:#111;background:#fff;border:1px solid var(--lgray);border-bottom-color:#fff}
+    .dj-tab-panel{display:none;padding:16px 0}
+    .dj-tab-panel.active{display:block}
+    .dj-specs{width:100%;border-collapse:collapse;border-radius:14px;border:1px solid var(--lgray);overflow:hidden}
+    .dj-specs tr{border-bottom:1px solid var(--lgray)}
+    .dj-specs tr:last-child{border-bottom:none}
+    .dj-specs th,.dj-specs td{padding:12px 14px;text-align:left}
+    .dj-specs th{width:44%;background:#f7f9ff;color:#374151}
+    .dj-specs td{color:#4b5563}
+    .dj-feats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media (max-width:620px){.dj-feats{grid-template-columns:1fr}}
+    .dj-feats .feat{border:1px solid var(--lgray);border-radius:12px;padding:12px 14px;background:#fff}
+
+    .dj-video-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1100;align-items:center;justify-content:center;padding:2rem}
+    .dj-video-overlay.active{display:flex}
+    .dj-video{position:relative;width:min(100%,960px);aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+    .dj-video iframe{width:100%;height:100%;border:0}
+    .dj-video-close{position:absolute;top:8px;right:8px;background:#fff;border:none;border-radius:10px;width:40px;height:40px;cursor:pointer}
+
+    /* ===== Mobile fixes for the model modal (<= 640px) ===== */
+    @media (max-width: 640px){
+      /* Turn the dialog into a bottom sheet */
+      .dj-modal{
+        align-items:flex-end;
+        padding:0;
+        background:rgba(0,0,0,.65);
+      }
+      .dj-sheet{
+        width:100%;
+        max-width:none;
+        border-radius:16px 16px 0 0;
+        border-left:none; border-right:none;
+        max-height:100svh; /* respect mobile viewport */
+        overflow:auto;
+        /* avoid “jump” when keyboard opens */
+        -webkit-overflow-scrolling:touch;
+      }
+
+      /* Header: bigger tap target for Close */
+      .dj-sheet-header{
+        padding:14px 16px;
+        position:sticky; top:0; z-index:2;
+        background:#fff; /* keep readable when scrolled */
+      }
+      .dj-close{ width:44px; height:44px; }
+
+      /* Stack the top grid; make image full-width */
+      .dj-top{
+        grid-template-columns:1fr !important;
+        gap:14px;
+        padding:14px 16px;
+      }
+      .dj-left{
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+      }
+      .dj-thumb{
+        width:100%;
+        min-width:0;
+        height:auto;
+        aspect-ratio:16/9;          /* responsive media box */
+        max-height:55svh;           /* never exceed screen */
+        border-radius:12px;
+      }
+      .dj-thumb img{ object-fit:cover; }
+
+      /* Chips wrap nicely */
+      .dj-chip{ font-size:.78rem; padding:6px 10px; }
+
+      /* Action buttons: large, thumb-friendly */
+      .dj-actions{
+        gap:10px;
+        margin-top:12px;
+      }
+      .dj-btn{
+        flex:1 1 calc(50% - 6px);
+        justify-content:center;
+        padding:12px 14px;
+        font-weight:800;
+      }
+      .dj-btn.dj-primary{
+        flex-basis:100%;            /* primary spans full row */
+        order:3;
+      }
+
+      /* Quick bullets wrap */
+      .dj-quick{ gap:8px; }
+
+      /* Tabs: sticky nav for long content */
+      .dj-tabs{ padding:0 16px 16px; }
+      .dj-tab-nav{
+        position:sticky; top:0; z-index:1;
+        background:#fff; padding-top:6px;
+      }
+      .dj-tab-btn{ padding:10px 12px; font-size:.95rem; }
+
+      /* Specs table -> stacked rows for mobile readability */
+      .dj-specs{
+        display:block; border-radius:12px;
+      }
+      .dj-specs tr{
+        display:block;
+        padding:10px 12px;
+        border-bottom:1px solid var(--lgray);
+      }
+      .dj-specs th,
+      .dj-specs td{
+        display:block;
+        padding:0; text-align:left;
+      }
+      .dj-specs th{
+        background:transparent;
+        color:#374151;
+        font-weight:800;
+        margin-bottom:6px;
+      }
+      .dj-specs td{
+        color:#4b5563;
+      }
+
+      /* Features grid: single column */
+      .dj-feats{ grid-template-columns:1fr !important; gap:10px; }
+      .dj-feats .feat{ padding:12px; border-radius:12px; }
+
+      /* Video overlay: edge-to-edge on phones */
+      .dj-video-overlay{ padding:0; }
+      .dj-video{
+        width:100vw; max-width:100vw;
+        aspect-ratio:16/9; border-radius:0;
+      }
+      .dj-video-close{
+        top:10px; right:10px; width:44px; height:44px;
+      }
+
+      /* Safe-area breathing room for iOS home indicator */
+      .dj-sheet::after{
+        content:"";
+        display:block;
+        height:calc(env(safe-area-inset-bottom, 0px) + 8px);
+      }
+    }
+
+    /* Slightly larger phones/phablets */
+    @media (max-width: 820px) and (min-width: 641px){
+      .dj-sheet{ max-width:720px; }
+      .dj-top{ grid-template-columns:1fr 1fr; }
+      .dj-thumb{ width:100%; min-width:0; height:auto; aspect-ratio:16/10; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Duke Jia Home">
+        <span><img src="images/dukejia.png" width="190" height="55" alt="DUKEJIA"></span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-center" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="Products-Details.html">Products</a>
+        <a href="Contact.html">Contact</a>
+        <a class="btn-quote"
+           href="https://wa.me/919350513789?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability."
+           target="_blank" rel="noopener">
+          <i class="fa-solid fa-phone"></i> Get Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="trust-chip">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        Trusted by Textile Manufacturers Across India
+      </div>
+      <h1 class="headline">
+        Single Head Embroidery
+        <br />
+        <span class="accent">Machines</span>
+      </h1>
+      <p class="sub">
+        Compact, versatile machines ideal for sampling, customization, and short runs, delivering premium stitch quality with quick setup.
+      </p>
+      <div class="cta-row">
+        <a class="btn-lg btn-primary" href="#models">
+          View Models <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main id="models">
+    <section id="Our Machines" class="section-machines container" aria-labelledby="our-machines-title">
+      <div class="center">
+        <h1 id="our-machines-title">Our Models</h1>
+        <p class="lead">Advanced textile solutions for every production need</p>
+      </div>
+
+      <div class="machines-row row-1">
+        <div class="tile small" data-model="DY-1201L">
+          <div class="img-wrap">
+            <img src="images/dy-1201l.png" alt="DY-1201L">
+            <div class="overlay"><h4>DY-1201L</h4><p>12 Needles • Single-Head</p></div>
+          </div>
+        </div>
+
+        <div class="tile wide" data-model="DY-1201H">
+          <div class="img-wrap">
+            <img src="images/dy-1201h.png" alt="DY-1201H">
+            <div class="overlay"><h4>DY-1201H</h4><p>12 Needles • Single-Head</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="machines-row row-2">
+        <div class="tile wide" data-model="DY-1202H">
+          <div class="img-wrap">
+            <img src="images/dy-1202h.png" alt="DY-1202H">
+            <div class="overlay"><h4>DY-1202H</h4><p>12 Needles • 2 Heads</p></div>
+          </div>
+        </div>
+
+        <div class="tile wide" data-model="DY-1203H">
+          <div class="img-wrap">
+            <img src="images/dy-1203h.png" alt="DY-1203H">
+            <div class="overlay"><h4>DY-1203H</h4><p>12 Needles • 3 Heads</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="machines-row row-1">
+        <div class="tile small" data-model="ES-1300">
+          <div class="img-wrap">
+            <img src="images/es-1300.png" alt="ES-1300">
+            <div class="overlay"><h4>ES-1300</h4><p>Sew + Embroidery</p></div>
+          </div>
+        </div>
+
+        <div class="tile wide" data-model="HALO-100">
+          <div class="img-wrap">
+            <img src="images/halo-100.png" alt="HALO-100">
+            <div class="overlay"><h4>HALO-100</h4><p>12 Needles • Single-Head</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explore-row">
+        <a class="btn-explore" href="Products-Details.html">
+          Explore <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="dj-modal" id="djModelModal" role="dialog" aria-modal="true" aria-labelledby="djTitle">
+    <div class="dj-sheet">
+      <div class="dj-sheet-header">
+        <h3 class="dj-sheet-title" id="djTitle">Model</h3>
+        <button class="dj-close" id="djClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="dj-top">
+        <div class="dj-left">
+          <div class="dj-thumb"><img id="djImg" alt=""></div>
+          <div>
+            <div class="dj-chip" id="djBadge"><i class="fa-solid fa-tag"></i><span>Embroidery</span></div>
+            <h4 class="dj-top-title" id="djModel">Model</h4>
+            <p class="dj-top-sub" id="djSub">Subtitle</p>
+
+            <div class="dj-actions">
+              <button class="dj-btn" id="djCopy"><i class="fa-solid fa-link"></i> Copy link</button>
+              <button class="dj-btn" id="djPlay"><i class="fa-solid fa-play"></i> Watch Demo</button>
+              <button class="dj-btn dj-primary" id="djWhats" href="https://wa.me/919350513789?text=Hi%20Duke%20Jia%20Team%2C%20I%27m%20interested%20in%20your%20Embroidery%20%2B%20Perforation%20flagship.%20Please%20share%20pricing%20%26%20availability." target="_blank" rel="noopener"><i class="fa-solid fa-phone"></i> Get Quote on WhatsApp Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="djQuick" class="dj-quick"></div>
+      </div>
+
+      <div class="dj-tabs">
+        <div class="dj-tab-nav">
+          <button class="dj-tab-btn" data-tab="specs">Specs</button>
+          <button class="dj-tab-btn" data-tab="features">Features</button>
+        </div>
+
+        <div class="dj-tab-panel" id="dj-specs">
+          <table class="dj-specs" id="djSpecTable"></table>
+        </div>
+
+        <div class="dj-tab-panel" id="dj-features">
+          <div class="dj-feats" id="djFeatGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video overlay -->
+  <div class="dj-video-overlay" id="djVideoOverlay" role="dialog" aria-modal="true" aria-label="Product video">
+    <div class="dj-video">
+      <button class="dj-video-close" id="djVideoClose" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <iframe
+        id="djVideoFrame"
+        title="Product demo"
+        allow="autoplay; encrypted-media; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+        loading="lazy"
+        style="width:100%;height:100%;border:0"
+      ></iframe>
+      <!-- Visible fallback button -->
+      <button id="djVideoOpenOnYT"
+              style="position:absolute;left:12px;bottom:12px;padding:10px 14px;border:1px solid #fff;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(2px);display:none;cursor:pointer">
+        Open on YouTube
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-brand">Duke Jia</h3>
+        <p>Part of Jia Group, Duke Jia has been serving India's textile industry for over 100+ years with cutting-edge embroidery and perforation machinery. Trusted by manufacturers across India from Surat to Tirupur, Ludhiana to Kolkata.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook" class="soc">f</a>
+          <a href="#" aria-label="Instagram" class="soc">◎</a>
+          <a href="#" aria-label="LinkedIn" class="soc">in</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Products-Details.html">Products</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="frow"><span class="ico">📍</span><div><span class="muted">PAN-India Service Network</span></div></div>
+        <div class="frow"><span class="ico">📞</span><div>+91 9350513789</div></div>
+        <div class="frow"><span class="ico">✉️</span><div>embroidery@grouphca.com</div></div>
+      </div>
+    </div>
+
+    <div class="container foot-divider"></div>
+
+    <div class="container foot-bottom">
+      <div>© <span id="year"></span> Duke Jia – Part of Jia Group. All rights reserved.</div>
+      <nav class="legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year + mobile nav
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter  = document.querySelector('.nav-center');
+    const menuIcon   = menuToggle.querySelector('i');
+    menuToggle.addEventListener('click', () => {
+      navCenter.classList.toggle('open');
+      if (navCenter.classList.contains('open')) {
+        menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times');
+      } else {
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
+      }
+    });
+    document.querySelectorAll('.nav-center a').forEach(link => {
+      link.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
+      });
+    });
+  </script>
+
+  <script>
+    const DJ_MODELS = [
+      {
+    id: 'DY-1201L', badge: 'Embroidery', image: 'images/dy-1201l.png',
+    title: 'DY-1201L',
+    subtitle: 'Single Head Embroidery Machine — flat/cap/finished garments',
+    quick: ['1 Head', '12 Needles', 'Max 1200 RPM', 'Auto Color Change'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+    specs: {
+      'Embroidery Area (mm)': '400×600 / 500×800',
+      'Max Speed (rpm)': 1200,
+      'Memory Capacity (stitches)': '2,000,000 (200 designs)',
+      'Power Supply': 'AC80–260V'
+    },
+    features: [
+      'Flat, cap, and finished garment embroidery',
+      'Auto thread trimming and color change',
+      'Wide voltage, safe DC output',
+      'Supports cording, sequins, beads, rhinestone'
+    ]
+  },
+
+  {
+  id:'DY-1202H', badge:'Embroidery', image:'images/dy-1202h.png',
+  title:'DY-1202H',
+  subtitle:'12-needle, 2-head tubular embroidery machine for commercial use.',
+  quick:['2 Heads','12 Needles','Tubular','1200 RPM'],
+  youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+  specs:{
+    'Embroidery Area (mm)':'400×450',
+    'Max Speed (rpm)':1200,
+    'Power Supply':'AC80–260V',
+    'Power Output':'DC36'
+  },
+  features:[
+    'Dual-head tubular structure for mid-volume production.',
+    'Automatic trimming and color change.',
+    'Energy-efficient wide-voltage DC system.',
+    'Compatible with cording, sequins, beads, and rhinestone devices.'
+  ]
+},
+  {
+    id: 'DY-1201H', badge: 'Embroidery', image: 'images/dy-1201h.png',
+    title: 'DY-1201H',
+    subtitle: '12-needle single-head with new stable structure',
+    quick: ['1 Head', '12 Needles', 'Max 1200 RPM', 'Auto Trim/Color'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+    specs: {
+      'Embroidery Area (mm)': '500×400',
+      'Max Speed (rpm)': 1200,
+      'Memory': '2,000,000 (200 designs)',
+      'Power Supply': 'AC80–260V'
+    },
+    features: [
+      'Improved stability & durability',
+      'Flat/cap/finished embroidery',
+      'Wide voltage & safe DC output',
+      'Supports cording, sequins, beads, rhinestone'
+    ]
+  },
+
+  {
+    id: 'DY-1203H', badge: 'Embroidery', image: 'images/dy-1203h.png',
+    title: 'DY-1203H',
+    subtitle: '3-head single-structure embroidery — stable & productive',
+    quick: ['3 Heads', '12 Needles', 'Max 1200 RPM', 'Auto Start/Stop'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+    specs: {
+      'Embroidery Area (mm)': '400×400×450',
+      'Max Speed (rpm)': 1200,
+      'Memory': '2,000,000 (200 designs)',
+      'Power Input': 'AC80–260V'
+    },
+    features: [
+      'Stable, durable structure',
+      '3-head productivity',
+      'Low power and wide voltage',
+      'Supports cording, sequins, beads, rhinestone'
+    ]
+  },
+
+  {
+    id: 'ES-1300', badge: 'Embroidery', image: 'images/es-1300.png',
+    title: 'ES-1300',
+    subtitle: 'Embroidery + sewing with touch LCD & auto threading',
+    quick: ['Sew + Embroidery', 'Touch LCD', 'Auto Threading', 'Max 650 RPM'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+    specs: {
+      'Function': '67 seam patterns + embroidery',
+      'Speed (rpm)': '650 (sew) / 650 (emb)',
+      'Max Embroidery Area (mm)': '110×110',
+      'Power Supply': 'Single-phase AC'
+    },
+    features: [
+      '67 seam patterns + embroidery',
+      'Touch LCD operation',
+      'Pattern resize & rotation',
+      'USB interface; TAJIMA formats'
+    ]
+  },
+
+  {
+    id: 'HALO-100', badge: 'Embroidery', image: 'images/halo-100.png',
+    title: 'HALO-100',
+    subtitle: 'Compact single-head for caps & finished garments',
+    quick: ['1 Head', '12 Needles', 'Max 1000 RPM', 'Auto Trim/Color/Lube'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=2Nod9pUuz24',
+        youtubeId:  '2Nod9pUuz24',
+    specs: {
+      'Embroidery Area (mm)': '240×320',
+      'Memory Capacity (stitches)': '10,000,000',
+      'Cap Device': '270° cap station + rings + driver',
+      'Power Supply': '80–260V'
+    },
+    features: [
+      'Auto color change & trimming',
+      'Multiple hoop sizes included',
+      'Stores up to 10M stitches',
+      'Durable stand with wheels',
+    ]
+  }
+    ];
+
+    // Modal refs
+    const modal   = document.getElementById('djModelModal');
+    const djClose = document.getElementById('djClose');
+    const djTitle = document.getElementById('djTitle');
+    const djImg   = document.getElementById('djImg');
+    const djModel = document.getElementById('djModel');
+    const djSub   = document.getElementById('djSub');
+    const djBadgeSpan = document.getElementById('djBadge').querySelector('span');
+    const djCopy  = document.getElementById('djCopy');
+    const djWhats = document.getElementById('djWhats');
+    const djPlay  = document.getElementById('djPlay');
+    const djQuick = document.getElementById('djQuick');
+    const djSpecTable = document.getElementById('djSpecTable');
+    const djFeatGrid = document.getElementById('djFeatGrid');
+
+    // Video overlay refs
+    const djVideoOverlay   = document.getElementById('djVideoOverlay');
+    const djVideoFrame     = document.getElementById('djVideoFrame');
+    const djVideoClose     = document.getElementById('djVideoClose');
+    const djVideoOpenOnYT  = document.getElementById('djVideoOpenOnYT');
+
+    // Helpers
+    function chip(text){
+      const div = document.createElement('div');
+      div.className = 'dj-chip';
+      div.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>'+text+'</span>';
+      return div;
+    }
+    function renderSpecs(obj){
+      djSpecTable.innerHTML = '';
+      Object.entries(obj).forEach(([k,v])=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<th>${k}</th><td>${v}</td>`;
+        djSpecTable.appendChild(tr);
+      });
+    }
+
+    // YouTube helpers (robust + nocookie)
+    function extractYouTubeId(input) {
+      if (!input) return null;
+      if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
+      try {
+        const u = new URL(input, location.href);
+        const host = u.hostname.replace(/^www\./, '');
+        if (host.endsWith('youtube.com') && u.searchParams.get('v')) return u.searchParams.get('v');
+        if (host === 'youtu.be') return u.pathname.split('/').filter(Boolean)[0] || null;
+        if (host.endsWith('youtube.com') && u.pathname.startsWith('/shorts/')) return u.pathname.split('/').filter(Boolean)[1] || null;
+      } catch(e) {}
+      return null;
+    }
+    function buildEmbedUrl(id) {
+      const base = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1`;
+      const isHttp = /^https?:/i.test(location.protocol);
+      return isHttp ? `${base}&origin=${encodeURIComponent(location.origin)}` : base;
+    }
+
+    // Video open/close with visible fallback
+    let videoLoadTimer = null;
+    let lastVideoUrl = null;
+
+    function openVideoForModel(model) {
+      const idFromId  = extractYouTubeId(model.youtubeId);
+      const idFromUrl = extractYouTubeId(model.youtubeUrl);
+      const videoId   = idFromUrl || idFromId;
+
+      if (!videoId) {
+        const url = model.youtubeUrl || (model.youtubeId ? `https://youtu.be/${model.youtubeId}` : null);
+        if (url) window.open(url, '_blank', 'noopener');
+        else alert('No valid YouTube video configured for this model.');
+        return;
+      }
+
+      lastVideoUrl = `https://youtu.be/${videoId}`;
+      if (djVideoOpenOnYT) {
+        djVideoOpenOnYT.style.display = 'none';
+        djVideoOpenOnYT.onclick = () => window.open(lastVideoUrl, '_blank', 'noopener');
+      }
+
+      djVideoOverlay.classList.add('active');
+
+      clearTimeout(videoLoadTimer);
+      videoLoadTimer = setTimeout(() => {
+        if (djVideoOpenOnYT) djVideoOpenOnYT.style.display = 'inline-flex';
+      }, 3500);
+
+      djVideoFrame.onload = () => {
+        // onload even if blocked; watchdog handled by fallback button
+      };
+      djVideoFrame.src = buildEmbedUrl(videoId);
+    }
+
+    function closeVideo(){
+      if (djVideoOverlay) djVideoOverlay.classList.remove('active');
+      if (djVideoFrame) {
+        djVideoFrame.removeAttribute('src');
+        djVideoFrame.onload = null;
+      }
+      clearTimeout(videoLoadTimer);
+      if (djVideoOpenOnYT) djVideoOpenOnYT.style.display = 'none';
+    }
+
+    // Modal logic
+    let current = null;
+
+    function openModel(id){
+      const m = DJ_MODELS.find(x=>x.id===id);
+      if(!m) return;
+      current = m;
+
+      djTitle.textContent = m.title;
+      djModel.textContent = `${m.title} - ${m.subtitle}`;
+      djSub.textContent   = m.subtitle;
+      djImg.src = m.image; djImg.alt = `${m.title} image`;
+      djBadgeSpan.textContent = m.badge;
+
+      djQuick.innerHTML = ''; m.quick.forEach(q=>djQuick.appendChild(chip(q)));
+      renderSpecs(m.specs);
+      djFeatGrid.innerHTML = '';
+      m.features.forEach(f=>{ const d=document.createElement('div'); d.className='feat'; d.textContent=f; djFeatGrid.appendChild(d); });
+
+      djCopy.onclick = ()=>{
+        const url = `${location.origin}${location.pathname}?model=${encodeURIComponent(m.id)}`;
+        navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));
+      };
+      djWhats.onclick = ()=>{
+        const msg = encodeURIComponent(`Hi Duke Jia Team, I'm interested in model ${m.title}. Please share pricing & availability.`);
+        window.open(`https://wa.me/919350513789?text=${msg}`,'_blank');
+      };
+      if (djPlay) {
+        djPlay.onclick = ()=> openVideoForModel(m);
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      activateTab('specs');
+    }
+
+    function closeModel(){
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      closeVideo();
+    }
+
+    document.querySelectorAll('[data-model]').forEach(el=>{
+      el.addEventListener('click', ()=> openModel(el.dataset.model));
+    });
+
+    djClose.addEventListener('click', closeModel);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModel(); });
+
+    if (djVideoClose) djVideoClose.addEventListener('click', closeVideo);
+    if (djVideoOverlay) djVideoOverlay.addEventListener('click', (e)=>{ if(e.target===djVideoOverlay) closeVideo(); });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape'){
+        if (djVideoOverlay && djVideoOverlay.classList.contains('active')) closeVideo();
+        else closeModel();
+      }
+    });
+
+    const tabBtns = document.querySelectorAll('.dj-tab-btn');
+    function activateTab(name){
+      tabBtns.forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+      document.querySelectorAll('.dj-tab-panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('dj-'+name).classList.add('active');
+    }
+    tabBtns.forEach(b=>b.addEventListener('click', ()=>activateTab(b.dataset.tab)));
+
+    // Deep link
+    const params = new URLSearchParams(location.search);
+    const deep = params.get('model');
+    if (deep && DJ_MODELS.some(m=>m.id===deep)) openModel(deep);
+  </script>
+</body>
+</html>
