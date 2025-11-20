@@ -15,15 +15,15 @@
 
   <title>About Duke Jia — History, Leadership & Machines</title>
   <meta name="description" content="Sales & service for embroidery, perforation and quilting machines across India. DUKEJIA by HCA — Delhi, Chennai, Bengaluru, Kolkata, Indore, Ludhiana, Tiruppur."/>
-  <link rel="canonical" href="https://dukejiaa.vercel.app/About.html">
+  <link rel="canonical" href="https://dukejiaaa.vercel.app/About.html">
   <meta name="robots" content="index,follow"/>
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://dukejiaa.vercel.app/"/>
+  <meta property="og:url" content="https://dukejiaaa.vercel.app/"/>
   <meta property="og:title" content="DUKEJIA — Industrial Embroidery, Perforation & Quilting Machines"/>
   <meta property="og:description" content="High-precision embroidery, perforation and quilting solutions with all-India sales & service."/>
-  <meta property="og:image" content="https://dukejiaa.vercel.app/images/dukejia.png"/>
+  <meta property="og:image" content="https://dukejiaaa.vercel.app/images/dukejia.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
 
   <!-- Icons -->
@@ -74,6 +74,7 @@
       --ring:rgba(131,58,222,.28);
       --shadow:0 10px 30px rgba(0,0,0,.08);
       --radius:20px;
+      --sage:#98D8C8;
 
       --ink:#2D3436;
       --ink-inv:#ffffff;
@@ -642,31 +643,23 @@
   </footer>
 
   <script>
-    // Set current year in footer
+    // Footer year + mobile nav
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.menu-toggle');
-    const navCenter = document.querySelector('.nav-center');
-    const menuIcon = menuToggle.querySelector('i');
-
+    const navCenter  = document.querySelector('.nav-center');
+    const menuIcon   = menuToggle.querySelector('i');
     menuToggle.addEventListener('click', () => {
       navCenter.classList.toggle('open');
       if (navCenter.classList.contains('open')) {
-        menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-xmark'); // FA6 close icon
+        menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times');
       } else {
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
       }
     });
-
-    // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-center a').forEach(link => {
       link.addEventListener('click', () => {
         navCenter.classList.remove('open');
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
       });
     });
 

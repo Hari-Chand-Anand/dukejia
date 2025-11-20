@@ -15,15 +15,15 @@
 
   <title>Contact - Duke Jia</title>
   <meta name="description" content="Sales & service for embroidery, perforation and quilting machines across India. DUKEJIA by HCA — Delhi, Chennai, Bengaluru, Kolkata, Indore, Ludhiana, Tiruppur."/>
-  <link rel="canonical" href="https://dukejiaa.vercel.app/Contact.html">
+  <link rel="canonical" href="https://dukejiaaa.vercel.app/Contact.html">
   <meta name="robots" content="index,follow"/>
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://dukejiaa.vercel.app/"/>
+  <meta property="og:url" content="https://dukejiaaa.vercel.app/"/>
   <meta property="og:title" content="DUKEJIA — Industrial Embroidery, Perforation & Quilting Machines"/>
   <meta property="og:description" content="High-precision embroidery, perforation and quilting solutions with all-India sales & service."/>
-  <meta property="og:image" content="https://dukejiaa.vercel.app/images/dukejia.png"/>
+  <meta property="og:image" content="https://dukejiaaa.vercel.app/images/dukejia.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
 
   <!-- Icons -->
@@ -36,15 +36,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JV4T04TFTJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JV4T04TFTJ');
-</script>
 
   <style>
     /* ===== Design Tokens (LIGHT) ===== */
@@ -527,31 +518,23 @@
   </footer>
 
   <script>
-    // Set current year in footer
+    // Footer year + mobile nav
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.menu-toggle');
-    const navCenter = document.querySelector('.nav-center');
-    const menuIcon = menuToggle.querySelector('i');
-
+    const navCenter  = document.querySelector('.nav-center');
+    const menuIcon   = menuToggle.querySelector('i');
     menuToggle.addEventListener('click', () => {
       navCenter.classList.toggle('open');
       if (navCenter.classList.contains('open')) {
-        menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-xmark'); // FA6 close icon
+        menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times');
       } else {
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
       }
     });
-
-    // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-center a').forEach(link => {
       link.addEventListener('click', () => {
         navCenter.classList.remove('open');
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars');
       });
     });
 
