@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "Products"
+    format: "json"
+    file: "public/data/products.json"
+    identifier_field: "id"
+    fields:
+      - {label: "ID", name: "id", widget: "string"}
+      - {label: "Brand", name: "brand", widget: "string"}
+      - {label: "Model", name: "model", widget: "string"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["flagship","embroidery","perforation","quilting"]}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Popularity", name: "popularity", widget: "select", options: ["flag","high","medium","none"], required: false}
+      - label: "Media"
+        name: "media"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false}
+          - {label: "YouTube ID", name: "youtubeId", widget: "string", required: false}
+      - {label: "Operation", name: "operation", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - label: "Spec"
+        name: "spec"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Embroidery Area (mm)", name: "Embroidery Area (mm)", widget: "string", required: false}
+          - {label: "Max Speed (rpm)", name: "Max Speed (rpm)", widget: "string", required: false}
+          - {label: "Power Supply", name: "Power Supply", widget: "string", required: false}
+      - {label: "Features", name: "features", widget: "list", required: false}
+      - {label: "Application", name: "application", widget: "text", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
