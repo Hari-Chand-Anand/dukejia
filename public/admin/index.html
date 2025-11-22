@@ -1,12 +1,105 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>DukeJia CMS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
-  </head>
-  <body>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products Admin</title>
+  <link rel="stylesheet" href="./admin.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Products Admin</h1>
+      <p class="subtitle">Manage <code>products.json</code> (add / edit / delete)</p>
+    </div>
+    <div class="top-actions">
+      <button id="reloadBtn" class="btn ghost">Reload</button>
+      <button id="saveAllBtn" class="btn primary">Save All</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <button id="addBtn" class="btn">+ Add Product</button>
+      <input id="searchInput" class="input" placeholder="Search by name / id / category..." />
+      <select id="categoryFilter" class="input select">
+        <option value="">All categories</option>
+      </select>
+      <span id="statusText" class="status"></span>
+    </section>
+
+    <section class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:140px">ID</th>
+            <th>Name</th>
+            <th style="width:160px">Category</th>
+            <th style="width:160px">Brand</th>
+            <th style="width:120px">Model</th>
+            <th style="width:90px">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="emptyState" class="empty hidden">No products found.</div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalBackdrop" class="backdrop hidden"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 id="modalTitle">Add Product</h2>
+      <button id="closeModalBtn" class="btn ghost small">✕</button>
+    </div>
+
+    <form id="productForm" class="modal-body">
+      <div class="grid">
+        <label>Id*<input name="id" class="input" required /></label>
+        <label>Name*<input name="name" class="input" required /></label>
+        <label>Category*<input name="category" class="input" required /></label>
+        <label>Brand<input name="brand" class="input" /></label>
+        <label>Model<input name="model" class="input" /></label>
+        <label>Thumbnail URL<input name="thumbnail" class="input" /></label>
+      </div>
+
+      <label>Description
+        <textarea name="description" class="input textarea" rows="3" placeholder="Short description..."></textarea>
+      </label>
+
+      <div class="grid">
+        <label>Tags (comma separated)
+          <input name="tags" class="input" placeholder="buttonhole, automatic, ..." />
+        </label>
+        <label>Media (one URL per line)
+          <textarea name="media" class="input textarea" rows="3" placeholder="https://..."></textarea>
+        </label>
+      </div>
+
+      <label>Features (one per line)
+        <textarea name="features" class="input textarea" rows="4"></textarea>
+      </label>
+
+      <label>Spec (JSON object)
+        <textarea name="spec" class="input textarea code" rows="6" placeholder='{"speed":"4000 spm","needle":"DPx5"}'></textarea>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" id="deleteBtn" class="btn danger hidden">Delete</button>
+        <div class="spacer"></div>
+        <button type="button" id="cancelBtn" class="btn ghost">Cancel</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+      <p class="hint">
+        Note: Saving edits updates the in‑memory list. Click <b>Save All</b> to write to <code>products.json</code>.
+        If you're on Vercel/Netlify, file‑writing may not persist (read‑only deploys). In that case, Save All will download a new products.json for you to replace manually.
+      </p>
+    </form>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="./admin.js"></script>
+</body>
 </html>
