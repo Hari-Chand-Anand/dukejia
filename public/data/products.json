@@ -1,43 +1,4 @@
 [
-    {
-    "id": "dy-pe750x600",
-    "brand": "DUKE JIA",
-    "model": "DY-PE750X600",
-    "name": "xyz",
-    "category": "perforation",
-    "thumbnail": "images/dy-pe750X600.png",
-    "popularity": "none",
-    "media": {
-      "youtubeId": "2Nod9pUuz24"
-    },
-    "operation": "Perforation and Stitching",
-    "description": "High-performance single-head perforation and stitching machine for precise material punching and seam stitching in industrial textile and leather manufacturing.",
-    "spec": {
-      "Working Width (mm)": 750,
-      "Working Length (mm)": 600,
-      "Stitch Type": "Lockstitch with perforation capability",
-      "Max Speed (rpm)": 1200,
-      "Needle Type": "DPx5 #14–18",
-      "Power Supply": "AC 380V 50/60Hz",
-      "Air Pressure (MPa)": 0.5,
-      "Total Power (kW)": 5,
-      "Machine Dimensions (mm)": "2000×1500×1800",
-      "Machine Weight (kg)": 850
-    },
-    "features": [
-      "Integrated perforation and stitching for enhanced productivity.",
-      "Precision servo-driven control system for accurate positioning.",
-      "Heavy-duty frame for stable operation and reduced vibration.",
-      "User-friendly interface with adjustable perforation depth and stitch speed."
-    ],
-    "application": "Industrial production of leather goods, automotive upholstery, footwear, and decorative textile components.",
-    "tags": [
-      "perforation",
-      "single head",
-      "leather",
-      "stitching"
-    ]
-  },
   {
     "id": "dy-pe750x600",
     "brand": "DUKE JIA",
